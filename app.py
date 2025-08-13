@@ -11,8 +11,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from webdriver_manager.chrome import ChromeDriverManager
 
-from config import DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS
-from geo import geocode_address, fetch_nearby_addresses
+from config import CBD_BBOX, DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS
+from geo import geocode_address, fetch_nearby_addresses, fetch_addresses_in_bbox
 from indexes import ResultsIndex, InputIndex
 from telstra5g import Telstra5GChecker
 
@@ -127,4 +127,130 @@ async def websocket_fromdata(websocket: WebSocket):
             "distance_km": round(float(item["distance_km"]), 3),
             "source": "results.csv",
         }))
+    await websocket.close()
+
+
+@app.websocket("/ws_map")
+async def websocket_map(websocket: WebSocket):
+    """WebSocket endpoint for live map checking within a bounding box."""
+    await websocket.accept()
+    data = await websocket.receive_json()
+    bbox = data["bbox"]  # [south, west, north, east]
+    workers = int(data["workers"])
+    max_points = int(data["max_points"])
+
+    try:
+        # Fetch addresses in the bounding box
+        addresses = fetch_addresses_in_bbox(bbox, limit=max_points)
+        
+        if not addresses:
+            await websocket.send_text(json.dumps({"error": "No addresses found in the specified area"}))
+            await websocket.close()
+            return
+
+        # Check 5G availability for each address
+        loop = asyncio.get_event_loop()
+        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = []
+            for addr_data in addresses:
+                futures.append(loop.run_in_executor(executor, checker.check, addr_data["addr"]))
+
+            for fut in asyncio.as_completed(futures):
+                addr, available, status = await fut
+                # Find the original address data
+                addr_data = next((a for a in addresses if a["addr"] == addr), None)
+                if addr_data:
+                    await websocket.send_text(json.dumps({
+                        "addr": addr,
+                        "available": available,
+                        "status": status,
+                        "lat": addr_data["lat"],
+                        "lon": addr_data["lon"],
+                    }))
+
+    except Exception as e:
+        await websocket.send_text(json.dumps({"error": f"Map check failed: {e}"}))
+    
+    await websocket.close()
+
+
+@app.get("/api/map-data")
+async def get_map_data(max_points: int = 1000):
+    """REST API endpoint for getting map data."""
+    try:
+        # Reload the results index to get latest data
+        if not results_index.ready:
+            results_index.load(DEFAULT_RESULTS_CSV)
+        
+        # Get all addresses from results.csv
+        if not results_index.ready or len(results_index.addr) == 0:
+            return {"error": "No data available in results.csv"}
+        
+        # Get all addresses with their data
+        addresses = []
+        for i in range(min(len(results_index.addr), max_points)):
+            addresses.append({
+                "addr": results_index.addr[i],
+                "lat": float(results_index.lat[i]),
+                "lon": float(results_index.lon[i]),
+                "available": bool(results_index.elig[i]),
+                "status": results_index.status[i],
+                "checked_at": results_index.checked_at[i]
+            })
+        
+        return {
+            "success": True,
+            "count": len(addresses),
+            "data": addresses
+        }
+
+    except Exception as e:
+        return {"error": f"Map data load failed: {e}"}
+
+
+@app.websocket("/ws_map_data")
+async def websocket_map_data(websocket: WebSocket):
+    """WebSocket endpoint for displaying existing data on the map."""
+    await websocket.accept()
+    data = await websocket.receive_json()
+    file_type = data.get("file", "results.csv")
+    max_points = int(data.get("max_points", 1000))
+
+    try:
+        # Reload the results index to get latest data
+        if not results_index.ready:
+            results_index.load(DEFAULT_RESULTS_CSV)
+        
+        # Get all addresses from results.csv (simplified without lock)
+        if not results_index.ready or len(results_index.addr) == 0:
+            await websocket.send_text(json.dumps({"error": "No data available in results.csv"}))
+            await websocket.close()
+            return
+        
+        # Get all addresses with their data (simplified)
+        addresses = []
+        for i in range(min(len(results_index.addr), max_points)):
+            addresses.append({
+                "addr": results_index.addr[i],
+                "lat": float(results_index.lat[i]),
+                "lon": float(results_index.lon[i]),
+                "available": bool(results_index.elig[i]),  # Convert numpy.bool_ to Python bool
+                "status": results_index.status[i],
+                "checked_at": results_index.checked_at[i]
+            })
+        
+        # Send each address to the map
+        for addr_data in addresses:
+            await websocket.send_text(json.dumps({
+                "addr": addr_data["addr"],
+                "available": addr_data["available"],
+                "status": addr_data["status"],
+                "lat": addr_data["lat"],
+                "lon": addr_data["lon"],
+                "checked_at": addr_data["checked_at"],
+            }))
+
+    except Exception as e:
+        await websocket.send_text(json.dumps({"error": f"Map data load failed: {e}"}))
+    
     await websocket.close()

@@ -2820,3 +2820,31 @@ Shop 10 Campbell Arcade Melbourne VIC,False,error:ElementNotInteractableExceptio
 197-199 King Street Melbourne VIC,False,error:TimeoutException,9.282,2025-08-12T15:09:55.136330+00:00,-37.8155762,144.9550620,error
 270 Collins Street Melbourne VIC,False,error:TimeoutException,9.258,2025-08-12T15:09:55.225039+00:00,-37.8156850,144.9649280,error
 195 Swanston Street Melbourne VIC,False,error:TimeoutException,9.313,2025-08-12T15:10:04.445611+00:00,-37.8130976,144.9649711,error
+2 Lygon Street VIC 3053,False,,39.229,2025-08-13T05:33:37.001364+00:00,-37.8067341,144.9660401,bulk
+1 Riverside Quay VIC,False,,40.46,2025-08-13T05:33:38.231839+00:00,-37.8217545,144.9639586,bulk
+8 Whiteman Street Southbank VIC 3006,True,Great! Your address is eligible for 5G Home Internet.,12.448,2025-08-13T05:33:49.451281+00:00,-37.8242677,144.9577541,bulk
+148 Gertrude Street VIC,True,Great! Your address is eligible for 5G Home Internet.,11.874,2025-08-13T05:34:01.326373+00:00,-37.806102,144.979265,bulk
+670 Bourke Street VIC,True,Great! Your address is eligible for 5G Home Internet.,12.518,2025-08-13T05:34:13.845896+00:00,-37.8166802,144.9541098,bulk
+211 Flinders Street Melbourne VIC 3000,False,,38.043,2025-08-13T05:34:16.276067+00:00,-37.8177412,144.967052,bulk
+629 Bourke Street VIC,False,,37.977,2025-08-13T05:34:51.823915+00:00,-37.8167994,144.9552063,bulk
+20-30 Bourke Street Melbourne VIC 3000,False,,37.927,2025-08-13T05:34:54.203895+00:00,-37.811183,144.972166,bulk
+127 Russell Street Melbourne VIC 3000,False,,38.252,2025-08-13T05:35:30.076180+00:00,-37.8136466,144.9682102,bulk
+8 Whiteman Street VIC,False,,38.075,2025-08-13T05:35:32.279790+00:00,-37.8231279,144.9575576,bulk
+"33,35,37 Swanston Street Melbourne VIC 3000",True,Great! Your address is eligible for 5G Home Internet.,12.627,2025-08-13T05:35:42.704060+00:00,-37.816643,144.966841,bulk
+37 Swanston Street Melbourne VIC 3000,False,,38.446,2025-08-13T05:36:10.726145+00:00,-37.8166258,144.9668517,bulk
+224 Flinders Street Melbourne VIC 3000,False,,37.698,2025-08-13T05:36:20.403073+00:00,-37.817475,144.96684,bulk
+238 Flinders Street Melbourne VIC 3000,False,,37.417,2025-08-13T05:36:48.144050+00:00,-37.8175372,144.9665144,bulk
+28-32 Elizabeth Street Melbourne VIC 3000,False,,37.509,2025-08-13T05:36:57.913470+00:00,-37.8172878,144.964884,bulk
+276 Flinders Street VIC,True,Great! Your address is eligible for 5G Home Internet.,12.009,2025-08-13T05:37:00.153679+00:00,-37.8175611,144.9649673,bulk
+250 Flinders Street Melbourne VIC 3000,False,,32.117,2025-08-13T05:37:30.030769+00:00,-37.8176298,144.9661635,bulk
+238b Flinders Street Melbourne VIC 3000,False,,37.388,2025-08-13T05:37:37.542562+00:00,-37.8175572,144.9664548,bulk
+244 Flinders Street Melbourne VIC 3000,False,,37.151,2025-08-13T05:38:07.182553+00:00,-37.817536,144.9662107,bulk
+276 Flinders Street Melbourne VIC 3000,False,,37.824,2025-08-13T05:38:15.367115+00:00,-37.8179609,144.9651319,bulk
+161 Flinders Lane Melbourne VIC 3000,True,Great! Your address is eligible for 5G Home Internet.,12.396,2025-08-13T05:38:27.765235+00:00,-37.8160266,144.9690557,bulk
+165 Flinders Lane Melbourne VIC 3000,True,Great! Your address is eligible for 5G Home Internet.,12.345,2025-08-13T05:38:40.112947+00:00,-37.8159734,144.9689591,bulk
+172 Flinders Street VIC,False,,37.279,2025-08-13T05:38:44.462470+00:00,-37.816994,144.968526,bulk
+150 Flinders Lane Melbourne VIC 3000,True,Great! Your address is eligible for 5G Home Internet.,12.181,2025-08-13T05:38:56.644694+00:00,-37.8156596,144.9692274,bulk
+333 Swanston Street Melbourne VIC 3000,False,,37.539,2025-08-13T05:39:17.652889+00:00,-37.810546,144.963903,bulk
+228 Flinders Lane VIC,False,,38.102,2025-08-13T05:39:34.747122+00:00,-37.8164799,144.9663777,bulk
+67 Bourke Street VIC,False,,37.654,2025-08-13T05:39:55.308224+00:00,-37.815983,144.966553,bulk
+67 Swanston Street Melbourne VIC 3000,False,,39.047,2025-08-13T05:40:13.794846+00:00,-37.816049,144.96658,bulk

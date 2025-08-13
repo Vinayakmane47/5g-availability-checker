@@ -1,0 +1,138 @@
+2025-08-13 15:32:10,809 - INFO - DRY RUN MODE - No actual checking will be performed
+2025-08-13 15:32:10,809 - INFO - ====== WebDriver manager ======
+2025-08-13 15:32:11,047 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:32:11,132 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:32:11,161 - INFO - Driver [/Users/vinayak/.wdm/drivers/chromedriver/mac64/139.0.7258.68/chromedriver-mac-arm64/chromedriver] found in cache
+2025-08-13 15:32:11,169 - INFO - Loaded 2020 existing addresses from results.csv
+2025-08-13 15:32:11,169 - INFO - Fetching addresses from Melbourne CBD...
+2025-08-13 15:32:14,318 - INFO - Found 10 addresses in Melbourne CBD
+2025-08-13 15:32:14,318 - INFO - Would check 10 addresses
+2025-08-13 15:32:14,318 - INFO -   1. 270 Flinders Street VIC
+2025-08-13 15:32:14,318 - INFO -   2. 267 Flinders Lane VIC 3000
+2025-08-13 15:32:14,318 - INFO -   3. 205 Collins Street VIC
+2025-08-13 15:32:14,318 - INFO -   4. 471 Little Bourke Street Melbourne VIC 3000
+2025-08-13 15:32:14,318 - INFO -   5. 630 Little Collins Street Melbourne VIC 3000
+2025-08-13 15:32:14,318 - INFO -   6. 287 King Street VIC
+2025-08-13 15:32:14,318 - INFO -   7. 600 Little Bourke Street Melbourne VIC 3000
+2025-08-13 15:32:14,318 - INFO -   8. 197-199 King Street Melbourne VIC 3000
+2025-08-13 15:32:14,318 - INFO -   9. 270 Collins Street VIC
+2025-08-13 15:32:14,318 - INFO -   10. 195 Swanston Street Melbourne VIC 3000
+2025-08-13 15:32:29,746 - INFO - ====== WebDriver manager ======
+2025-08-13 15:32:29,880 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:32:29,931 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:32:29,989 - INFO - Driver [/Users/vinayak/.wdm/drivers/chromedriver/mac64/139.0.7258.68/chromedriver-mac-arm64/chromedriver] found in cache
+2025-08-13 15:32:29,996 - INFO - Loaded 2020 existing addresses from results.csv
+2025-08-13 15:32:29,996 - INFO - Starting bulk 5G availability check for Melbourne CBD
+2025-08-13 15:32:29,996 - INFO - Using 2 workers, limit: 5 addresses
+2025-08-13 15:32:29,996 - INFO - Fetching addresses from Melbourne CBD...
+2025-08-13 15:32:33,256 - INFO - Found 5 addresses in Melbourne CBD
+2025-08-13 15:32:33,256 - INFO - All addresses have already been checked
+2025-08-13 15:32:51,899 - INFO - ====== WebDriver manager ======
+2025-08-13 15:32:52,030 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:32:52,069 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:32:52,100 - INFO - Driver [/Users/vinayak/.wdm/drivers/chromedriver/mac64/139.0.7258.68/chromedriver-mac-arm64/chromedriver] found in cache
+2025-08-13 15:32:52,107 - INFO - Loaded 2020 existing addresses from results.csv
+2025-08-13 15:32:52,107 - INFO - Starting bulk 5G availability check for Melbourne CBD
+2025-08-13 15:32:52,107 - INFO - Using 2 workers, limit: 50 addresses
+2025-08-13 15:32:52,107 - INFO - Fetching addresses from Melbourne CBD...
+2025-08-13 15:32:57,771 - INFO - Found 50 addresses in Melbourne CBD
+2025-08-13 15:32:57,771 - INFO - Checking 28 new addresses
+2025-08-13 15:32:57,771 - INFO - Checking: 1 Riverside Quay VIC
+2025-08-13 15:32:57,772 - INFO - Checking: 2 Lygon Street VIC 3053
+2025-08-13 15:33:37,002 - INFO - + 2 Lygon Street VIC 3053: Not available (39.229s)
+2025-08-13 15:33:37,003 - INFO - Checking: 8 Whiteman Street Southbank VIC 3006
+2025-08-13 15:33:38,232 - INFO - + 1 Riverside Quay VIC: Not available (40.46s)
+2025-08-13 15:33:38,232 - INFO - Checking: 211 Flinders Street Melbourne VIC 3000
+2025-08-13 15:33:49,452 - INFO - + 8 Whiteman Street Southbank VIC 3006: Available (12.448s)
+2025-08-13 15:33:49,452 - INFO - Checking: 148 Gertrude Street VIC
+2025-08-13 15:34:01,327 - INFO - + 148 Gertrude Street VIC: Available (11.874s)
+2025-08-13 15:34:01,327 - INFO - Checking: 670 Bourke Street VIC
+2025-08-13 15:34:13,846 - INFO - + 670 Bourke Street VIC: Available (12.518s)
+2025-08-13 15:34:13,847 - INFO - Checking: 629 Bourke Street VIC
+2025-08-13 15:34:16,276 - INFO - + 211 Flinders Street Melbourne VIC 3000: Not available (38.043s)
+2025-08-13 15:34:16,276 - INFO - Checking: 20-30 Bourke Street Melbourne VIC 3000
+2025-08-13 15:34:51,824 - INFO - + 629 Bourke Street VIC: Not available (37.977s)
+2025-08-13 15:34:51,824 - INFO - Checking: 127 Russell Street Melbourne VIC 3000
+2025-08-13 15:34:54,204 - INFO - + 20-30 Bourke Street Melbourne VIC 3000: Not available (37.927s)
+2025-08-13 15:34:54,204 - INFO - Checking: 8 Whiteman Street VIC
+2025-08-13 15:35:30,077 - INFO - + 127 Russell Street Melbourne VIC 3000: Not available (38.252s)
+2025-08-13 15:35:30,077 - INFO - Checking: 33,35,37 Swanston Street Melbourne VIC 3000
+2025-08-13 15:35:32,280 - INFO - + 8 Whiteman Street VIC: Not available (38.075s)
+2025-08-13 15:35:32,280 - INFO - Checking: 37 Swanston Street Melbourne VIC 3000
+2025-08-13 15:35:42,704 - INFO - + 33,35,37 Swanston Street Melbourne VIC 3000: Available (12.627s)
+2025-08-13 15:35:42,704 - INFO - Checking: 224 Flinders Street Melbourne VIC 3000
+2025-08-13 15:36:10,726 - INFO - + 37 Swanston Street Melbourne VIC 3000: Not available (38.446s)
+2025-08-13 15:36:10,727 - INFO - Checking: 238 Flinders Street Melbourne VIC 3000
+2025-08-13 15:36:20,404 - INFO - + 224 Flinders Street Melbourne VIC 3000: Not available (37.698s)
+2025-08-13 15:36:20,404 - INFO - Checking: 28-32 Elizabeth Street Melbourne VIC 3000
+2025-08-13 15:36:48,144 - INFO - + 238 Flinders Street Melbourne VIC 3000: Not available (37.417s)
+2025-08-13 15:36:48,144 - INFO - Checking: 276 Flinders Street VIC
+2025-08-13 15:36:57,913 - INFO - + 28-32 Elizabeth Street Melbourne VIC 3000: Not available (37.509s)
+2025-08-13 15:36:57,914 - INFO - Checking: 250 Flinders Street Melbourne VIC 3000
+2025-08-13 15:37:00,153 - INFO - + 276 Flinders Street VIC: Available (12.009s)
+2025-08-13 15:37:00,154 - INFO - Checking: 238b Flinders Street Melbourne VIC 3000
+2025-08-13 15:37:30,031 - INFO - + 250 Flinders Street Melbourne VIC 3000: Not available (32.117s)
+2025-08-13 15:37:30,031 - INFO - Checking: 244 Flinders Street Melbourne VIC 3000
+2025-08-13 15:37:37,542 - INFO - + 238b Flinders Street Melbourne VIC 3000: Not available (37.388s)
+2025-08-13 15:37:37,543 - INFO - Checking: 276 Flinders Street Melbourne VIC 3000
+2025-08-13 15:38:07,183 - INFO - + 244 Flinders Street Melbourne VIC 3000: Not available (37.151s)
+2025-08-13 15:38:07,183 - INFO - Checking: 172 Flinders Street VIC
+2025-08-13 15:38:15,368 - INFO - + 276 Flinders Street Melbourne VIC 3000: Not available (37.824s)
+2025-08-13 15:38:15,369 - INFO - Checking: 161 Flinders Lane Melbourne VIC 3000
+2025-08-13 15:38:27,766 - INFO - + 161 Flinders Lane Melbourne VIC 3000: Available (12.396s)
+2025-08-13 15:38:27,767 - INFO - Checking: 165 Flinders Lane Melbourne VIC 3000
+2025-08-13 15:38:40,113 - INFO - + 165 Flinders Lane Melbourne VIC 3000: Available (12.345s)
+2025-08-13 15:38:40,113 - INFO - Checking: 333 Swanston Street Melbourne VIC 3000
+2025-08-13 15:38:44,462 - INFO - + 172 Flinders Street VIC: Not available (37.279s)
+2025-08-13 15:38:44,463 - INFO - Checking: 150 Flinders Lane Melbourne VIC 3000
+2025-08-13 15:38:56,645 - INFO - + 150 Flinders Lane Melbourne VIC 3000: Available (12.181s)
+2025-08-13 15:38:56,645 - INFO - Checking: 228 Flinders Lane VIC
+2025-08-13 15:39:17,653 - INFO - + 333 Swanston Street Melbourne VIC 3000: Not available (37.539s)
+2025-08-13 15:39:17,653 - INFO - Checking: 67 Bourke Street VIC
+2025-08-13 15:39:34,747 - INFO - + 228 Flinders Lane VIC: Not available (38.102s)
+2025-08-13 15:39:34,747 - INFO - Checking: 67 Swanston Street Melbourne VIC 3000
+2025-08-13 15:39:55,308 - INFO - + 67 Bourke Street VIC: Not available (37.654s)
+2025-08-13 15:40:13,795 - INFO - + 67 Swanston Street Melbourne VIC 3000: Not available (39.047s)
+2025-08-13 15:40:13,796 - INFO - Bulk check completed: 28 successful, 0 failed
+2025-08-13 15:40:13,796 - INFO - Results saved to results.csv
+2025-08-13 15:47:08,188 - INFO - DRY RUN MODE - No actual checking will be performed
+2025-08-13 15:47:08,188 - INFO - ====== WebDriver manager ======
+2025-08-13 15:47:08,437 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:47:08,738 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 15:47:08,770 - INFO - Driver [/Users/vinayak/.wdm/drivers/chromedriver/mac64/139.0.7258.68/chromedriver-mac-arm64/chromedriver] found in cache
+2025-08-13 15:47:08,778 - INFO - Loaded 2048 existing addresses from results.csv
+2025-08-13 15:47:08,778 - INFO - Loaded 0 failed addresses for retry
+2025-08-13 15:47:08,778 - INFO - Fetching addresses from Melbourne CBD...
+2025-08-13 15:47:12,123 - INFO - Found 10 addresses in Melbourne CBD
+2025-08-13 15:47:12,123 - INFO - Would check 10 addresses
+2025-08-13 15:47:12,123 - INFO -   1. 270 Flinders Street VIC
+2025-08-13 15:47:12,123 - INFO -   2. 267 Flinders Lane VIC 3000
+2025-08-13 15:47:12,123 - INFO -   3. 205 Collins Street VIC
+2025-08-13 15:47:12,123 - INFO -   4. 471 Little Bourke Street Melbourne VIC 3000
+2025-08-13 15:47:12,123 - INFO -   5. 630 Little Collins Street Melbourne VIC 3000
+2025-08-13 15:47:12,123 - INFO -   6. 287 King Street VIC
+2025-08-13 15:47:12,124 - INFO -   7. 600 Little Bourke Street Melbourne VIC 3000
+2025-08-13 15:47:12,124 - INFO -   8. 197-199 King Street Melbourne VIC 3000
+2025-08-13 15:47:12,124 - INFO -   9. 270 Collins Street VIC
+2025-08-13 15:47:12,124 - INFO -   10. 195 Swanston Street Melbourne VIC 3000
+2025-08-13 16:40:31,526 - INFO - DRY RUN MODE - No actual checking will be performed
+2025-08-13 16:40:31,526 - INFO - ====== WebDriver manager ======
+2025-08-13 16:40:31,726 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 16:40:31,869 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-13 16:40:31,906 - INFO - Driver [/Users/vinayak/.wdm/drivers/chromedriver/mac64/139.0.7258.68/chromedriver-mac-arm64/chromedriver] found in cache
+2025-08-13 16:40:31,913 - INFO - Loaded 2048 existing addresses from results.csv
+2025-08-13 16:40:31,913 - INFO - Loaded 0 failed addresses for retry
+2025-08-13 16:40:31,914 - INFO - Fetching addresses from Melbourne CBD...
+2025-08-13 16:40:35,571 - INFO - Found 100 addresses in Melbourne CBD
+2025-08-13 16:40:35,571 - INFO - Would check 100 addresses
+2025-08-13 16:40:35,571 - INFO -   1. 270 Flinders Street VIC
+2025-08-13 16:40:35,571 - INFO -   2. 267 Flinders Lane VIC 3000
+2025-08-13 16:40:35,571 - INFO -   3. 205 Collins Street VIC
+2025-08-13 16:40:35,571 - INFO -   4. 471 Little Bourke Street Melbourne VIC 3000
+2025-08-13 16:40:35,571 - INFO -   5. 630 Little Collins Street Melbourne VIC 3000
+2025-08-13 16:40:35,571 - INFO -   6. 287 King Street VIC
+2025-08-13 16:40:35,571 - INFO -   7. 600 Little Bourke Street Melbourne VIC 3000
+2025-08-13 16:40:35,571 - INFO -   8. 197-199 King Street Melbourne VIC 3000
+2025-08-13 16:40:35,571 - INFO -   9. 270 Collins Street VIC
+2025-08-13 16:40:35,571 - INFO -   10. 195 Swanston Street Melbourne VIC 3000
+2025-08-13 16:40:35,571 - INFO -   ... and 90 more
