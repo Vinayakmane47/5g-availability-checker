@@ -27,6 +27,12 @@ checker = None
 def get_checker():
     """Lazy load the checker to avoid startup issues."""
     global checker, _driver_path
+    
+    # Completely disable Selenium in Railway environment
+    if IS_CLOUD:
+        print("Selenium disabled in Railway environment")
+        return None
+    
     if checker is None:
         try:
             _driver_path = ChromeDriverManager().install()
@@ -58,6 +64,26 @@ async def form_page(request: Request):
 async def health_check():
     """Simple health check endpoint for Railway."""
     return {"status": "healthy", "timestamp": time.time()}
+
+
+@app.get("/status")
+async def app_status():
+    """Show app status and available features."""
+    return {
+        "status": "running",
+        "environment": "railway" if IS_CLOUD else "local",
+        "features": {
+            "web_interface": True,
+            "database_access": True,
+            "map_visualization": True,
+            "real_time_checking": not IS_CLOUD,  # Disabled in Railway
+            "bulk_checking": not IS_CLOUD,  # Disabled in Railway
+        },
+        "data": {
+            "total_addresses": len(results_index.addr) if results_index.ready else 0,
+            "available_addresses": sum(results_index.elig) if results_index.ready else 0,
+        }
+    }
 
 
 @app.get("/dashboard", response_class=HTMLResponse)
@@ -103,7 +129,7 @@ async def websocket_live(websocket: WebSocket):
                 await websocket.send_text(json.dumps({
                     "addr": addr,
                     "available": False,
-                    "status": "error: Selenium not available",
+                    "status": "error: Real-time checking not available in Railway. Use 'Check from Database' instead.",
                     "time": 0,
                 }))
 
@@ -187,7 +213,7 @@ async def websocket_map(websocket: WebSocket):
                     await websocket.send_text(json.dumps({
                         "addr": addr_data["addr"],
                         "available": False,
-                        "status": "error: Selenium not available",
+                        "status": "error: Real-time checking not available in Railway. Use 'Check from Database' instead.",
                         "lat": addr_data["lat"],
                         "lon": addr_data["lon"],
                     }))
