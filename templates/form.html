@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>5G Checker</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    #loading { display:none; text-align:center; margin-top:10px; }
+    .spinner {
+      border: 6px solid #f3f3f3; border-top: 6px solid #0078d4; border-radius: 50%;
+      width: 40px; height: 40px; animation: spin 1s linear infinite; display:inline-block;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
+    .error { color:red; margin-top:8px; }
+    .row { display:flex; gap:12px; align-items: center; flex-wrap: wrap; }
+    input[type="text"], input[type="number"], select { padding:6px 8px; }
+    button, input[type="submit"] { padding:8px 12px; cursor:pointer; }
+    .muted { color:#666; font-size: 0.9em; }
+    .addr { font-weight: 600; }
+    .small { font-size: 0.92em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>5G Availability Checker</h1>
+
+    <div id="content">
+      <form onsubmit="event.preventDefault(); startWebSocketLive();">
+        <div class="row">
+          <label for="address">Enter Address:</label>
+          <input type="text" id="address" placeholder="e.g. 340 Lygon Street Carlton VIC" required>
+        </div>
+
+        <div class="row">
+          <label for="radius">Radius (m):</label>
+          <select id="radius" required>
+            <option value="200">200</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+            <option value="1000" selected>1000</option>
+          </select>
+
+          <label for="n"># Addresses:</label>
+          <input type="number" id="n" value="20" min="1" max="200" required>
+
+          <label for="workers">Workers:</label>
+          <input type="number" id="workers" value="6" min="1" max="20" required>
+
+          <input type="submit" value="Check Nearby (Live)">
+          <button type="button" onclick="startWebSocketFromData()">Check from data</button>
+        </div>
+        <div class="muted">“Check from data” uses server-side <code>results.csv</code> (with an <code>eligible</code> column), finds the 10 nearest rows to your address, and shows those results instantly.</div>
+      </form>
+
+      <div id="error" class="error"></div>
+
+      <h2>Results</h2>
+      <ul id="results"></ul>
+    </div>
+
+    <div id="loading">
+      <div class="spinner"></div>
+      <p>Checking availability...</p>
+    </div>
+  </div>
+
+  <script>
+    function addResultLine(data) {
+      const li = document.createElement("li");
+      const where = (data.lat != null && data.lon != null)
+        ? ` <span class="muted">(${Number(data.lat).toFixed(6)}, ${Number(data.lon).toFixed(6)})</span>`
+        : "";
+
+      const dist = (typeof data.distance_km === "number")
+        ? ` <span class="muted">— ${data.distance_km.toFixed(2)} km away</span>`
+        : "";
+
+      const statusText = data.status ? ` <span class="muted small">[${data.status}${data.time ? ` ~${data.time}s` : ""}]</span>` : "";
+
+      li.innerHTML = `<span class="addr">${data.addr}</span>${where}${dist} — <strong>${data.available ? "✅ Available" : "❌ Not Available"}</strong>${statusText}`;
+      document.getElementById("results").appendChild(li);
+    }
+
+    function resetUI() {
+      document.getElementById("results").innerHTML = "";
+      document.getElementById("error").innerText = "";
+      document.getElementById("loading").style.display = "block";
+      window._startTime = performance.now();
+    }
+
+    function finishUI() {
+      document.getElementById("loading").style.display = "none";
+      const totalTime = ((performance.now() - window._startTime) / 1000).toFixed(2);
+      const summary = document.createElement("p");
+      summary.innerHTML = `<strong>Total Time:</strong> ${totalTime} sec`;
+      document.getElementById("results").appendChild(summary);
+    }
+
+    function startWebSocketLive() {
+      resetUI();
+      const address = document.getElementById("address").value;
+      const n = parseInt(document.getElementById("n").value);
+      const workers = parseInt(document.getElementById("workers").value);
+      const radius = parseInt(document.getElementById("radius").value);
+
+      const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws");
+      ws.onopen = () => ws.send(JSON.stringify({ address, n, workers, radius }));
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.error) {
+          document.getElementById("error").innerText = "Error: " + data.error;
+          ws.close();
+          document.getElementById("loading").style.display = "none";
+          return;
+        }
+        addResultLine(data);
+      };
+      ws.onclose = () => finishUI();
+    }
+
+    function startWebSocketFromData() {
+      resetUI();
+      const address = document.getElementById("address").value;
+      const workers = parseInt(document.getElementById("workers").value);
+      const n = 10; // per your spec
+
+      const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws_fromdata");
+      // backend now reads results.csv; we still send address and n for nearest selection
+      ws.onopen = () => ws.send(JSON.stringify({ address, workers, n }));
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.error) {
+          document.getElementById("error").innerText = "Error: " + data.error;
+          ws.close();
+          document.getElementById("loading").style.display = "none";
+          return;
+        }
+        addResultLine(data);
+      };
+      ws.onclose = () => finishUI();
+    }
+  </script>
+</body>
+</html>

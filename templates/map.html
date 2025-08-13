@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>5G Map</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <style>
+    #map { height: 80vh; border:1px solid #ddd; border-radius:8px; }
+    .row { display:flex; gap:12px; align-items:center; flex-wrap: wrap; margin-bottom:8px; }
+    button { padding:8px 12px; cursor:pointer; }
+    .muted { color:#666; font-size:0.9em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>5G Availability Map</h1>
+
+    <div class="row">
+      <label>Source:</label>
+      <select id="source">
+        <option value="live">Live (Overpass)</option>
+        <option value="csv" selected>From CSV</option>
+      </select>
+
+      <label>BBox (south,west,north,east):</label>
+      <input type="text" id="bbox" size="40" value="-37.8265,144.9475,-37.8060,144.9835" />
+
+      <label>Workers:</label>
+      <input type="number" id="workers" value="3" min="1" max="12" />
+
+      <label>Max Points:</label>
+      <input type="number" id="max_points" value="200" min="1" max="3000" />
+
+      <button onclick="startMap()">Start</button>
+    </div>
+    <div class="muted">CSV mode reads <code>input.csv</code> on the server. Only ✅ availability gets plotted.</div>
+
+    <div id="map"></div>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    let map, layer;
+
+    function initMap() {
+      map = L.map('map').setView([-37.8136, 144.9631], 14);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+      }).addTo(map);
+      layer = L.layerGroup().addTo(map);
+    }
+
+    function clearMarkers() { layer.clearLayers(); }
+
+    function addMarker(lat, lon, text) {
+      const m = L.marker([lat, lon]).bindPopup(text);
+      layer.addLayer(m);
+    }
+
+    function startMap() {
+      if (!map) initMap();
+      clearMarkers();
+
+      const source = document.getElementById("source").value;
+      const workers = parseInt(document.getElementById("workers").value);
+      const max_points = parseInt(document.getElementById("max_points").value);
+
+      if (source === "live") {
+        const bboxStr = document.getElementById("bbox").value.trim();
+        const parts = bboxStr.split(",").map(s => parseFloat(s.trim()));
+        if (parts.length !== 4 || parts.some(isNaN)) {
+          alert("Invalid bbox");
+          return;
+        }
+        const ws = new WebSocket("ws://" + location.host + "/ws_map");
+        ws.onopen = () => ws.send(JSON.stringify({ bbox: parts, workers, max_points }));
+        ws.onmessage = (event) => {
+          const d = JSON.parse(event.data);
+          if (d.error) { console.error(d.error); return; }
+          if (d.available && d.lat != null && d.lon != null) {
+            addMarker(d.lat, d.lon, `${d.addr}<br/>✅ 5G Available`);
+          }
+        };
+      } else {
+        const ws = new WebSocket("ws://" + location.host + "/ws_map_data");
+        ws.onopen = () => ws.send(JSON.stringify({ file: "input.csv", workers, max_points }));
+        ws.onmessage = (event) => {
+          const d = JSON.parse(event.data);
+          if (d.error) { console.error(d.error); return; }
+          if (d.available && d.lat != null && d.lon != null) {
+            addMarker(d.lat, d.lon, `${d.addr}<br/>✅ 5G Available`);
+          }
+        };
+      }
+    }
+
+    // init once
+    initMap();
+  </script>
+</body>
+</html>

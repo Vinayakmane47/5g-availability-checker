@@ -1,0 +1,15 @@
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  margin: 0; padding: 0;
+}
+.container {
+  max-width: 800px; margin: 24px auto; padding: 0 16px;
+}
+h1 { margin-bottom: 8px; }
+label { display: inline-block; width: 200px; }
+input[type="text"], input[type="number"], select { padding: 6px 8px; width: 300px; }
+input[type="submit"] { padding: 8px 14px; background:#0078d4; color:#fff; border:0; border-radius:6px; cursor:pointer; }
+input[type="submit"]:hover { background:#0063ad; }
+button { background:#f0f0f0; border:1px solid #ccc; border-radius:6px; }
+button:hover { background:#e9e9e9; }
+ul { padding-left: 18px; }
