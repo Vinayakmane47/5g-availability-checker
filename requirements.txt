@@ -5,3 +5,5 @@ webdriver-manager
 numpy
 requests
 overpy
+folium
+geopy

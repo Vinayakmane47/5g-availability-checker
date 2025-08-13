@@ -42,6 +42,16 @@ async def form_page(request: Request):
     return templates.TemplateResponse("form.html", {"request": request})
 
 
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard_page(request: Request):
+    return templates.TemplateResponse("dashboard.html", {"request": request})
+
+
+@app.get("/map", response_class=HTMLResponse)
+async def map_page(request: Request):
+    return templates.TemplateResponse("map.html", {"request": request})
+
+
 @app.websocket("/ws")
 async def websocket_live(websocket: WebSocket):
     await websocket.accept()

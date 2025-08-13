@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <title>5G Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5G Availability Map - Modern</title>
   <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -11,37 +16,222 @@
     crossorigin=""
   />
   <style>
-    #map { height: 80vh; border:1px solid #ddd; border-radius:8px; }
-    .row { display:flex; gap:12px; align-items:center; flex-wrap: wrap; margin-bottom:8px; }
-    button { padding:8px 12px; cursor:pointer; }
-    .muted { color:#666; font-size:0.9em; }
+    .map-controls {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+    }
+    
+    .map-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .map-legend {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      box-shadow: var(--shadow-md);
+      z-index: 1000;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .legend-color {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+    }
+    
+    .legend-color.available {
+      background: var(--success-color);
+    }
+    
+    .legend-color.unavailable {
+      background: var(--error-color);
+    }
+    
+    .map-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem 2rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>5G Availability Map</h1>
-
-    <div class="row">
-      <label>Source:</label>
-      <select id="source">
-        <option value="live">Live (Overpass)</option>
-        <option value="csv" selected>From CSV</option>
-      </select>
-
-      <label>BBox (south,west,north,east):</label>
-      <input type="text" id="bbox" size="40" value="-37.8265,144.9475,-37.8060,144.9835" />
-
-      <label>Workers:</label>
-      <input type="number" id="workers" value="3" min="1" max="12" />
-
-      <label>Max Points:</label>
-      <input type="number" id="max_points" value="200" min="1" max="3000" />
-
-      <button onclick="startMap()">Start</button>
+    <!-- Header -->
+    <div class="header">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <h1>5G Availability Map</h1>
+      <p>Visualize 5G network coverage across different areas. Explore availability patterns and coverage gaps.</p>
+      
+      <!-- Navigation -->
+      <nav class="flex gap-4 justify-center mt-4">
+        <a href="/" class="btn btn-secondary">
+          <i class="fas fa-search"></i>
+          Checker
+        </a>
+        <a href="/dashboard" class="btn btn-secondary">
+          <i class="fas fa-tachometer-alt"></i>
+          Dashboard
+        </a>
+        <a href="/map" class="btn btn-primary">
+          <i class="fas fa-map"></i>
+          Map
+        </a>
+      </nav>
     </div>
-    <div class="muted">CSV mode reads <code>input.csv</code> on the server. Only ✅ availability gets plotted.</div>
 
-    <div id="map"></div>
+    <!-- Map Controls -->
+    <div class="map-controls">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="source">
+            <i class="fas fa-database"></i> Data Source
+          </label>
+          <select id="source" class="form-control">
+            <option value="live">Live (Overpass API)</option>
+            <option value="csv" selected>From CSV Database</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="bbox">
+            <i class="fas fa-map"></i> Bounding Box
+          </label>
+          <input type="text" id="bbox" class="form-control" value="-37.8265,144.9475,-37.8060,144.9835" placeholder="south,west,north,east">
+        </div>
+
+        <div class="form-group">
+          <label for="workers">
+            <i class="fas fa-cogs"></i> Workers
+          </label>
+          <input type="number" id="workers" class="form-control" value="3" min="1" max="12">
+        </div>
+
+        <div class="form-group">
+          <label for="max_points">
+            <i class="fas fa-chart-scatter"></i> Max Points
+          </label>
+          <input type="number" id="max_points" class="form-control" value="200" min="1" max="3000">
+        </div>
+      </div>
+
+      <div class="flex gap-4 justify-center mt-4">
+        <button class="btn btn-primary" onclick="startMap()">
+          <i class="fas fa-play"></i>
+          Start Mapping
+        </button>
+        <button class="btn btn-secondary" onclick="clearMap()">
+          <i class="fas fa-trash"></i>
+          Clear Map
+        </button>
+        <button class="btn btn-secondary" onclick="exportMapData()">
+          <i class="fas fa-download"></i>
+          Export Data
+        </button>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p class="text-muted">
+          <i class="fas fa-info-circle"></i>
+          <strong>Live Mode:</strong> Real-time data from Overpass API
+          <br>
+          <strong>CSV Mode:</strong> Pre-loaded data from server database
+        </p>
+      </div>
+    </div>
+
+    <!-- Map Stats -->
+    <div class="map-stats">
+      <div class="stat-item">
+        <div class="stat-number" id="total-points">0</div>
+        <div class="stat-label">Total Points</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="available-points">0</div>
+        <div class="stat-label">Available</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="unavailable-points">0</div>
+        <div class="stat-label">Unavailable</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="coverage-percentage">0%</div>
+        <div class="stat-label">Coverage</div>
+      </div>
+    </div>
+
+    <!-- Map Container -->
+    <div class="map-container">
+      <div id="map"></div>
+      
+      <!-- Map Legend -->
+      <div class="map-legend">
+        <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Legend</h4>
+        <div class="legend-item">
+          <div class="legend-color available"></div>
+          <span>5G Available</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color unavailable"></div>
+          <span>5G Unavailable</span>
+        </div>
+      </div>
+      
+      <!-- Map Loading -->
+      <div class="map-loading" id="map-loading">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading map data...</p>
+      </div>
+    </div>
   </div>
 
   <script
@@ -50,27 +240,114 @@
     crossorigin=""
   ></script>
   <script>
+    // Theme Management
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeIcon = document.getElementById('theme-icon');
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      if (newTheme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        themeIcon.className = 'fas fa-moon';
+      }
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const themeIcon = document.getElementById('theme-icon');
+      if (savedTheme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+      }
+    }
+
+    // Map Management
     let map, layer;
+    let mapData = [];
+    let totalPoints = 0;
+    let availablePoints = 0;
+    let unavailablePoints = 0;
+
+    function updateStats() {
+      document.getElementById('total-points').textContent = totalPoints;
+      document.getElementById('available-points').textContent = availablePoints;
+      document.getElementById('unavailable-points').textContent = unavailablePoints;
+      
+      const coverage = totalPoints > 0 ? Math.round((availablePoints / totalPoints) * 100) : 0;
+      document.getElementById('coverage-percentage').textContent = coverage + '%';
+    }
 
     function initMap() {
       map = L.map('map').setView([-37.8136, 144.9631], 14);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      
+      // Use different tile layers based on theme
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const tileLayer = isDark 
+        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+        : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      
+      L.tileLayer(tileLayer, {
         maxZoom: 19,
-        attribution: '© OpenStreetMap'
+        attribution: '© OpenStreetMap contributors'
       }).addTo(map);
+      
       layer = L.layerGroup().addTo(map);
     }
 
-    function clearMarkers() { layer.clearLayers(); }
+    function clearMarkers() { 
+      layer.clearLayers(); 
+      mapData = [];
+      totalPoints = 0;
+      availablePoints = 0;
+      unavailablePoints = 0;
+      updateStats();
+    }
 
-    function addMarker(lat, lon, text) {
-      const m = L.marker([lat, lon]).bindPopup(text);
+    function addMarker(lat, lon, text, available) {
+      const icon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="
+          width: 12px; 
+          height: 12px; 
+          background: ${available ? 'var(--success-color)' : 'var(--error-color)'}; 
+          border: 2px solid white; 
+          border-radius: 50%; 
+          box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        "></div>`,
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+      });
+      
+      const m = L.marker([lat, lon], { icon }).bindPopup(text);
       layer.addLayer(m);
+      
+      // Update stats
+      totalPoints++;
+      if (available) availablePoints++;
+      else unavailablePoints++;
+      updateStats();
+      
+      // Store data
+      mapData.push({ lat, lon, text, available });
+    }
+
+    function showMapLoading() {
+      document.getElementById('map-loading').style.display = 'block';
+    }
+
+    function hideMapLoading() {
+      document.getElementById('map-loading').style.display = 'none';
     }
 
     function startMap() {
       if (!map) initMap();
       clearMarkers();
+      showMapLoading();
 
       const source = document.getElementById("source").value;
       const workers = parseInt(document.getElementById("workers").value);
@@ -80,32 +357,82 @@
         const bboxStr = document.getElementById("bbox").value.trim();
         const parts = bboxStr.split(",").map(s => parseFloat(s.trim()));
         if (parts.length !== 4 || parts.some(isNaN)) {
-          alert("Invalid bbox");
+          alert("Invalid bounding box format. Use: south,west,north,east");
+          hideMapLoading();
           return;
         }
+        
         const ws = new WebSocket("ws://" + location.host + "/ws_map");
         ws.onopen = () => ws.send(JSON.stringify({ bbox: parts, workers, max_points }));
+        
         ws.onmessage = (event) => {
           const d = JSON.parse(event.data);
-          if (d.error) { console.error(d.error); return; }
-          if (d.available && d.lat != null && d.lon != null) {
-            addMarker(d.lat, d.lon, `${d.addr}<br/>✅ 5G Available`);
+          if (d.error) { 
+            console.error(d.error); 
+            hideMapLoading();
+            return; 
+          }
+          if (d.lat != null && d.lon != null) {
+            const text = `${d.addr}<br/>${d.available ? '&#10004; 5G Available' : '&#10006; 5G Unavailable'}`;
+            addMarker(d.lat, d.lon, text, d.available);
           }
         };
+        
+        ws.onclose = () => hideMapLoading();
       } else {
         const ws = new WebSocket("ws://" + location.host + "/ws_map_data");
         ws.onopen = () => ws.send(JSON.stringify({ file: "input.csv", workers, max_points }));
+        
         ws.onmessage = (event) => {
           const d = JSON.parse(event.data);
-          if (d.error) { console.error(d.error); return; }
-          if (d.available && d.lat != null && d.lon != null) {
-            addMarker(d.lat, d.lon, `${d.addr}<br/>✅ 5G Available`);
+          if (d.error) { 
+            console.error(d.error); 
+            hideMapLoading();
+            return; 
+          }
+          if (d.lat != null && d.lon != null) {
+            const text = `${d.addr}<br/>${d.available ? '&#10004; 5G Available' : '&#10006; 5G Unavailable'}`;
+            addMarker(d.lat, d.lon, text, d.available);
           }
         };
+        
+        ws.onclose = () => hideMapLoading();
       }
     }
 
-    // init once
+    function clearMap() {
+      if (layer) {
+        clearMarkers();
+      }
+    }
+
+    function exportMapData() {
+      if (mapData.length === 0) {
+        alert("No map data to export");
+        return;
+      }
+      
+      const csv = [
+        ['Latitude', 'Longitude', 'Address', 'Available'],
+        ...mapData.map(d => [
+          d.lat,
+          d.lon,
+          d.text.replace(/<br\/>.*/, ''), // Remove HTML tags
+          d.available ? 'Yes' : 'No'
+        ])
+      ].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+      
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `5g-map-data-${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+
+    // Initialize
+    initTheme();
     initMap();
   </script>
 </body>

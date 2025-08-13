@@ -1,99 +1,276 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <title>5G Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5G Availability Checker - Modern</title>
   <link rel="stylesheet" href="/static/style.css">
-  <style>
-    #loading { display:none; text-align:center; margin-top:10px; }
-    .spinner {
-      border: 6px solid #f3f3f3; border-top: 6px solid #0078d4; border-radius: 50%;
-      width: 40px; height: 40px; animation: spin 1s linear infinite; display:inline-block;
-    }
-    @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
-    .error { color:red; margin-top:8px; }
-    .row { display:flex; gap:12px; align-items: center; flex-wrap: wrap; }
-    input[type="text"], input[type="number"], select { padding:6px 8px; }
-    button, input[type="submit"] { padding:8px 12px; cursor:pointer; }
-    .muted { color:#666; font-size: 0.9em; }
-    .addr { font-weight: 600; }
-    .small { font-size: 0.92em; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    <h1>5G Availability Checker</h1>
-
-    <div id="content">
-      <form onsubmit="event.preventDefault(); startWebSocketLive();">
-        <div class="row">
-          <label for="address">Enter Address:</label>
-          <input type="text" id="address" placeholder="e.g. 340 Lygon Street Carlton VIC" required>
-        </div>
-
-        <div class="row">
-          <label for="radius">Radius (m):</label>
-          <select id="radius" required>
-            <option value="200">200</option>
-            <option value="400">400</option>
-            <option value="500">500</option>
-            <option value="1000" selected>1000</option>
-          </select>
-
-          <label for="n"># Addresses:</label>
-          <input type="number" id="n" value="20" min="1" max="200" required>
-
-          <label for="workers">Workers:</label>
-          <input type="number" id="workers" value="6" min="1" max="20" required>
-
-          <input type="submit" value="Check Nearby (Live)">
-          <button type="button" onclick="startWebSocketFromData()">Check from data</button>
-        </div>
-        <div class="muted">“Check from data” uses server-side <code>results.csv</code> (with an <code>eligible</code> column), finds the 10 nearest rows to your address, and shows those results instantly.</div>
-      </form>
-
-      <div id="error" class="error"></div>
-
-      <h2>Results</h2>
-      <ul id="results"></ul>
+    <!-- Header -->
+    <div class="header">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <h1>5G Availability Checker</h1>
+      <p>Check 5G network availability for any address in Australia. Get real-time results with our advanced geolocation and Telstra integration.</p>
+      
+      <!-- Navigation -->
+      <nav class="flex gap-4 justify-center mt-4">
+        <a href="/" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+          Checker
+        </a>
+        <a href="/dashboard" class="btn btn-secondary">
+          <i class="fas fa-tachometer-alt"></i>
+          Dashboard
+        </a>
+        <a href="/map" class="btn btn-secondary">
+          <i class="fas fa-map"></i>
+          Map
+        </a>
+      </nav>
     </div>
 
-    <div id="loading">
-      <div class="spinner"></div>
-      <p>Checking availability...</p>
+    <!-- Form Section -->
+    <div class="form-container">
+      <form onsubmit="event.preventDefault(); startWebSocketLive();">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="address">
+              <i class="fas fa-map-marker-alt"></i> Address
+            </label>
+            <input type="text" id="address" class="form-control" placeholder="e.g. 340 Lygon Street Carlton VIC" required>
+          </div>
+
+          <div class="form-group">
+            <label for="radius">
+              <i class="fas fa-circle"></i> Search Radius
+            </label>
+            <select id="radius" class="form-control" required>
+              <option value="200">200 meters</option>
+              <option value="400">400 meters</option>
+              <option value="500">500 meters</option>
+              <option value="1000" selected>1 kilometer</option>
+              <option value="2000">2 kilometers</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="n">
+              <i class="fas fa-list-ol"></i> Max Addresses
+            </label>
+            <input type="number" id="n" class="form-control" value="20" min="1" max="200" required>
+          </div>
+
+          <div class="form-group">
+            <label for="workers">
+              <i class="fas fa-cogs"></i> Workers
+            </label>
+            <input type="number" id="workers" class="form-control" value="6" min="1" max="20" required>
+          </div>
+        </div>
+
+        <div class="flex gap-4 justify-center">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+            Check Live Availability
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="startWebSocketFromData()">
+            <i class="fas fa-database"></i>
+            Check from Database
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-4 text-center">
+        <p class="text-muted">
+          <i class="fas fa-info-circle"></i>
+          <strong>Live Check:</strong> Real-time verification from Telstra's servers
+          <br>
+          <strong>Database Check:</strong> Instant results from cached data
+        </p>
+      </div>
+    </div>
+
+    <!-- Error Messages -->
+    <div id="error" class="error-message hidden">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span id="error-text"></span>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Checking 5G availability...</p>
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+      </div>
+      <p class="text-muted mt-2">This may take a few moments depending on the number of addresses</p>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-container" id="results-container" style="display: none;">
+      <div class="results-header">
+        <div>
+          <h2 class="results-title">Results</h2>
+          <p class="text-muted">5G availability check results</p>
+        </div>
+        <div class="results-stats">
+          <span id="total-count">0</span> addresses checked
+          <span id="available-count">0</span> available
+          <span id="unavailable-count">0</span> unavailable
+        </div>
+      </div>
+
+      <ul id="results" class="results-list"></ul>
+
+      <div class="mt-4 text-center">
+        <button class="btn btn-secondary" onclick="exportResults()">
+          <i class="fas fa-download"></i>
+          Export Results
+        </button>
+        <button class="btn btn-secondary" onclick="clearResults()">
+          <i class="fas fa-trash"></i>
+          Clear Results
+        </button>
+      </div>
     </div>
   </div>
 
   <script>
+    // Theme Management
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeIcon = document.getElementById('theme-icon');
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      if (newTheme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        themeIcon.className = 'fas fa-moon';
+      }
+    }
+
+    // Initialize theme
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const themeIcon = document.getElementById('theme-icon');
+      if (savedTheme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+      }
+    }
+
+    // Results Management
+    let resultsData = [];
+    let totalChecked = 0;
+    let availableCount = 0;
+    let unavailableCount = 0;
+
+    function updateStats() {
+      document.getElementById('total-count').textContent = totalChecked;
+      document.getElementById('available-count').textContent = availableCount;
+      document.getElementById('unavailable-count').textContent = unavailableCount;
+    }
+
     function addResultLine(data) {
       const li = document.createElement("li");
-      const where = (data.lat != null && data.lon != null)
-        ? ` <span class="muted">(${Number(data.lat).toFixed(6)}, ${Number(data.lon).toFixed(6)})</span>`
+      li.className = "result-item";
+      
+      const statusClass = data.available ? 'status-available' : 'status-unavailable';
+      const statusIcon = data.available ? 'fas fa-check' : 'fas fa-times';
+      const statusText = data.available ? 'Available' : 'Not Available';
+      
+      const coordinates = (data.lat != null && data.lon != null)
+        ? `<span class="text-muted">(${Number(data.lat).toFixed(6)}, ${Number(data.lon).toFixed(6)})</span>`
         : "";
 
-      const dist = (typeof data.distance_km === "number")
-        ? ` <span class="muted">— ${data.distance_km.toFixed(2)} km away</span>`
+      const distance = (typeof data.distance_km === "number")
+        ? `<span class="text-muted">- ${data.distance_km.toFixed(2)} km away</span>`
         : "";
 
-      const statusText = data.status ? ` <span class="muted small">[${data.status}${data.time ? ` ~${data.time}s` : ""}]</span>` : "";
+      const statusInfo = data.status ? ` <span class="text-muted">[${data.status}${data.time ? ` ~${data.time}s` : ""}]</span>` : "";
 
-      li.innerHTML = `<span class="addr">${data.addr}</span>${where}${dist} — <strong>${data.available ? "✅ Available" : "❌ Not Available"}</strong>${statusText}`;
+      li.innerHTML = `
+        <div class="result-address">${data.addr}</div>
+        <div class="result-details">
+          <div class="result-status ${statusClass}">
+            <span class="status-icon ${data.available ? 'available' : 'unavailable'}">
+              <i class="${statusIcon}"></i>
+            </span>
+            ${statusText}
+          </div>
+          <div class="result-meta">
+            ${coordinates}
+            ${distance}
+            ${statusInfo}
+            ${data.checked_at ? `<span><i class="fas fa-clock"></i> ${data.checked_at}</span>` : ''}
+            ${data.source ? `<span><i class="fas fa-database"></i> ${data.source}</span>` : ''}
+          </div>
+        </div>
+      `;
+
       document.getElementById("results").appendChild(li);
+      
+      // Update stats
+      totalChecked++;
+      if (data.available) availableCount++;
+      else unavailableCount++;
+      updateStats();
+      
+      // Store data for export
+      resultsData.push(data);
     }
 
     function resetUI() {
       document.getElementById("results").innerHTML = "";
-      document.getElementById("error").innerText = "";
+      document.getElementById("error").className = "error-message hidden";
       document.getElementById("loading").style.display = "block";
+      document.getElementById("results-container").style.display = "none";
+      document.getElementById("progress-bar").style.width = "0%";
+      
+      // Reset counters
+      totalChecked = 0;
+      availableCount = 0;
+      unavailableCount = 0;
+      resultsData = [];
+      updateStats();
+      
       window._startTime = performance.now();
     }
 
     function finishUI() {
       document.getElementById("loading").style.display = "none";
+      document.getElementById("results-container").style.display = "block";
+      
       const totalTime = ((performance.now() - window._startTime) / 1000).toFixed(2);
-      const summary = document.createElement("p");
-      summary.innerHTML = `<strong>Total Time:</strong> ${totalTime} sec`;
+      
+      // Add summary
+      const summary = document.createElement("div");
+      summary.className = "success-message mt-4";
+      summary.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span><strong>Check completed!</strong> Total time: ${totalTime} seconds</span>
+      `;
       document.getElementById("results").appendChild(summary);
+    }
+
+    function showError(message) {
+      const errorDiv = document.getElementById("error");
+      const errorText = document.getElementById("error-text");
+      errorText.textContent = message;
+      errorDiv.className = "error-message";
+      document.getElementById("loading").style.display = "none";
     }
 
     function startWebSocketLive() {
@@ -104,43 +281,108 @@
       const radius = parseInt(document.getElementById("radius").value);
 
       const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws");
-      ws.onopen = () => ws.send(JSON.stringify({ address, n, workers, radius }));
+      
+      ws.onopen = () => {
+        ws.send(JSON.stringify({ address, n, workers, radius }));
+        // Start progress animation
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+          progress += Math.random() * 15;
+          if (progress > 90) progress = 90;
+          document.getElementById("progress-bar").style.width = progress + "%";
+        }, 500);
+        
+        ws.progressInterval = progressInterval;
+      };
 
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
         if (data.error) {
-          document.getElementById("error").innerText = "Error: " + data.error;
+          showError(data.error);
           ws.close();
-          document.getElementById("loading").style.display = "none";
           return;
         }
         addResultLine(data);
+        // Update progress
+        document.getElementById("progress-bar").style.width = "95%";
       };
-      ws.onclose = () => finishUI();
+      
+      ws.onclose = () => {
+        if (ws.progressInterval) clearInterval(ws.progressInterval);
+        document.getElementById("progress-bar").style.width = "100%";
+        setTimeout(finishUI, 500);
+      };
     }
 
     function startWebSocketFromData() {
       resetUI();
       const address = document.getElementById("address").value;
-      const workers = parseInt(document.getElementById("workers").value);
       const n = 10; // per your spec
 
       const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws_fromdata");
-      // backend now reads results.csv; we still send address and n for nearest selection
-      ws.onopen = () => ws.send(JSON.stringify({ address, workers, n }));
+      
+      ws.onopen = () => {
+        ws.send(JSON.stringify({ address, n }));
+        document.getElementById("progress-bar").style.width = "50%";
+      };
 
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
         if (data.error) {
-          document.getElementById("error").innerText = "Error: " + data.error;
+          showError(data.error);
           ws.close();
-          document.getElementById("loading").style.display = "none";
           return;
         }
         addResultLine(data);
+        document.getElementById("progress-bar").style.width = "100%";
       };
-      ws.onclose = () => finishUI();
+      
+      ws.onclose = () => {
+        setTimeout(finishUI, 300);
+      };
     }
+
+    function exportResults() {
+      if (resultsData.length === 0) {
+        showError("No results to export");
+        return;
+      }
+      
+      const csv = [
+        ['Address', 'Available', 'Status', 'Latitude', 'Longitude', 'Distance (km)', 'Checked At', 'Source'],
+        ...resultsData.map(r => [
+          r.addr,
+          r.available ? 'Yes' : 'No',
+          r.status || '',
+          r.lat || '',
+          r.lon || '',
+          r.distance_km || '',
+          r.checked_at || '',
+          r.source || ''
+        ])
+      ].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+      
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `5g-results-${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+
+    function clearResults() {
+      document.getElementById("results").innerHTML = "";
+      document.getElementById("results-container").style.display = "none";
+      resultsData = [];
+      totalChecked = 0;
+      availableCount = 0;
+      unavailableCount = 0;
+      updateStats();
+    }
+
+    // Initialize
+    initTheme();
   </script>
 </body>
 </html>
