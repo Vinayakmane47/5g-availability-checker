@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from config import CHROME_OPTIONS, IS_CLOUD
 
 
 class Telstra5GChecker:
@@ -42,14 +43,22 @@ class Telstra5GChecker:
     # Selenium
     def _make_chrome_options(self) -> Options:
         o = Options()
-        if self.headless:
-            o.add_argument("--headless=new")
-        o.add_argument("--no-sandbox")
-        o.add_argument("--disable-dev-shm-usage")
-        o.add_argument("--disable-gpu")
-        o.add_argument("--disable-setuid-sandbox")
-        o.add_argument("--disable-blink-features=AutomationControlled")
-        o.add_argument("--blink-settings=imagesEnabled=false")
+        
+        # Use cloud-optimized options if in cloud environment
+        if IS_CLOUD:
+            for option in CHROME_OPTIONS:
+                o.add_argument(option)
+        else:
+            # Local development options
+            if self.headless:
+                o.add_argument("--headless=new")
+            o.add_argument("--no-sandbox")
+            o.add_argument("--disable-dev-shm-usage")
+            o.add_argument("--disable-gpu")
+            o.add_argument("--disable-setuid-sandbox")
+            o.add_argument("--disable-blink-features=AutomationControlled")
+            o.add_argument("--blink-settings=imagesEnabled=false")
+        
         return o
 
     def open_driver(self) -> tuple[webdriver.Chrome, WebDriverWait]:
