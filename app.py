@@ -3,6 +3,9 @@ import asyncio
 import concurrent.futures
 import json
 import time
+import signal
+import sys
+import atexit
 from typing import List, Dict
 
 from fastapi import FastAPI, Request, WebSocket
@@ -11,7 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from webdriver_manager.chrome import ChromeDriverManager
 
-from config import CBD_BBOX, DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS
+from config import CBD_BBOX, DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS, IS_CLOUD
 from geo import geocode_address, fetch_nearby_addresses, fetch_addresses_in_bbox
 from indexes import ResultsIndex, InputIndex
 from telstra5g import Telstra5GChecker
@@ -20,10 +23,54 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Driver & checker
+# Global cleanup variables
+_active_websockets = set()
+_active_executors = set()
 _driver_path = None
 checker = None
 
+def cleanup_resources():
+    """Clean up all resources on shutdown."""
+    print("Cleaning up resources...")
+    
+    # Close all active WebSocket connections
+    for ws in _active_websockets.copy():
+        try:
+            if not ws.client_state.disconnected:
+                asyncio.create_task(ws.close())
+        except Exception as e:
+            print(f"Error closing WebSocket: {e}")
+    
+    # Shutdown all thread pools
+    for executor in _active_executors.copy():
+        try:
+            executor.shutdown(wait=False)
+        except Exception as e:
+            print(f"Error shutting down executor: {e}")
+    
+    # Clear Selenium checker
+    global checker
+    if checker:
+        try:
+            checker.clear_cache()
+            checker = None
+        except Exception as e:
+            print(f"Error clearing Selenium checker: {e}")
+    
+    print("Cleanup completed")
+
+def signal_handler(signum, frame):
+    """Handle interrupt signals gracefully."""
+    print(f"\nReceived signal {signum}. Shutting down gracefully...")
+    cleanup_resources()
+    sys.exit(0)
+
+# Register cleanup handlers
+atexit.register(cleanup_resources)
+signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGTERM, signal_handler)
+
+# Driver & checker
 def get_checker():
     """Lazy load the checker to avoid startup issues."""
     global checker, _driver_path
@@ -82,8 +129,19 @@ async def app_status():
         "data": {
             "total_addresses": len(results_index.addr) if results_index.ready else 0,
             "available_addresses": sum(results_index.elig) if results_index.ready else 0,
+        },
+        "active_connections": {
+            "websockets": len(_active_websockets),
+            "executors": len(_active_executors)
         }
     }
+
+
+@app.post("/cleanup")
+async def manual_cleanup():
+    """Manually trigger cleanup of resources."""
+    cleanup_resources()
+    return {"status": "cleanup_completed", "message": "All resources cleaned up"}
 
 
 @app.get("/dashboard", response_class=HTMLResponse)
@@ -99,142 +157,171 @@ async def map_page(request: Request):
 @app.websocket("/ws")
 async def websocket_live(websocket: WebSocket):
     await websocket.accept()
-    data = await websocket.receive_json()
-    address = data["address"]
-    n = int(data["n"])  # cap on nearby addresses to check
-    workers = int(data["workers"])  # thread pool size
-    radius = int(data.get("radius", 1000))
-
+    _active_websockets.add(websocket)
+    
     try:
-        lat, lon = geocode_address(address)
+        data = await websocket.receive_json()
+        address = data["address"]
+        n = int(data["n"])  # cap on nearby addresses to check
+        workers = int(data["workers"])  # thread pool size
+        radius = int(data.get("radius", 1000))
+
+        try:
+            lat, lon = geocode_address(address)
+        except Exception as e:
+            await websocket.send_text(json.dumps({"error": f"Geocode failed: {e}"}))
+            return
+
+        addresses = fetch_nearby_addresses(lat, lon, radius=radius)
+        addresses.insert(0, address)
+        addresses = addresses[:n]
+
+        loop = asyncio.get_event_loop()
+        executor = concurrent.futures.ThreadPoolExecutor(max_workers=workers)
+        _active_executors.add(executor)
+        
+        try:
+            with executor:
+                futures = []
+                start_times: Dict[str, float] = {}
+                for addr in addresses:
+                    start_times[addr] = time.time()
+                    checker_instance = get_checker()
+                    if checker_instance:
+                        futures.append(loop.run_in_executor(executor, checker_instance.check, addr))
+                    else:
+                        await websocket.send_text(json.dumps({
+                            "addr": addr,
+                            "available": False,
+                            "status": "error: Real-time checking not available in Railway. Use 'Check from Database' instead.",
+                            "time": 0,
+                        }))
+
+                for fut in asyncio.as_completed(futures):
+                    a, available, status = await fut
+                    elapsed = round(time.time() - start_times.get(a, time.time()), 2)
+                    await websocket.send_text(json.dumps({
+                        "addr": a,
+                        "available": available,
+                        "status": status,
+                        "time": elapsed,
+                    }))
+        finally:
+            _active_executors.discard(executor)
+            
     except Exception as e:
-        await websocket.send_text(json.dumps({"error": f"Geocode failed: {e}"}))
+        print(f"WebSocket error: {e}")
+    finally:
+        _active_websockets.discard(websocket)
         await websocket.close()
-        return
-
-    addresses = fetch_nearby_addresses(lat, lon, radius=radius)
-    addresses.insert(0, address)
-    addresses = addresses[:n]
-
-    loop = asyncio.get_event_loop()
-    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = []
-        start_times: Dict[str, float] = {}
-        for addr in addresses:
-            start_times[addr] = time.time()
-            checker_instance = get_checker()
-            if checker_instance:
-                futures.append(loop.run_in_executor(executor, checker_instance.check, addr))
-            else:
-                await websocket.send_text(json.dumps({
-                    "addr": addr,
-                    "available": False,
-                    "status": "error: Real-time checking not available in Railway. Use 'Check from Database' instead.",
-                    "time": 0,
-                }))
-
-        for fut in asyncio.as_completed(futures):
-            a, available, status = await fut
-            elapsed = round(time.time() - start_times.get(a, time.time()), 2)
-            await websocket.send_text(json.dumps({
-                "addr": a,
-                "available": available,
-                "status": status,
-                "time": elapsed,
-            }))
-    await websocket.close()
 
 
 @app.websocket("/ws_fromdata")
 async def websocket_fromdata(websocket: WebSocket):
     await websocket.accept()
-    payload = await websocket.receive_json()
-    address = payload.get("address", "")
-    n = int(payload.get("n", 10))
-
+    _active_websockets.add(websocket)
+    
     try:
-        tgt_lat, tgt_lon = geocode_address(address)
+        payload = await websocket.receive_json()
+        address = payload.get("address", "")
+        n = int(payload.get("n", 10))
+
+        try:
+            tgt_lat, tgt_lon = geocode_address(address)
+        except Exception as e:
+            await websocket.send_text(json.dumps({"error": f"Geocode failed: {e}"}))
+            return
+
+        if not results_index.ready:
+            results_index.load(DEFAULT_RESULTS_CSV)
+
+        nearest = results_index.nearest_eligible(tgt_lat, tgt_lon, n)
+        if not nearest:
+            await websocket.send_text(json.dumps({"error": "No eligible addresses found nearby in results.csv"}))
+            return
+
+        for item in nearest:
+            await websocket.send_text(json.dumps({
+                "addr": item["addr"],
+                "available": True,
+                "status": item["status_text"],
+                "lat": item["lat"],
+                "lon": item["lon"],
+                "checked_at": item["checked_at"],
+                "latency_sec": item["latency_sec"],
+                "distance_km": round(float(item["distance_km"]), 3),
+                "source": "results.csv",
+            }))
     except Exception as e:
-        await websocket.send_text(json.dumps({"error": f"Geocode failed: {e}"}))
+        print(f"WebSocket fromdata error: {e}")
+    finally:
+        _active_websockets.discard(websocket)
         await websocket.close()
-        return
-
-    if not results_index.ready:
-        results_index.load(DEFAULT_RESULTS_CSV)
-
-    nearest = results_index.nearest_eligible(tgt_lat, tgt_lon, n)
-    if not nearest:
-        await websocket.send_text(json.dumps({"error": "No eligible addresses found nearby in results.csv"}))
-        await websocket.close()
-        return
-
-    for item in nearest:
-        await websocket.send_text(json.dumps({
-            "addr": item["addr"],
-            "available": True,
-            "status": item["status_text"],
-            "lat": item["lat"],
-            "lon": item["lon"],
-            "checked_at": item["checked_at"],
-            "latency_sec": item["latency_sec"],
-            "distance_km": round(float(item["distance_km"]), 3),
-            "source": "results.csv",
-        }))
-    await websocket.close()
 
 
 @app.websocket("/ws_map")
 async def websocket_map(websocket: WebSocket):
     """WebSocket endpoint for live map checking within a bounding box."""
     await websocket.accept()
-    data = await websocket.receive_json()
-    bbox = data["bbox"]  # [south, west, north, east]
-    workers = int(data["workers"])
-    max_points = int(data["max_points"])
-
-    try:
-        # Fetch addresses in the bounding box
-        addresses = fetch_addresses_in_bbox(bbox, limit=max_points)
-        
-        if not addresses:
-            await websocket.send_text(json.dumps({"error": "No addresses found in the specified area"}))
-            await websocket.close()
-            return
-
-        # Check 5G availability for each address
-        loop = asyncio.get_event_loop()
-        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-            futures = []
-            for addr_data in addresses:
-                checker_instance = get_checker()
-                if checker_instance:
-                    futures.append(loop.run_in_executor(executor, checker_instance.check, addr_data["addr"]))
-                else:
-                    await websocket.send_text(json.dumps({
-                        "addr": addr_data["addr"],
-                        "available": False,
-                        "status": "error: Real-time checking not available in Railway. Use 'Check from Database' instead.",
-                        "lat": addr_data["lat"],
-                        "lon": addr_data["lon"],
-                    }))
-
-            for fut in asyncio.as_completed(futures):
-                addr, available, status = await fut
-                # Find the original address data
-                addr_data = next((a for a in addresses if a["addr"] == addr), None)
-                if addr_data:
-                    await websocket.send_text(json.dumps({
-                        "addr": addr,
-                        "available": available,
-                        "status": status,
-                        "lat": addr_data["lat"],
-                        "lon": addr_data["lon"],
-                    }))
-
-    except Exception as e:
-        await websocket.send_text(json.dumps({"error": f"Map check failed: {e}"}))
+    _active_websockets.add(websocket)
     
-    await websocket.close()
+    try:
+        data = await websocket.receive_json()
+        bbox = data["bbox"]  # [south, west, north, east]
+        workers = int(data["workers"])
+        max_points = int(data["max_points"])
+
+        try:
+            # Fetch addresses in the bounding box
+            addresses = fetch_addresses_in_bbox(bbox, limit=max_points)
+            
+            if not addresses:
+                await websocket.send_text(json.dumps({"error": "No addresses found in the specified area"}))
+                return
+
+            # Check 5G availability for each address
+            loop = asyncio.get_event_loop()
+            executor = concurrent.futures.ThreadPoolExecutor(max_workers=workers)
+            _active_executors.add(executor)
+            
+            try:
+                with executor:
+                    futures = []
+                    for addr_data in addresses:
+                        checker_instance = get_checker()
+                        if checker_instance:
+                            futures.append(loop.run_in_executor(executor, checker_instance.check, addr_data["addr"]))
+                        else:
+                            await websocket.send_text(json.dumps({
+                                "addr": addr_data["addr"],
+                                "available": False,
+                                "status": "error: Real-time checking not available in Railway. Use 'Check from Database' instead.",
+                                "lat": addr_data["lat"],
+                                "lon": addr_data["lon"],
+                            }))
+
+                    for fut in asyncio.as_completed(futures):
+                        addr, available, status = await fut
+                        # Find the original address data
+                        addr_data = next((a for a in addresses if a["addr"] == addr), None)
+                        if addr_data:
+                            await websocket.send_text(json.dumps({
+                                "addr": addr,
+                                "available": available,
+                                "status": status,
+                                "lat": addr_data["lat"],
+                                "lon": addr_data["lon"],
+                            }))
+            finally:
+                _active_executors.discard(executor)
+
+        except Exception as e:
+            await websocket.send_text(json.dumps({"error": f"Map check failed: {e}"}))
+    except Exception as e:
+        print(f"WebSocket map error: {e}")
+    finally:
+        _active_websockets.discard(websocket)
+        await websocket.close()
 
 
 @app.get("/api/map-data")
@@ -275,45 +362,50 @@ async def get_map_data(max_points: int = 1000):
 async def websocket_map_data(websocket: WebSocket):
     """WebSocket endpoint for displaying existing data on the map."""
     await websocket.accept()
-    data = await websocket.receive_json()
-    file_type = data.get("file", "results.csv")
-    max_points = int(data.get("max_points", 1000))
-
-    try:
-        # Reload the results index to get latest data
-        if not results_index.ready:
-            results_index.load(DEFAULT_RESULTS_CSV)
-        
-        # Get all addresses from results.csv (simplified without lock)
-        if not results_index.ready or len(results_index.addr) == 0:
-            await websocket.send_text(json.dumps({"error": "No data available in results.csv"}))
-            await websocket.close()
-            return
-        
-        # Get all addresses with their data (simplified)
-        addresses = []
-        for i in range(min(len(results_index.addr), max_points)):
-            addresses.append({
-                "addr": results_index.addr[i],
-                "lat": float(results_index.lat[i]),
-                "lon": float(results_index.lon[i]),
-                "available": bool(results_index.elig[i]),  # Convert numpy.bool_ to Python bool
-                "status": results_index.status[i],
-                "checked_at": results_index.checked_at[i]
-            })
-        
-        # Send each address to the map
-        for addr_data in addresses:
-            await websocket.send_text(json.dumps({
-                "addr": addr_data["addr"],
-                "available": addr_data["available"],
-                "status": addr_data["status"],
-                "lat": addr_data["lat"],
-                "lon": addr_data["lon"],
-                "checked_at": addr_data["checked_at"],
-            }))
-
-    except Exception as e:
-        await websocket.send_text(json.dumps({"error": f"Map data load failed: {e}"}))
+    _active_websockets.add(websocket)
     
-    await websocket.close()
+    try:
+        data = await websocket.receive_json()
+        file_type = data.get("file", "results.csv")
+        max_points = int(data.get("max_points", 1000))
+
+        try:
+            # Reload the results index to get latest data
+            if not results_index.ready:
+                results_index.load(DEFAULT_RESULTS_CSV)
+            
+            # Get all addresses from results.csv (simplified without lock)
+            if not results_index.ready or len(results_index.addr) == 0:
+                await websocket.send_text(json.dumps({"error": "No data available in results.csv"}))
+                return
+            
+            # Get all addresses with their data (simplified)
+            addresses = []
+            for i in range(min(len(results_index.addr), max_points)):
+                addresses.append({
+                    "addr": results_index.addr[i],
+                    "lat": float(results_index.lat[i]),
+                    "lon": float(results_index.lon[i]),
+                    "available": bool(results_index.elig[i]),  # Convert numpy.bool_ to Python bool
+                    "status": results_index.status[i],
+                    "checked_at": results_index.checked_at[i]
+                })
+            
+            # Send each address to the map
+            for addr_data in addresses:
+                await websocket.send_text(json.dumps({
+                    "addr": addr_data["addr"],
+                    "available": addr_data["available"],
+                    "status": addr_data["status"],
+                    "lat": addr_data["lat"],
+                    "lon": addr_data["lon"],
+                    "checked_at": addr_data["checked_at"],
+                }))
+
+        except Exception as e:
+            await websocket.send_text(json.dumps({"error": f"Map data load failed: {e}"}))
+    except Exception as e:
+        print(f"WebSocket map_data error: {e}")
+    finally:
+        _active_websockets.discard(websocket)
+        await websocket.close()
