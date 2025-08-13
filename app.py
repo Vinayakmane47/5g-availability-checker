@@ -21,13 +21,25 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # Driver & checker
-_driver_path = ChromeDriverManager().install()
-checker = Telstra5GChecker(
-    driver_path=_driver_path,
-    cache_ttl_seconds=RESULT_CACHE_TTL,
-    wait_seconds=TELSTRA_WAIT_SECONDS,
-    headless=HEADLESS,
-)
+_driver_path = None
+checker = None
+
+def get_checker():
+    """Lazy load the checker to avoid startup issues."""
+    global checker, _driver_path
+    if checker is None:
+        try:
+            _driver_path = ChromeDriverManager().install()
+            checker = Telstra5GChecker(
+                driver_path=_driver_path,
+                cache_ttl_seconds=RESULT_CACHE_TTL,
+                wait_seconds=TELSTRA_WAIT_SECONDS,
+                headless=HEADLESS,
+            )
+        except Exception as e:
+            print(f"Warning: Could not initialize Selenium checker: {e}")
+            checker = None
+    return checker
 
 # Indexes
 results_index = ResultsIndex()
@@ -40,6 +52,12 @@ input_index.load(DEFAULT_INPUT_CSV)
 @app.get("/", response_class=HTMLResponse)
 async def form_page(request: Request):
     return templates.TemplateResponse("form.html", {"request": request})
+
+
+@app.get("/health")
+async def health_check():
+    """Simple health check endpoint for Railway."""
+    return {"status": "healthy", "timestamp": time.time()}
 
 
 @app.get("/dashboard", response_class=HTMLResponse)
@@ -78,7 +96,16 @@ async def websocket_live(websocket: WebSocket):
         start_times: Dict[str, float] = {}
         for addr in addresses:
             start_times[addr] = time.time()
-            futures.append(loop.run_in_executor(executor, checker.check, addr))
+            checker_instance = get_checker()
+            if checker_instance:
+                futures.append(loop.run_in_executor(executor, checker_instance.check, addr))
+            else:
+                await websocket.send_text(json.dumps({
+                    "addr": addr,
+                    "available": False,
+                    "status": "error: Selenium not available",
+                    "time": 0,
+                }))
 
         for fut in asyncio.as_completed(futures):
             a, available, status = await fut
@@ -153,7 +180,17 @@ async def websocket_map(websocket: WebSocket):
         with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
             futures = []
             for addr_data in addresses:
-                futures.append(loop.run_in_executor(executor, checker.check, addr_data["addr"]))
+                checker_instance = get_checker()
+                if checker_instance:
+                    futures.append(loop.run_in_executor(executor, checker_instance.check, addr_data["addr"]))
+                else:
+                    await websocket.send_text(json.dumps({
+                        "addr": addr_data["addr"],
+                        "available": False,
+                        "status": "error: Selenium not available",
+                        "lat": addr_data["lat"],
+                        "lon": addr_data["lon"],
+                    }))
 
             for fut in asyncio.as_completed(futures):
                 addr, available, status = await fut
