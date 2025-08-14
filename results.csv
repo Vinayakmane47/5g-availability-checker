@@ -19,339 +19,118 @@ address,eligible,status_text,latency_sec,checked_at,lat,lon,method
 253 Flinders Lane VIC,False,,33.427,2025-08-12T04:24:45.477161+00:00,-37.8169458,144.9659025,dom
 5 Riverside Quay Southbank VIC 3006,False,,33.412,2025-08-12T04:25:09.706549+00:00,-37.8214816,144.9644575,dom
 33 Spencer Street VIC,False,,33.433,2025-08-12T04:25:10.557550+00:00,-37.8200975,144.9542549,dom
-270 Flinders Street Melbourne VIC,False,,36.638,2025-08-12T04:31:18.979934+00:00,-37.8177285,144.9653561,dom
-205 Collins Street Melbourne VIC,False,,36.825,2025-08-12T04:31:19.277627+00:00,-37.8158150,144.9673780,dom
-267 Flinders Lane Melbourne VIC,False,,36.864,2025-08-12T04:31:19.291970+00:00,-37.8170329,144.9655353,dom
-471 Little Bourke Street Melbourne VIC,False,,37.275,2025-08-12T04:31:19.961389+00:00,-37.8145395,144.9590572,dom
-197-199 King Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.276,2025-08-12T04:31:28.237715+00:00,-37.8155762,144.9550620,dom
+270 Flinders Street Melbourne VIC,False,timeout_header,21.152,2025-08-12T15:09:33.038063+00:00,-37.8177285,144.9653561,dom
+205 Collins Street Melbourne VIC,False,timeout_header,12.805,2025-08-12T14:45:31.607775+00:00,-37.8158150,144.9673780,dom
+267 Flinders Lane Melbourne VIC,False,timeout_header,21.094,2025-08-12T15:09:33.037453+00:00,-37.8170329,144.9655353,dom
+471 Little Bourke Street Melbourne VIC,False,timeout_header,12.743,2025-08-12T14:45:31.607570+00:00,-37.8145395,144.9590572,dom
+197-199 King Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.226,2025-08-12T09:37:07.784862+00:00,-37.8155762,144.9550620,dom
 270 Collins Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.216,2025-08-12T04:31:36.454207+00:00,-37.8156850,144.9649280,dom
-630 Little Collins Street Melbourne VIC,False,,33.475,2025-08-12T04:31:52.454962+00:00,-37.8178023,144.9539372,dom
-287 King Street Melbourne VIC,False,,33.568,2025-08-12T04:31:52.845546+00:00,-37.8137769,144.9542371,dom
-600 Little Bourke Street Melbourne VIC,False,,33.560,2025-08-12T04:31:52.852044+00:00,-37.8154676,144.9546001,dom
-195 Swanston Street Melbourne VIC,False,,33.399,2025-08-12T04:32:09.853523+00:00,-37.8130976,144.9649711,dom
+630 Little Collins Street Melbourne VIC,False,error:TimeoutException,9.300,2025-08-12T14:45:40.906784+00:00,-37.8178023,144.9539372,error
+287 King Street Melbourne VIC,False,error:TimeoutException,9.299,2025-08-12T14:45:40.906486+00:00,-37.8137769,144.9542371,error
+600 Little Bourke Street Melbourne VIC,False,error:TimeoutException,9.277,2025-08-12T15:09:55.131206+00:00,-37.8154676,144.9546001,error
+195 Swanston Street Melbourne VIC,False,error:TimeoutException,9.313,2025-08-12T15:10:04.445611+00:00,-37.8130976,144.9649711,error
 222 Pelham Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.200,2025-08-12T04:32:18.053501+00:00,-37.8017523,144.9583162,dom
-318 Little Bourke Street Melbourne VIC,False,,33.510,2025-08-12T04:32:25.965636+00:00,-37.8129338,144.9631368,dom
+318 Little Bourke Street Melbourne VIC,False,error:AttributeError,7.243,2025-08-12T14:46:06.835294+00:00,-37.8129338,144.9631368,error
 101 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.208,2025-08-12T04:32:26.261832+00:00,-37.7994887,144.9882379,dom
-250 Elizabeth Street Melbourne VIC,False,,33.576,2025-08-12T04:32:26.428427+00:00,-37.8124101,144.9625534,dom
-191 Collins Street Melbourne VIC,False,,33.583,2025-08-12T04:32:26.428546+00:00,-37.8154970,144.9675980,dom
-202 Johnston Street Melbourne VIC,False,,33.719,2025-08-12T04:32:59.685622+00:00,-37.7988193,144.9816836,dom
-54 Elgin Street Melbourne VIC,False,,33.541,2025-08-12T04:32:59.802937+00:00,-37.7974730,144.9726910,dom
-45 Victoria Parade Melbourne VIC,False,,33.767,2025-08-12T04:33:00.195367+00:00,-37.8088450,144.9842990,dom
-244 Nicholson Street Melbourne VIC,False,,33.775,2025-08-12T04:33:00.203553+00:00,-37.7977320,144.9753090,dom
+250 Elizabeth Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.738812+00:00,-37.8124101,144.9625534,error
+191 Collins Street Melbourne VIC,False,error:AttributeError,4.145,2025-08-12T14:46:03.737515+00:00,-37.8154970,144.9675980,error
+202 Johnston Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.742047+00:00,-37.7988193,144.9816836,error
+54 Elgin Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.742914+00:00,-37.7974730,144.9726910,error
+45 Victoria Parade Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.744291+00:00,-37.8088450,144.9842990,error
+244 Nicholson Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.745176+00:00,-37.7977320,144.9753090,error
 186 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.234,2025-08-12T04:33:08.429362+00:00,-37.8026580,144.9668330,dom
 272 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.211,2025-08-12T04:33:16.640383+00:00,-37.8004579,144.9672271,dom
-197 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.220,2025-08-12T04:33:24.861773+00:00,-37.8014415,144.9776725,dom
-380 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.224,2025-08-12T04:33:33.086909+00:00,-37.7978092,144.9680124,dom
-191 Grattan Street Melbourne VIC,False,,33.401,2025-08-12T04:33:33.204324+00:00,-37.8004316,144.9622254,dom
-344 Nicholson Street Melbourne VIC,False,,33.519,2025-08-12T04:33:33.204392+00:00,-37.7945160,144.9757090,dom
-256-258 Moray Street Melbourne VIC,False,,33.527,2025-08-12T04:33:33.730084+00:00,-37.8347704,144.9639303,dom
-349 Drummond Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.264,2025-08-12T04:33:41.468404+00:00,-37.7977034,144.9687111,dom
-74-76 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.263,2025-08-12T04:33:41.993770+00:00,-37.7983300,144.9771100,dom
-420 St Kilda Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.208,2025-08-12T04:33:49.676146+00:00,-37.8361120,144.9748720,dom
-186-188 Smith Street Melbourne VIC,False,,33.479,2025-08-12T04:34:06.568673+00:00,-37.8031574,144.9837077,dom
-106 Victoria Street Melbourne VIC,False,,33.514,2025-08-12T04:34:06.718644+00:00,-37.7992449,144.9788532,dom
-421 Rathdowne Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.233,2025-08-12T04:34:14.802940+00:00,-37.7965118,144.9704476,dom
-235 Flemington Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.232,2025-08-12T04:34:14.951119+00:00,-37.7941345,144.9473446,dom
-290-301 Nicholson Street Melbourne VIC,False,,33.461,2025-08-12T04:34:15.454272+00:00,-37.7932452,144.9753768,dom
-117 Moray Street Melbourne VIC,False,,33.410,2025-08-12T04:34:23.086256+00:00,-37.8299014,144.9621407,dom
-418 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.358,2025-08-12T04:34:23.308732+00:00,-37.7969492,144.9678160,dom
-62 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.333,2025-08-12T04:34:23.787204+00:00,-37.7982994,144.9768502,dom
-146-154 Elgin Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.246,2025-08-12T04:34:31.333567+00:00,-37.7971422,144.9696219,dom
-295-297 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.226,2025-08-12T04:34:32.013047+00:00,-37.7984386,144.9782418,dom
-276 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.200,2025-08-12T04:34:39.533859+00:00,-37.7989463,144.9785430,dom
-225 Drummond Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.223,2025-08-12T04:34:40.236401+00:00,-37.8004336,144.9681114,dom
-205 Faraday Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.237,2025-08-12T04:34:47.778045+00:00,-37.7990994,144.9676917,dom
-118 Park Street Melbourne VIC,False,,33.434,2025-08-12T04:34:48.237217+00:00,-37.8335060,144.9669130,dom
-329 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.210,2025-08-12T04:34:48.446033+00:00,-37.7976471,144.9672504,dom
-211 Gertrude Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.263,2025-08-12T04:34:56.500473+00:00,-37.8060713,144.9816516,dom
-127 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.196,2025-08-12T04:34:56.641991+00:00,-37.8037960,144.9773668,dom
-129 Elgin Street Melbourne VIC,False,,33.381,2025-08-12T04:34:56.689409+00:00,-37.7976375,144.9702613,dom
-253 Flinders Lane Melbourne VIC,False,,33.491,2025-08-12T04:35:21.269749+00:00,-37.8169458,144.9659025,dom
-411 George Street Melbourne VIC,False,,33.535,2025-08-12T04:35:30.036158+00:00,-37.7972297,144.9819606,dom
-206-210 Brunswick Street Melbourne VIC,False,,33.517,2025-08-12T04:35:30.159009+00:00,-37.8012423,144.9781729,dom
-244 Smith Street Melbourne VIC,False,,33.470,2025-08-12T04:35:30.159165+00:00,-37.8017259,144.9839273,dom
-376 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.250,2025-08-12T04:35:38.409251+00:00,-37.7960561,144.9790327,dom
-128 Moor Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.250,2025-08-12T04:35:38.409361+00:00,-37.8018889,144.9796910,dom
-144 Fitzroy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.240,2025-08-12T04:35:46.650401+00:00,-37.8043751,144.9764600,dom
-345 Clarendon Street Melbourne VIC,False,,33.538,2025-08-12T04:35:54.808533+00:00,-37.8353130,144.9619190,dom
-343 Clarendon Street Melbourne VIC,False,,33.563,2025-08-12T04:36:03.600217+00:00,-37.8350109,144.9617178,dom
-414 Nicholson Street Melbourne VIC,False,,33.490,2025-08-12T04:36:11.899536+00:00,-37.7901129,144.9765303,dom
-380 Brunswick Street Melbourne VIC,False,,33.433,2025-08-12T04:36:20.083654+00:00,-37.7958574,144.9790602,dom
-220 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.278,2025-08-12T04:36:20.178772+00:00,-37.8019080,144.9669884,dom
-1-9 Federation Wharf Melbourne VIC,False,,33.502,2025-08-12T04:36:28.311210+00:00,-37.8187059,144.9686342,dom
-75 Flemington Road Melbourne VIC,False,,33.517,2025-08-12T04:36:37.117022+00:00,-37.7988560,144.9535250,dom
-88 Rathdowne Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.221,2025-08-12T04:36:45.338102+00:00,-37.7979111,144.9706637,dom
-1 Smith Street Melbourne VIC,False,,34.493,2025-08-12T04:36:54.672486+00:00,-37.8085185,144.9824760,dom
-59 Wellington Street Melbourne VIC,False,,34.623,2025-08-12T04:36:54.707584+00:00,-37.8072430,144.9857861,dom
-54 Brunswick Street Melbourne VIC,False,,33.566,2025-08-12T04:37:01.878725+00:00,-37.8059010,144.9773690,dom
-375 Clarendon Street Melbourne VIC,False,,34.259,2025-08-12T04:37:19.597393+00:00,-37.8361936,144.9622636,dom
-135-137 Bank Street Melbourne VIC,False,,33.506,2025-08-12T04:37:28.213736+00:00,-37.8336617,144.9634651,dom
-102-104 Park Street Melbourne VIC,False,,33.664,2025-08-12T04:37:28.337753+00:00,-37.8333290,144.9673099,dom
-307 Clarendon Street Melbourne VIC,False,,33.692,2025-08-12T04:37:35.571119+00:00,-37.8338816,144.9612036,dom
-277 Clarendon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.264,2025-08-12T04:37:36.478590+00:00,-37.8330662,144.9609809,dom
-407 St Kilda Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.232,2025-08-12T04:37:43.803105+00:00,-37.8362350,144.9761450,dom
-338-340 Clarendon Street Melbourne VIC,False,,33.431,2025-08-12T04:37:53.029349+00:00,-37.8345872,144.9610816,dom
-377 Gore Street Melbourne VIC,False,,33.474,2025-08-12T04:38:01.811466+00:00,-37.7977485,144.9829523,dom
-5 Riverside Quay Melbourne VIC,False,,33.506,2025-08-12T04:38:09.985232+00:00,-37.8214816,144.9644575,dom
-15-17 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.241,2025-08-12T04:38:10.052789+00:00,-37.7979061,144.9756259,dom
-115 Cecil Street Melbourne VIC,False,,33.432,2025-08-12T04:38:17.235502+00:00,-37.8316115,144.9573526,dom
-243-245 Gertrude Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.226,2025-08-12T04:38:18.211902+00:00,-37.8062207,144.9825807,dom
-114 Smith Street Melbourne VIC,False,,33.479,2025-08-12T04:38:26.508610+00:00,-37.8048510,144.9834420,dom
-298-300 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.242,2025-08-12T04:38:34.752352+00:00,-37.7982004,144.9786371,dom
-281 Smith Street Melbourne VIC,False,,33.473,2025-08-12T04:38:43.525492+00:00,-37.8005067,144.9838413,dom
-272 Smith Street Melbourne VIC,False,,33.485,2025-08-12T04:38:50.720994+00:00,-37.8011431,144.9840159,dom
-215 Smith Street Melbourne VIC,False,,33.498,2025-08-12T04:38:51.709770+00:00,-37.8026801,144.9834581,dom
-222 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.239,2025-08-12T04:38:58.960301+00:00,-37.8009521,144.9782174,dom
-198 Berkeley Street Melbourne VIC,False,,8.714,2025-08-12T04:39:07.675404+00:00,-37.8014283,144.9587685,dom
-328 Brunswick Street Melbourne VIC,False,,33.458,2025-08-12T04:39:08.212266+00:00,-37.7973814,144.9787918,dom
-114 Berkeley Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.216,2025-08-12T04:39:15.893558+00:00,-37.8028349,144.9590354,dom
-286 Smith Street Melbourne VIC,False,,33.448,2025-08-12T04:39:16.976956+00:00,-37.8005946,144.9841436,dom
-185 Pelham Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.215,2025-08-12T04:39:24.110040+00:00,-37.8022481,144.9601666,dom
-167 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.242,2025-08-12T04:39:25.219454+00:00,-37.8017966,144.9665445,dom
-33 Spencer Street Melbourne VIC,False,,33.524,2025-08-12T04:39:25.233178+00:00,-37.8200975,144.9542549,dom
-192 Station Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.252,2025-08-12T04:39:33.484901+00:00,-37.8328036,144.9456317,dom
-127 Leicester Street Melbourne VIC,False,,33.480,2025-08-12T04:39:41.692091+00:00,-37.8029290,144.9602863,dom
-144 Cecil Street Melbourne VIC,False,,33.704,2025-08-12T04:39:57.814203+00:00,-37.8328055,144.9574554,dom
-315 Coventry Street Melbourne VIC,False,,33.625,2025-08-12T04:39:58.844329+00:00,-37.8329360,144.9570071,dom
-68 Cecil Street Melbourne VIC,False,,33.583,2025-08-12T04:40:07.070553+00:00,-37.8301951,144.9562392,dom
-1 Riverside Quay Melbourne VIC,False,,33.584,2025-08-12T04:40:15.277113+00:00,-37.8217545,144.9639586,dom
-2 Lygon Street Melbourne VIC,False,,33.554,2025-08-12T04:40:31.369768+00:00,-37.8067341,144.9660401,dom
-7 Grattan Street Melbourne VIC,False,,33.543,2025-08-12T04:40:32.387489+00:00,-37.8010788,144.9692525,dom
-23 Blackwood Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.222,2025-08-12T04:40:40.609795+00:00,-37.8009470,144.9553230,dom
-28 Blackwood Street Melbourne VIC,False,,33.539,2025-08-12T04:40:40.609904+00:00,-37.8012925,144.9552944,dom
-22 Blackwood Street Melbourne VIC,False,,33.515,2025-08-12T04:40:48.793214+00:00,-37.8014438,144.9551034,dom
-120 Capel Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.215,2025-08-12T04:40:48.825572+00:00,-37.8051944,144.9554928,dom
-12 Blackwood Street Melbourne VIC,False,,33.458,2025-08-12T04:41:04.827713+00:00,-37.8016427,144.9548520,dom
-121 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.263,2025-08-12T04:41:13.091797+00:00,-37.7982584,144.9789257,dom
-7 Murphy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.241,2025-08-12T04:41:21.334365+00:00,-37.7976007,144.9514060,dom
-1-11 Bedford Street Melbourne VIC,False,,33.576,2025-08-12T04:41:22.369749+00:00,-37.8024590,144.9553500,dom
-51 Gipps Street Melbourne VIC,False,,33.560,2025-08-12T04:41:22.385200+00:00,-37.8047536,144.9886343,dom
-5 Murphy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.273,2025-08-12T04:41:29.608883+00:00,-37.7976791,144.9512929,dom
-1 Murphy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.263,2025-08-12T04:41:30.633072+00:00,-37.7977808,144.9511727,dom
-2 Chapman Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.256,2025-08-12T04:41:30.641396+00:00,-37.7979992,144.9509764,dom
-2A Chapman Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.307,2025-08-12T04:41:37.916679+00:00,-37.7979700,144.9509398,dom
-10-20 Courtney Street Melbourne VIC,False,,57.768,2025-08-12T04:41:38.378293+00:00,-37.8025061,144.9550047,dom
-118 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.021,2025-08-12T04:41:38.399344+00:00,-37.7970894,144.9515107,error
-123 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T04:41:38.413355+00:00,-37.7968791,144.9512618,error
-"220,222,224 Errol Street Melbourne VIC",False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.426448+00:00,-37.7978222,144.9508015,error
-"226,228 Errol Street Melbourne VIC",False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.438198+00:00,-37.7977372,144.9508211,error
-"242,244 Errol Street Melbourne VIC",False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.450175+00:00,-37.7973727,144.9509093,error
-"250,252 Errol Street Melbourne VIC",False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.461930+00:00,-37.7971829,144.9509496,error
-1 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.473924+00:00,-37.7980035,144.9503136,error
-11 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.486695+00:00,-37.7977690,144.9500242,error
-8 Whiteman Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.497879+00:00,-37.8242677,144.9577541,error
-159 Domain Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.509776+00:00,-37.8341478,144.9815358,error
-169 Domain Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.520813+00:00,-37.8341668,144.9816512,error
-123 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.532420+00:00,-37.8342833,144.9823458,error
-3 Toorak Road Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.545315+00:00,-37.8382088,144.9867145,error
-9 Toorak Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.556726+00:00,-37.8382359,144.9868690,error
-69 Victoria Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.568716+00:00,-37.7988255,144.9771439,error
-63 Nicholson Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.580415+00:00,-37.7995936,144.9744080,error
-260 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T04:41:38.594550+00:00,-37.8324480,144.9601330,error
-209 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.015,2025-08-12T04:41:38.609657+00:00,-37.8309126,144.9598544,error
-3 Hardwicke Street Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T04:41:38.623442+00:00,-37.7982096,144.9468714,error
-252 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.016,2025-08-12T04:41:38.639547+00:00,-37.7998890,144.9783730,error
-322 City Road Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T04:41:38.653816+00:00,-37.8276047,144.9578222,error
-120 Montague Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.666069+00:00,-37.8312032,144.9503971,error
-141 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.679245+00:00,-37.7983052,144.9794393,error
-81 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.692385+00:00,-37.7987231,144.9535288,error
-103 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.704132+00:00,-37.7982145,144.9529108,error
-18 Mary Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.716742+00:00,-37.7992218,144.9521913,error
-34 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.729435+00:00,-37.7977874,144.9485838,error
-40 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.742086+00:00,-37.7977091,144.9484939,error
-42 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.753754+00:00,-37.7976382,144.9483950,error
-52 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.765390+00:00,-37.7974754,144.9482061,error
-54 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.778267+00:00,-37.7973903,144.9481076,error
-58 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.789846+00:00,-37.7972719,144.9479572,error
-62 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.802307+00:00,-37.7971905,144.9478542,error
-84 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.813774+00:00,-37.7968163,144.9473805,error
-86 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.825319+00:00,-37.7967497,144.9473135,error
-96 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.837081+00:00,-37.7965273,144.9470357,error
-8 Chapman Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.212,2025-08-12T04:41:38.844684+00:00,-37.7978724,144.9507899,dom
-"18,18A Molesworth Street Melbourne VIC",False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.848474+00:00,-37.7981147,144.9490022,error
-32 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.861827+00:00,-37.7978651,144.9486913,error
-13 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T04:41:38.876068+00:00,-37.7975703,144.9497339,error
-117 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.018,2025-08-12T04:41:38.894388+00:00,-37.7953932,144.9470388,error
-432 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.907072+00:00,-37.7962725,144.9468718,error
-440 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.919751+00:00,-37.7960986,144.9469012,error
-442 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.931802+00:00,-37.7960407,144.9469094,error
-444-446 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.943584+00:00,-37.7959621,144.9469207,error
-448 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.955130+00:00,-37.7958979,144.9469376,error
-460 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.966735+00:00,-37.7956344,144.9469844,error
-433 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.978684+00:00,-37.7961662,144.9464739,error
-469 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:38.990858+00:00,-37.7952356,144.9466296,error
-483 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:39.004231+00:00,-37.7949133,144.9467104,error
-525 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.015976+00:00,-37.7940542,144.9468498,error
-393 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.028253+00:00,-37.7974211,144.9463007,error
-423 Abbotsford Street Melbourne VIC,False,error:ElementNotInteractableException,0.035,2025-08-12T04:41:39.063246+00:00,-37.7966412,144.9464638,error
-190 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T04:41:39.077065+00:00,-37.8344510,144.9635970,error
-39 Melrose Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.089375+00:00,-37.7947432,144.9415880,error
-422 George Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:39.102323+00:00,-37.7969010,144.9823560,error
-165 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.114083+00:00,-37.7982430,144.9804990,error
-247 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.126300+00:00,-37.7998880,144.9780260,error
-120 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.138270+00:00,-37.7984914,144.9789451,error
-231 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.150022+00:00,-37.8004590,144.9779130,error
-144 Nicholson Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.162259+00:00,-37.8011460,144.9745920,error
-293 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.173782+00:00,-37.7985491,144.9782874,error
-347 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.185531+00:00,-37.7968516,144.9785347,error
-19 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.197269+00:00,-37.8330238,144.9698810,error
-211 Flinders Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.209574+00:00,-37.8177412,144.9670520,error
-11-13 Toorak Road Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T04:41:39.223613+00:00,-37.8382457,144.9869545,error
-123a Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.235440+00:00,-37.8343744,144.9823405,error
-320 St Kilda Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.246341+00:00,-37.8294390,144.9708850,error
-23 Dorcas Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.257769+00:00,-37.8305470,144.9697950,error
-119 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.269521+00:00,-37.8344339,144.9823261,error
-19 Dorcas Street Melbourne VIC,False,error:ElementNotInteractableException,0.010,2025-08-12T04:41:39.280075+00:00,-37.8305020,144.9699770,error
-27 Dorcas Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.291064+00:00,-37.8305860,144.9696420,error
-196 Wells Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.303124+00:00,-37.8321480,144.9697520,error
-194 Wells Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.314083+00:00,-37.8320720,144.9697310,error
-192 Wells Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.325551+00:00,-37.8320000,144.9696990,error
-190 Wells Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.337073+00:00,-37.8319280,144.9696910,error
-1 Bank Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.348999+00:00,-37.8318310,144.9696640,error
-345 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.360668+00:00,-37.7969236,144.9785240,error
-343 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.371390+00:00,-37.7969681,144.9785186,error
-341 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.382811+00:00,-37.7970170,144.9785130,error
-339 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.394498+00:00,-37.7970740,144.9785080,error
-335 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.405395+00:00,-37.7972430,144.9784810,error
-8 Fogarty Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.416615+00:00,-37.7980501,144.9405445,error
-12 Fogarty Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T04:41:39.428579+00:00,-37.7982223,144.9403078,error
-8-16 Palmerston Crescent Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.439243+00:00,-37.8334559,144.9699547,error
-117A Flemington Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.232,2025-08-12T04:41:46.149697+00:00,-37.7971572,144.9515965,dom
-20 Molesworth Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.198,2025-08-12T04:41:47.042417+00:00,-37.7980605,144.9489340,dom
-117 Flemington Road Melbourne VIC,False,,33.544,2025-08-12T04:42:04.185242+00:00,-37.7972250,144.9516823,dom
-270 Flinders Street Melbourne VIC,False,,33.814,2025-08-12T09:36:24.939604+00:00,-37.8177285,144.9653561,dom
-267 Flinders Lane Melbourne VIC,False,,33.738,2025-08-12T09:36:25.146091+00:00,-37.8170329,144.9655353,dom
-205 Collins Street Melbourne VIC,False,,33.796,2025-08-12T09:36:25.553882+00:00,-37.8158150,144.9673780,dom
-471 Little Bourke Street Melbourne VIC,False,,34.302,2025-08-12T09:36:59.244011+00:00,-37.8145395,144.9590572,dom
-630 Little Collins Street Melbourne VIC,False,,34.413,2025-08-12T09:36:59.558817+00:00,-37.8178023,144.9539372,dom
-287 King Street Melbourne VIC,False,,34.419,2025-08-12T09:36:59.973003+00:00,-37.8137769,144.9542371,dom
-197-199 King Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.226,2025-08-12T09:37:07.784862+00:00,-37.8155762,144.9550620,dom
-270 Collins Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.246,2025-08-12T09:37:08.219576+00:00,-37.8156850,144.9649280,dom
-600 Little Bourke Street Melbourne VIC,False,,33.499,2025-08-12T09:37:32.743553+00:00,-37.8154676,144.9546001,dom
-195 Swanston Street Melbourne VIC,False,,33.474,2025-08-12T09:37:41.259147+00:00,-37.8130976,144.9649711,dom
-318 Little Bourke Street Melbourne VIC,False,,33.391,2025-08-12T09:37:41.609898+00:00,-37.8129338,144.9631368,dom
-191 Collins Street Melbourne VIC,False,,33.535,2025-08-12T09:38:06.279314+00:00,-37.8154970,144.9675980,dom
-101 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.269,2025-08-12T09:38:14.549762+00:00,-37.7994887,144.9882379,dom
-250 Elizabeth Street Melbourne VIC,False,,33.491,2025-08-12T09:38:14.750841+00:00,-37.8124101,144.9625534,dom
-222 Pelham Street Melbourne VIC,False,,33.436,2025-08-12T09:38:15.045252+00:00,-37.8017523,144.9583162,dom
-202 Johnston Street Melbourne VIC,False,,33.624,2025-08-12T09:38:48.179354+00:00,-37.7988193,144.9816836,dom
-54 Elgin Street Melbourne VIC,False,,33.472,2025-08-12T09:38:48.222868+00:00,-37.7974730,144.9726910,dom
-45 Victoria Parade Melbourne VIC,False,,33.773,2025-08-12T09:38:48.818349+00:00,-37.8088450,144.9842990,dom
-244 Nicholson Street Melbourne VIC,False,,33.661,2025-08-12T09:39:21.849470+00:00,-37.7977320,144.9753090,dom
-344 Nicholson Street Melbourne VIC,False,,33.627,2025-08-12T09:39:21.849555+00:00,-37.7945160,144.9757090,dom
-267 Flinders Lane Melbourne VIC,False,,36.557,2025-08-12T09:47:10.859579+00:00,-37.8170329,144.9655353,dom
-205 Collins Street Melbourne VIC,False,,36.678,2025-08-12T09:47:10.990970+00:00,-37.8158150,144.9673780,dom
-270 Flinders Street Melbourne VIC,False,,36.720,2025-08-12T09:47:11.007644+00:00,-37.8177285,144.9653561,dom
-471 Little Bourke Street Melbourne VIC,False,,33.527,2025-08-12T09:47:44.388744+00:00,-37.8145395,144.9590572,dom
-630 Little Collins Street Melbourne VIC,False,,33.564,2025-08-12T09:47:44.555481+00:00,-37.8178023,144.9539372,dom
-287 King Street Melbourne VIC,False,,33.558,2025-08-12T09:47:44.565915+00:00,-37.8137769,144.9542371,dom
-197-199 King Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.227,2025-08-12T09:47:52.783040+00:00,-37.8155762,144.9550620,dom
-270 Collins Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.223,2025-08-12T09:47:52.789545+00:00,-37.8156850,144.9649280,dom
-600 Little Bourke Street Melbourne VIC,False,,33.437,2025-08-12T09:48:17.826159+00:00,-37.8154676,144.9546001,dom
-318 Little Bourke Street Melbourne VIC,False,,33.601,2025-08-12T09:48:26.391072+00:00,-37.8129338,144.9631368,dom
-195 Swanston Street Melbourne VIC,False,,33.610,2025-08-12T09:48:26.392934+00:00,-37.8130976,144.9649711,dom
-191 Collins Street Melbourne VIC,False,,33.541,2025-08-12T09:48:51.367556+00:00,-37.8154970,144.9675980,dom
-101 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.264,2025-08-12T09:48:59.631590+00:00,-37.7994887,144.9882379,dom
-222 Pelham Street Melbourne VIC,False,,33.590,2025-08-12T09:48:59.983720+00:00,-37.8017523,144.9583162,dom
-250 Elizabeth Street Melbourne VIC,False,,33.599,2025-08-12T09:48:59.991074+00:00,-37.8124101,144.9625534,dom
-202 Johnston Street Melbourne VIC,False,,33.429,2025-08-12T09:49:33.060939+00:00,-37.7988193,144.9816836,dom
-54 Elgin Street Melbourne VIC,False,,33.581,2025-08-12T09:49:33.565065+00:00,-37.7974730,144.9726910,dom
-45 Victoria Parade Melbourne VIC,False,,33.574,2025-08-12T09:49:33.565684+00:00,-37.8088450,144.9842990,dom
-244 Nicholson Street Melbourne VIC,False,,33.651,2025-08-12T09:50:06.712452+00:00,-37.7977320,144.9753090,dom
-344 Nicholson Street Melbourne VIC,False,,33.657,2025-08-12T09:50:07.222628+00:00,-37.7945160,144.9757090,dom
-191 Grattan Street Melbourne VIC,False,,33.657,2025-08-12T09:50:07.222700+00:00,-37.8004316,144.9622254,dom
-186 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.237,2025-08-12T09:50:14.949578+00:00,-37.8026580,144.9668330,dom
-272 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.273,2025-08-12T09:50:15.496595+00:00,-37.8004579,144.9672271,dom
 197 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.187,2025-08-12T09:50:23.137193+00:00,-37.8014415,144.9776725,dom
-380 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.227,2025-08-12T09:50:23.723357+00:00,-37.7978092,144.9680124,dom
+380 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.224,2025-08-12T04:33:33.086909+00:00,-37.7978092,144.9680124,dom
+191 Grattan Street Melbourne VIC,False,error:TimeoutException,9.327,2025-08-12T14:17:34.398337+00:00,-37.8004316,144.9622254,error
+344 Nicholson Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.746226+00:00,-37.7945160,144.9757090,error
+256-258 Moray Street Melbourne VIC,False,error:TimeoutException,9.286,2025-08-12T14:17:34.566440+00:00,-37.8347704,144.9639303,error
 349 Drummond Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.197,2025-08-12T09:50:31.920262+00:00,-37.7977034,144.9687111,dom
-256-258 Moray Street Melbourne VIC,False,,33.414,2025-08-12T09:50:40.636557+00:00,-37.8347704,144.9639303,dom
 74-76 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.236,2025-08-12T09:50:48.872421+00:00,-37.7983300,144.9771100,dom
-186-188 Smith Street Melbourne VIC,False,,33.474,2025-08-12T09:50:56.612172+00:00,-37.8031574,144.9837077,dom
-420 St Kilda Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.210,2025-08-12T09:50:57.082306+00:00,-37.8361120,144.9748720,dom
-106 Victoria Street Melbourne VIC,False,,33.451,2025-08-12T09:51:05.371907+00:00,-37.7992449,144.9788532,dom
+420 St Kilda Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.208,2025-08-12T04:33:49.676146+00:00,-37.8361120,144.9748720,dom
+186-188 Smith Street Melbourne VIC,False,error:TimeoutException,9.298,2025-08-12T14:17:43.865232+00:00,-37.8031574,144.9837077,error
+106 Victoria Street Melbourne VIC,False,error:TimeoutException,9.332,2025-08-12T14:17:53.047598+00:00,-37.7992449,144.9788532,error
 421 Rathdowne Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.214,2025-08-12T09:51:13.586372+00:00,-37.7965118,144.9704476,dom
 235 Flemington Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.185,2025-08-12T09:51:21.771329+00:00,-37.7941345,144.9473446,dom
-290-301 Nicholson Street Melbourne VIC,False,,33.450,2025-08-12T09:51:30.062226+00:00,-37.7932452,144.9753768,dom
-117 Moray Street Melbourne VIC,False,,33.532,2025-08-12T09:51:30.614701+00:00,-37.8299014,144.9621407,dom
+290-301 Nicholson Street Melbourne VIC,False,error:TimeoutException,9.331,2025-08-12T14:17:53.709907+00:00,-37.7932452,144.9753768,error
+117 Moray Street Melbourne VIC,False,error:TimeoutException,9.328,2025-08-12T14:18:02.374509+00:00,-37.8299014,144.9621407,error
 418 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.266,2025-08-12T09:51:38.329011+00:00,-37.7969492,144.9678160,dom
 62 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.227,2025-08-12T09:51:38.841682+00:00,-37.7982994,144.9768502,dom
 146-154 Elgin Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.183,2025-08-12T09:51:46.512100+00:00,-37.7971422,144.9696219,dom
 295-297 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.204,2025-08-12T09:51:54.716048+00:00,-37.7984386,144.9782418,dom
-118 Park Street Melbourne VIC,False,,33.478,2025-08-12T09:51:55.249852+00:00,-37.8335060,144.9669130,dom
-276 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.230,2025-08-12T09:52:02.946538+00:00,-37.7989463,144.9785430,dom
-225 Drummond Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.266,2025-08-12T09:52:03.516064+00:00,-37.8004336,144.9681114,dom
+276 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.200,2025-08-12T04:34:39.533859+00:00,-37.7989463,144.9785430,dom
+225 Drummond Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.223,2025-08-12T04:34:40.236401+00:00,-37.8004336,144.9681114,dom
 205 Faraday Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.225,2025-08-12T09:52:11.171495+00:00,-37.7990994,144.9676917,dom
-129 Elgin Street Melbourne VIC,False,,33.446,2025-08-12T09:52:12.288170+00:00,-37.7976375,144.9702613,dom
+118 Park Street Melbourne VIC,False,error:TimeoutException,9.298,2025-08-12T14:18:03.008423+00:00,-37.8335060,144.9669130,error
+329 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.210,2025-08-12T04:34:48.446033+00:00,-37.7976471,144.9672504,dom
 211 Gertrude Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.247,2025-08-12T09:52:20.535856+00:00,-37.8060713,144.9816516,dom
-127 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.209,2025-08-12T09:52:28.745403+00:00,-37.8037960,144.9773668,dom
-253 Flinders Lane Melbourne VIC,False,,33.490,2025-08-12T09:52:44.662177+00:00,-37.8169458,144.9659025,dom
-329 Lygon Street Melbourne VIC,False,,57.617,2025-08-12T09:53:01.133476+00:00,-37.7976471,144.9672504,dom
+127 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.196,2025-08-12T04:34:56.641991+00:00,-37.8037960,144.9773668,dom
+129 Elgin Street Melbourne VIC,False,error:TimeoutException,9.271,2025-08-12T14:18:12.279603+00:00,-37.7976375,144.9702613,error
+253 Flinders Lane Melbourne VIC,False,error:TimeoutException,9.403,2025-08-12T14:18:30.415540+00:00,-37.8169458,144.9659025,error
+411 George Street Melbourne VIC,False,error:TimeoutException,9.375,2025-08-12T14:18:39.790938+00:00,-37.7972297,144.9819606,error
+206-210 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.373,2025-08-12T14:18:39.789432+00:00,-37.8012423,144.9781729,error
 244 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.021,2025-08-12T09:53:01.155012+00:00,-37.8017259,144.9839273,error
+376 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.250,2025-08-12T04:35:38.409251+00:00,-37.7960561,144.9790327,dom
+128 Moor Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.250,2025-08-12T04:35:38.409361+00:00,-37.8018889,144.9796910,dom
+144 Fitzroy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.240,2025-08-12T04:35:46.650401+00:00,-37.8043751,144.9764600,dom
 345 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.168232+00:00,-37.8353130,144.9619190,error
 343 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.181463+00:00,-37.8350109,144.9617178,error
-376 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.193475+00:00,-37.7960561,144.9790327,error
-128 Moor Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.205959+00:00,-37.8018889,144.9796910,error
 414 Nicholson Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.218714+00:00,-37.7901129,144.9765303,error
-144 Fitzroy Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.229905+00:00,-37.8043751,144.9764600,error
 380 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.241956+00:00,-37.7958574,144.9790602,error
+220 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.278,2025-08-12T04:36:20.178772+00:00,-37.8019080,144.9669884,dom
 1-9 Federation Wharf Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.253744+00:00,-37.8187059,144.9686342,error
 75 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.265122+00:00,-37.7988560,144.9535250,error
-220 Lygon Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.277572+00:00,-37.8019080,144.9669884,error
-59 Wellington Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.289564+00:00,-37.8072430,144.9857861,error
+88 Rathdowne Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.221,2025-08-12T04:36:45.338102+00:00,-37.7979111,144.9706637,dom
 1 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.302614+00:00,-37.8085185,144.9824760,error
+59 Wellington Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.289564+00:00,-37.8072430,144.9857861,error
 54 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.314283+00:00,-37.8059010,144.9773690,error
-88 Rathdowne Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.326274+00:00,-37.7979111,144.9706637,error
 375 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.337966+00:00,-37.8361936,144.9622636,error
-102-104 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.349357+00:00,-37.8333290,144.9673099,error
 135-137 Bank Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.361775+00:00,-37.8336617,144.9634651,error
+102-104 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.349357+00:00,-37.8333290,144.9673099,error
 307 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.372507+00:00,-37.8338816,144.9612036,error
+277 Clarendon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.264,2025-08-12T04:37:36.478590+00:00,-37.8330662,144.9609809,dom
+407 St Kilda Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.232,2025-08-12T04:37:43.803105+00:00,-37.8362350,144.9761450,dom
 338-340 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.384220+00:00,-37.8345872,144.9610816,error
-277 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.396229+00:00,-37.8330662,144.9609809,error
 377 Gore Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.407753+00:00,-37.7977485,144.9829523,error
-407 St Kilda Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.419845+00:00,-37.8362350,144.9761450,error
 5 Riverside Quay Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.431490+00:00,-37.8214816,144.9644575,error
+15-17 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.241,2025-08-12T04:38:10.052789+00:00,-37.7979061,144.9756259,dom
 115 Cecil Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.444216+00:00,-37.8316115,144.9573526,error
+243-245 Gertrude Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.226,2025-08-12T04:38:18.211902+00:00,-37.8062207,144.9825807,dom
 114 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.455918+00:00,-37.8048510,144.9834420,error
-15-17 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.468295+00:00,-37.7979061,144.9756259,error
-243-245 Gertrude Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.479838+00:00,-37.8062207,144.9825807,error
+298-300 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.242,2025-08-12T04:38:34.752352+00:00,-37.7982004,144.9786371,dom
 281 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.490939+00:00,-37.8005067,144.9838413,error
 272 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.502271+00:00,-37.8011431,144.9840159,error
 215 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.513618+00:00,-37.8026801,144.9834581,error
-298-300 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.524321+00:00,-37.7982004,144.9786371,error
-328 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.535925+00:00,-37.7973814,144.9787918,error
-286 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.547418+00:00,-37.8005946,144.9841436,error
-222 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.559056+00:00,-37.8009521,144.9782174,error
-33 Spencer Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.571598+00:00,-37.8200975,144.9542549,error
+222 Brunswick Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.239,2025-08-12T04:38:58.960301+00:00,-37.8009521,144.9782174,dom
 198 Berkeley Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.583819+00:00,-37.8014283,144.9587685,error
-114 Berkeley Street Melbourne VIC,False,error:ElementNotInteractableException,0.027,2025-08-12T09:53:01.610941+00:00,-37.8028349,144.9590354,error
+328 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.535925+00:00,-37.7973814,144.9787918,error
+114 Berkeley Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.216,2025-08-12T04:39:15.893558+00:00,-37.8028349,144.9590354,dom
+286 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.547418+00:00,-37.8005946,144.9841436,error
+185 Pelham Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.215,2025-08-12T04:39:24.110040+00:00,-37.8022481,144.9601666,dom
+167 Lygon Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.242,2025-08-12T04:39:25.219454+00:00,-37.8017966,144.9665445,dom
+33 Spencer Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.571598+00:00,-37.8200975,144.9542549,error
+192 Station Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.252,2025-08-12T04:39:33.484901+00:00,-37.8328036,144.9456317,dom
 127 Leicester Street Melbourne VIC,False,error:ElementNotInteractableException,0.017,2025-08-12T09:53:01.627915+00:00,-37.8029290,144.9602863,error
-185 Pelham Street Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T09:53:01.642068+00:00,-37.8022481,144.9601666,error
-167 Lygon Street Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T09:53:01.656238+00:00,-37.8017966,144.9665445,error
 144 Cecil Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.669718+00:00,-37.8328055,144.9574554,error
 315 Coventry Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.683002+00:00,-37.8329360,144.9570071,error
-192 Station Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.695298+00:00,-37.8328036,144.9456317,error
 68 Cecil Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.707636+00:00,-37.8301951,144.9562392,error
 1 Riverside Quay Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.718918+00:00,-37.8217545,144.9639586,error
 2 Lygon Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.731274+00:00,-37.8067341,144.9660401,error
 7 Grattan Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.743190+00:00,-37.8010788,144.9692525,error
+23 Blackwood Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.222,2025-08-12T04:40:40.609795+00:00,-37.8009470,144.9553230,dom
 28 Blackwood Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.754477+00:00,-37.8012925,144.9552944,error
 22 Blackwood Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.766626+00:00,-37.8014438,144.9551034,error
+120 Capel Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.215,2025-08-12T04:40:48.825572+00:00,-37.8051944,144.9554928,dom
 12 Blackwood Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.778088+00:00,-37.8016427,144.9548520,error
-23 Blackwood Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.789442+00:00,-37.8009470,144.9553230,error
-120 Capel Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.801984+00:00,-37.8051944,144.9554928,error
-10-20 Courtney Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.813709+00:00,-37.8025061,144.9550047,error
+121 Johnston Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.263,2025-08-12T04:41:13.091797+00:00,-37.7982584,144.9789257,dom
+7 Murphy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.241,2025-08-12T04:41:21.334365+00:00,-37.7976007,144.9514060,dom
 1-11 Bedford Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.825790+00:00,-37.8024590,144.9553500,error
 51 Gipps Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.837248+00:00,-37.8047536,144.9886343,error
-121 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.848442+00:00,-37.7982584,144.9789257,error
-7 Murphy Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:01.861118+00:00,-37.7976007,144.9514060,error
-5 Murphy Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.872409+00:00,-37.7976791,144.9512929,error
-1 Murphy Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.884063+00:00,-37.7977808,144.9511727,error
-2 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.895129+00:00,-37.7979992,144.9509764,error
-2A Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.906285+00:00,-37.7979700,144.9509398,error
-8 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.918054+00:00,-37.7978724,144.9507899,error
-117 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.929922+00:00,-37.7972250,144.9516823,error
-117A Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.941856+00:00,-37.7971572,144.9515965,error
+5 Murphy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.273,2025-08-12T04:41:29.608883+00:00,-37.7976791,144.9512929,dom
+1 Murphy Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.263,2025-08-12T04:41:30.633072+00:00,-37.7977808,144.9511727,dom
+2 Chapman Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.256,2025-08-12T04:41:30.641396+00:00,-37.7979992,144.9509764,dom
+2A Chapman Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.307,2025-08-12T04:41:37.916679+00:00,-37.7979700,144.9509398,dom
+10-20 Courtney Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.813709+00:00,-37.8025061,144.9550047,error
 118 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.014,2025-08-12T09:53:01.956205+00:00,-37.7970894,144.9515107,error
 123 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.967603+00:00,-37.7968791,144.9512618,error
 "220,222,224 Errol Street Melbourne VIC",False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:01.979117+00:00,-37.7978222,144.9508015,error
@@ -365,7 +144,7 @@ address,eligible,status_text,latency_sec,checked_at,lat,lon,method
 169 Domain Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.067848+00:00,-37.8341668,144.9816512,error
 123 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.078722+00:00,-37.8342833,144.9823458,error
 3 Toorak Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.090256+00:00,-37.8382088,144.9867145,error
-9 Toorak Road Melbourne VIC,False,error:ElementNotInteractableException,0.029,2025-08-12T09:53:02.119097+00:00,-37.8382359,144.9868690,error
+9 Toorak Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.556726+00:00,-37.8382359,144.9868690,error
 69 Victoria Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.131262+00:00,-37.7988255,144.9771439,error
 63 Nicholson Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.142442+00:00,-37.7995936,144.9744080,error
 260 Clarendon Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.154010+00:00,-37.8324480,144.9601330,error
@@ -374,22 +153,22 @@ address,eligible,status_text,latency_sec,checked_at,lat,lon,method
 252 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.188796+00:00,-37.7998890,144.9783730,error
 322 City Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.200405+00:00,-37.8276047,144.9578222,error
 120 Montague Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.211499+00:00,-37.8312032,144.9503971,error
-411 George Street Melbourne VIC,False,,33.476,2025-08-12T09:53:02.222207+00:00,-37.7972297,144.9819606,dom
 141 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.223545+00:00,-37.7983052,144.9794393,error
+81 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.692385+00:00,-37.7987231,144.9535288,error
 103 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.235840+00:00,-37.7982145,144.9529108,error
 18 Mary Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.247700+00:00,-37.7992218,144.9521913,error
 34 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:02.260784+00:00,-37.7977874,144.9485838,error
-40 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.018,2025-08-12T09:53:02.278850+00:00,-37.7977091,144.9484939,error
+40 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T04:41:38.742086+00:00,-37.7977091,144.9484939,error
 42 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.291069+00:00,-37.7976382,144.9483950,error
 52 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.302534+00:00,-37.7974754,144.9482061,error
 54 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.314308+00:00,-37.7973903,144.9481076,error
 58 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.325799+00:00,-37.7972719,144.9479572,error
 62 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.336997+00:00,-37.7971905,144.9478542,error
-84 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.348907+00:00,-37.7968163,144.9473805,error
+84 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:38.813774+00:00,-37.7968163,144.9473805,error
 86 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.360077+00:00,-37.7967497,144.9473135,error
 96 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.371209+00:00,-37.7965273,144.9470357,error
+8 Chapman Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.212,2025-08-12T04:41:38.844684+00:00,-37.7978724,144.9507899,dom
 "18,18A Molesworth Street Melbourne VIC",False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.382750+00:00,-37.7981147,144.9490022,error
-20 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.393648+00:00,-37.7980605,144.9489340,error
 32 Molesworth Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.404722+00:00,-37.7978651,144.9486913,error
 13 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.416724+00:00,-37.7975703,144.9497339,error
 117 Chapman Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.428459+00:00,-37.7953932,144.9470388,error
@@ -413,7 +192,7 @@ address,eligible,status_text,latency_sec,checked_at,lat,lon,method
 120 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.630960+00:00,-37.7984914,144.9789451,error
 231 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.641702+00:00,-37.8004590,144.9779130,error
 144 Nicholson Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.652840+00:00,-37.8011460,144.9745920,error
-293 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.665095+00:00,-37.7985491,144.9782874,error
+293 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.173782+00:00,-37.7985491,144.9782874,error
 347 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.676971+00:00,-37.7968516,144.9785347,error
 19 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.689057+00:00,-37.8330238,144.9698810,error
 211 Flinders Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.700197+00:00,-37.8177412,144.9670520,error
@@ -422,7 +201,7 @@ address,eligible,status_text,latency_sec,checked_at,lat,lon,method
 320 St Kilda Road Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.733607+00:00,-37.8294390,144.9708850,error
 23 Dorcas Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.744614+00:00,-37.8305470,144.9697950,error
 119 Park Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.756375+00:00,-37.8344339,144.9823261,error
-19 Dorcas Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.767431+00:00,-37.8305020,144.9699770,error
+19 Dorcas Street Melbourne VIC,False,error:ElementNotInteractableException,0.010,2025-08-12T04:41:39.280075+00:00,-37.8305020,144.9699770,error
 27 Dorcas Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.778480+00:00,-37.8305860,144.9696420,error
 196 Wells Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.789694+00:00,-37.8321480,144.9697520,error
 194 Wells Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.800891+00:00,-37.8320720,144.9697310,error
@@ -430,13 +209,16 @@ address,eligible,status_text,latency_sec,checked_at,lat,lon,method
 190 Wells Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.822762+00:00,-37.8319280,144.9696910,error
 1 Bank Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.835114+00:00,-37.8318310,144.9696640,error
 345 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.846588+00:00,-37.7969236,144.9785240,error
-343 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.858425+00:00,-37.7969681,144.9785186,error
+343 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.371390+00:00,-37.7969681,144.9785186,error
 341 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.869839+00:00,-37.7970170,144.9785130,error
 339 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.881339+00:00,-37.7970740,144.9785080,error
-335 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.893241+00:00,-37.7972430,144.9784810,error
+335 Brunswick Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.405395+00:00,-37.7972430,144.9784810,error
 8 Fogarty Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.903893+00:00,-37.7980501,144.9405445,error
 12 Fogarty Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:02.915062+00:00,-37.7982223,144.9403078,error
-8-16 Palmerston Crescent Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:02.927794+00:00,-37.8334559,144.9699547,error
+8-16 Palmerston Crescent Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T04:41:39.439243+00:00,-37.8334559,144.9699547,error
+117A Flemington Road Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.232,2025-08-12T04:41:46.149697+00:00,-37.7971572,144.9515965,dom
+20 Molesworth Street Melbourne VIC,True,Great! Your address is eligible for 5G Home Internet.,8.198,2025-08-12T04:41:47.042417+00:00,-37.7980605,144.9489340,dom
+117 Flemington Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:01.929922+00:00,-37.7972250,144.9516823,error
 407D St Kilda Road Melbourne VIC,False,error:ElementNotInteractableException,0.029,2025-08-12T09:53:02.956647+00:00,-37.8363200,144.9762260,error
 401 St Kilda Road Melbourne VIC,False,error:ElementNotInteractableException,0.013,2025-08-12T09:53:02.970194+00:00,-37.8357640,144.9759390,error
 379 St Kilda Road Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:02.982433+00:00,-37.8351250,144.9753730,error
@@ -1788,7 +1570,6 @@ address,eligible,status_text,latency_sec,checked_at,lat,lon,method
 90 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:18.026546+00:00,-37.8056570,144.9833080,error
 72 Smith Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:18.037595+00:00,-37.8060987,144.9832251,error
 18 Stanley Street Melbourne VIC,False,error:ElementNotInteractableException,0.010,2025-08-12T09:53:18.048124+00:00,-37.8019960,144.9847700,error
-206-210 Brunswick Street Melbourne VIC,False,,33.394,2025-08-12T09:53:18.056884+00:00,-37.8012423,144.9781729,dom
 210 Swanston Street Melbourne VIC,False,error:ElementNotInteractableException,0.010,2025-08-12T09:53:18.058673+00:00,-37.8128487,144.9655929,error
 215 Swanston Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:18.070196+00:00,-37.8127861,144.9650671,error
 241 Swanston Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:18.081485+00:00,-37.8123623,144.9648857,error
@@ -2237,589 +2018,7 @@ Shop 10 Campbell Arcade Melbourne VIC,False,error:ElementNotInteractableExceptio
 50 - 56 O'Shanassy Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:22.936317+00:00,-37.7998926,144.9479564,error
 288 Russell Street Melbourne VIC,False,error:ElementNotInteractableException,0.012,2025-08-12T09:53:22.948234+00:00,-37.8087666,144.9660221,error
 279 La Trobe Street Melbourne VIC,False,error:ElementNotInteractableException,0.011,2025-08-12T09:53:22.959075+00:00,-37.8106737,144.9607010,error
-81 Flemington Road Melbourne VIC,False,,33.466,2025-08-12T09:53:35.688863+00:00,-37.7987231,144.9535288,dom
 212 Swanston Street Melbourne VIC,False,,33.743,2025-08-12T09:53:51.800269+00:00,-37.8128094,144.9655745,dom
-205 Collins Street Melbourne VIC,False,header_not_found,33.191,2025-08-12T13:56:40.691504+00:00,-37.8158150,144.9673780,dom
-267 Flinders Lane Melbourne VIC,False,header_not_found,33.244,2025-08-12T13:56:40.742917+00:00,-37.8170329,144.9655353,dom
-270 Flinders Street Melbourne VIC,False,header_not_found,33.379,2025-08-12T13:56:40.743079+00:00,-37.8177285,144.9653561,dom
-471 Little Bourke Street Melbourne VIC,False,header_not_found,33.768,2025-08-12T13:56:41.500867+00:00,-37.8145395,144.9590572,dom
-630 Little Collins Street Melbourne VIC,False,error:TimeoutException,25.495,2025-08-12T13:57:06.187913+00:00,-37.8178023,144.9539372,error
-600 Little Bourke Street Melbourne VIC,False,error:TimeoutException,25.445,2025-08-12T13:57:06.188342+00:00,-37.8154676,144.9546001,error
-287 King Street Melbourne VIC,False,error:TimeoutException,25.445,2025-08-12T13:57:06.188511+00:00,-37.8137769,144.9542371,error
-197-199 King Street Melbourne VIC,False,error:TimeoutException,25.301,2025-08-12T13:57:06.802681+00:00,-37.8155762,144.9550620,error
-195 Swanston Street Melbourne VIC,False,error:TimeoutException,25.415,2025-08-12T13:57:31.604587+00:00,-37.8130976,144.9649711,error
-270 Collins Street Melbourne VIC,False,error:TimeoutException,25.420,2025-08-12T13:57:31.609078+00:00,-37.8156850,144.9649280,error
-318 Little Bourke Street Melbourne VIC,False,error:TimeoutException,25.419,2025-08-12T13:57:31.609468+00:00,-37.8129338,144.9631368,error
-191 Collins Street Melbourne VIC,False,error:TimeoutException,25.316,2025-08-12T13:57:32.118660+00:00,-37.8154970,144.9675980,error
-222 Pelham Street Melbourne VIC,False,error:TimeoutException,25.087,2025-08-12T13:57:56.696732+00:00,-37.8017523,144.9583162,error
-101 Johnston Street Melbourne VIC,False,error:TimeoutException,25.087,2025-08-12T13:57:56.697130+00:00,-37.7994887,144.9882379,error
-250 Elizabeth Street Melbourne VIC,False,error:TimeoutException,25.092,2025-08-12T13:57:56.697263+00:00,-37.8124101,144.9625534,error
-202 Johnston Street Melbourne VIC,False,error:TimeoutException,25.085,2025-08-12T13:57:57.203586+00:00,-37.7988193,144.9816836,error
-45 Victoria Parade Melbourne VIC,False,error:TimeoutException,25.513,2025-08-12T13:58:22.211548+00:00,-37.8088450,144.9842990,error
-244 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.513,2025-08-12T13:58:22.211743+00:00,-37.7977320,144.9753090,error
-54 Elgin Street Melbourne VIC,False,error:TimeoutException,25.514,2025-08-12T13:58:22.211956+00:00,-37.7974730,144.9726910,error
-344 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.529,2025-08-12T13:58:22.733004+00:00,-37.7945160,144.9757090,error
-256-258 Moray Street Melbourne VIC,False,error:TimeoutException,25.496,2025-08-12T13:58:47.708622+00:00,-37.8347704,144.9639303,error
-191 Grattan Street Melbourne VIC,False,error:TimeoutException,25.497,2025-08-12T13:58:47.708876+00:00,-37.8004316,144.9622254,error
-186 Lygon Street Melbourne VIC,False,error:TimeoutException,25.497,2025-08-12T13:58:47.709444+00:00,-37.8026580,144.9668330,error
-272 Lygon Street Melbourne VIC,False,error:TimeoutException,25.489,2025-08-12T13:58:48.222073+00:00,-37.8004579,144.9672271,error
-186-188 Smith Street Melbourne VIC,False,error:TimeoutException,25.495,2025-08-12T13:59:13.205163+00:00,-37.8031574,144.9837077,error
-197 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.496,2025-08-12T13:59:13.205487+00:00,-37.8014415,144.9776725,error
-380 Lygon Street Melbourne VIC,False,error:TimeoutException,25.495,2025-08-12T13:59:13.205647+00:00,-37.7978092,144.9680124,error
-349 Drummond Street Melbourne VIC,False,error:TimeoutException,25.504,2025-08-12T13:59:13.726019+00:00,-37.7977034,144.9687111,error
-106 Victoria Street Melbourne VIC,False,error:TimeoutException,25.500,2025-08-12T13:59:38.706700+00:00,-37.7992449,144.9788532,error
-74-76 Johnston Street Melbourne VIC,False,error:TimeoutException,25.500,2025-08-12T13:59:38.706899+00:00,-37.7983300,144.9771100,error
-420 St Kilda Road Melbourne VIC,False,error:TimeoutException,25.500,2025-08-12T13:59:38.707245+00:00,-37.8361120,144.9748720,error
-290-301 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.502,2025-08-12T13:59:39.228228+00:00,-37.7932452,144.9753768,error
-421 Rathdowne Street Melbourne VIC,False,error:TimeoutException,25.347,2025-08-12T14:00:04.054688+00:00,-37.7965118,144.9704476,error
-117 Moray Street Melbourne VIC,False,error:TimeoutException,25.348,2025-08-12T14:00:04.055161+00:00,-37.8299014,144.9621407,error
-235 Flemington Road Melbourne VIC,False,error:TimeoutException,25.347,2025-08-12T14:00:04.055294+00:00,-37.7941345,144.9473446,error
-118 Park Street Melbourne VIC,False,error:TimeoutException,25.339,2025-08-12T14:00:04.567282+00:00,-37.8335060,144.9669130,error
-62 Johnston Street Melbourne VIC,False,error:TimeoutException,25.320,2025-08-12T14:00:29.376551+00:00,-37.7982994,144.9768502,error
-146-154 Elgin Street Melbourne VIC,False,error:TimeoutException,25.321,2025-08-12T14:00:29.376985+00:00,-37.7971422,144.9696219,error
-418 Lygon Street Melbourne VIC,False,error:TimeoutException,25.379,2025-08-12T14:00:29.434804+00:00,-37.7969492,144.9678160,error
-129 Elgin Street Melbourne VIC,False,error:TimeoutException,25.360,2025-08-12T14:00:29.927202+00:00,-37.7976375,144.9702613,error
-225 Drummond Street Melbourne VIC,False,error:TimeoutException,25.311,2025-08-12T14:00:54.746458+00:00,-37.8004336,144.9681114,error
-295-297 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.369,2025-08-12T14:00:54.747129+00:00,-37.7984386,144.9782418,error
-276 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.372,2025-08-12T14:00:54.750659+00:00,-37.7989463,144.9785430,error
-205 Faraday Street Melbourne VIC,False,error:TimeoutException,25.340,2025-08-12T14:00:55.267197+00:00,-37.7990994,144.9676917,error
-329 Lygon Street Melbourne VIC,False,error:TimeoutException,25.356,2025-08-12T14:01:20.103011+00:00,-37.7976471,144.9672504,error
-253 Flinders Lane Melbourne VIC,False,error:TimeoutException,25.359,2025-08-12T14:01:20.106464+00:00,-37.8169458,144.9659025,error
-211 Gertrude Street Melbourne VIC,False,error:TimeoutException,25.356,2025-08-12T14:01:20.107025+00:00,-37.8060713,144.9816516,error
-127 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.355,2025-08-12T14:01:20.622464+00:00,-37.8037960,144.9773668,error
-411 George Street Melbourne VIC,False,error:TimeoutException,25.407,2025-08-12T14:01:45.510869+00:00,-37.7972297,144.9819606,error
-244 Smith Street Melbourne VIC,False,error:TimeoutException,25.404,2025-08-12T14:01:45.511147+00:00,-37.8017259,144.9839273,error
-206-210 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.404,2025-08-12T14:01:45.511523+00:00,-37.8012423,144.9781729,error
-345 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.402,2025-08-12T14:01:46.024685+00:00,-37.8353130,144.9619190,error
-128 Moor Street Melbourne VIC,False,error:TimeoutException,25.384,2025-08-12T14:02:10.896717+00:00,-37.8018889,144.9796910,error
-376 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.385,2025-08-12T14:02:10.897083+00:00,-37.7960561,144.9790327,error
-343 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.388,2025-08-12T14:02:10.900545+00:00,-37.8350109,144.9617178,error
-414 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.399,2025-08-12T14:02:11.424450+00:00,-37.7901129,144.9765303,error
-1-9 Federation Wharf Melbourne VIC,False,error:TimeoutException,25.469,2025-08-12T14:02:36.370011+00:00,-37.8187059,144.9686342,error
-380 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.472,2025-08-12T14:02:36.370308+00:00,-37.7958574,144.9790602,error
-144 Fitzroy Street Melbourne VIC,False,error:TimeoutException,25.473,2025-08-12T14:02:36.371197+00:00,-37.8043751,144.9764600,error
-75 Flemington Road Melbourne VIC,False,error:TimeoutException,25.467,2025-08-12T14:02:36.891963+00:00,-37.7988560,144.9535250,error
-59 Wellington Street Melbourne VIC,False,error:TimeoutException,25.143,2025-08-12T14:03:01.514897+00:00,-37.8072430,144.9857861,error
-1 Smith Street Melbourne VIC,False,error:TimeoutException,25.143,2025-08-12T14:03:01.515254+00:00,-37.8085185,144.9824760,error
-220 Lygon Street Melbourne VIC,False,error:TimeoutException,25.150,2025-08-12T14:03:01.520759+00:00,-37.8019080,144.9669884,error
-54 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.331,2025-08-12T14:03:02.223636+00:00,-37.8059010,144.9773690,error
-375 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.108,2025-08-12T14:03:26.624820+00:00,-37.8361936,144.9622636,error
-88 Rathdowne Street Melbourne VIC,False,error:TimeoutException,25.109,2025-08-12T14:03:26.625126+00:00,-37.7979111,144.9706637,error
-102-104 Park Street Melbourne VIC,False,error:TimeoutException,25.104,2025-08-12T14:03:26.625241+00:00,-37.8333290,144.9673099,error
-135-137 Bank Street Melbourne VIC,False,error:TimeoutException,25.445,2025-08-12T14:03:27.668849+00:00,-37.8336617,144.9634651,error
-307 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.408,2025-08-12T14:03:52.034449+00:00,-37.8338816,144.9612036,error
-338-340 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.407,2025-08-12T14:03:52.034777+00:00,-37.8345872,144.9610816,error
-277 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.406,2025-08-12T14:03:52.035192+00:00,-37.8330662,144.9609809,error
-377 Gore Street Melbourne VIC,False,error:TimeoutException,25.340,2025-08-12T14:03:53.009283+00:00,-37.7977485,144.9829523,error
-115 Cecil Street Melbourne VIC,False,error:TimeoutException,25.563,2025-08-12T14:04:17.599712+00:00,-37.8316115,144.9573526,error
-407 St Kilda Road Melbourne VIC,False,error:TimeoutException,25.564,2025-08-12T14:04:17.599918+00:00,-37.8362350,144.9761450,error
-5 Riverside Quay Melbourne VIC,False,error:TimeoutException,25.564,2025-08-12T14:04:17.600180+00:00,-37.8214816,144.9644575,error
-114 Smith Street Melbourne VIC,False,error:TimeoutException,25.112,2025-08-12T14:04:18.121539+00:00,-37.8048510,144.9834420,error
-267 Flinders Lane Melbourne VIC,False,header_not_found,57.961,2025-08-12T14:09:41.479781+00:00,-37.8170329,144.9655353,dom
-471 Little Bourke Street Melbourne VIC,False,header_not_found,57.558,2025-08-12T14:09:41.480439+00:00,-37.8145395,144.9590572,dom
-270 Flinders Street Melbourne VIC,False,header_not_found,58.021,2025-08-12T14:09:41.480547+00:00,-37.8177285,144.9653561,dom
-205 Collins Street Melbourne VIC,False,header_not_found,58.456,2025-08-12T14:09:42.180776+00:00,-37.8158150,144.9673780,dom
-600 Little Bourke Street Melbourne VIC,False,header_not_found,30.356,2025-08-12T14:10:11.838452+00:00,-37.8154676,144.9546001,dom
-287 King Street Melbourne VIC,False,header_not_found,30.356,2025-08-12T14:10:11.838624+00:00,-37.8137769,144.9542371,dom
-630 Little Collins Street Melbourne VIC,False,header_not_found,30.357,2025-08-12T14:10:11.838721+00:00,-37.8178023,144.9539372,dom
-197-199 King Street Melbourne VIC,False,header_not_found,30.166,2025-08-12T14:10:12.346893+00:00,-37.8155762,144.9550620,dom
-318 Little Bourke Street Melbourne VIC,False,error:TimeoutException,25.468,2025-08-12T14:10:37.307073+00:00,-37.8129338,144.9631368,error
-270 Collins Street Melbourne VIC,False,error:TimeoutException,25.468,2025-08-12T14:10:37.307423+00:00,-37.8156850,144.9649280,error
-195 Swanston Street Melbourne VIC,False,error:TimeoutException,25.468,2025-08-12T14:10:37.307533+00:00,-37.8130976,144.9649711,error
-191 Collins Street Melbourne VIC,False,error:TimeoutException,25.474,2025-08-12T14:10:37.821114+00:00,-37.8154970,144.9675980,error
-250 Elizabeth Street Melbourne VIC,False,error:TimeoutException,25.393,2025-08-12T14:11:02.700911+00:00,-37.8124101,144.9625534,error
-101 Johnston Street Melbourne VIC,False,error:TimeoutException,25.394,2025-08-12T14:11:02.702148+00:00,-37.7994887,144.9882379,error
-222 Pelham Street Melbourne VIC,False,error:TimeoutException,25.394,2025-08-12T14:11:02.702357+00:00,-37.8017523,144.9583162,error
-202 Johnston Street Melbourne VIC,False,error:TimeoutException,25.397,2025-08-12T14:11:03.218766+00:00,-37.7988193,144.9816836,error
-45 Victoria Parade Melbourne VIC,False,error:TimeoutException,25.396,2025-08-12T14:11:28.098897+00:00,-37.8088450,144.9842990,error
-244 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.396,2025-08-12T14:11:28.099183+00:00,-37.7977320,144.9753090,error
-54 Elgin Street Melbourne VIC,False,error:TimeoutException,25.398,2025-08-12T14:11:28.099477+00:00,-37.7974730,144.9726910,error
-344 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.392,2025-08-12T14:11:28.611587+00:00,-37.7945160,144.9757090,error
-191 Grattan Street Melbourne VIC,False,error:TimeoutException,25.191,2025-08-12T14:11:53.290730+00:00,-37.8004316,144.9622254,error
-256-258 Moray Street Melbourne VIC,False,error:TimeoutException,25.191,2025-08-12T14:11:53.291000+00:00,-37.8347704,144.9639303,error
-186 Lygon Street Melbourne VIC,False,error:TimeoutException,25.191,2025-08-12T14:11:53.291120+00:00,-37.8026580,144.9668330,error
-272 Lygon Street Melbourne VIC,False,error:TimeoutException,25.193,2025-08-12T14:11:53.804544+00:00,-37.8004579,144.9672271,error
-186-188 Smith Street Melbourne VIC,False,error:TimeoutException,25.506,2025-08-12T14:12:18.797980+00:00,-37.8031574,144.9837077,error
-197 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.507,2025-08-12T14:12:18.798150+00:00,-37.8014415,144.9776725,error
-380 Lygon Street Melbourne VIC,False,error:TimeoutException,25.507,2025-08-12T14:12:18.798331+00:00,-37.7978092,144.9680124,error
-349 Drummond Street Melbourne VIC,False,error:TimeoutException,25.515,2025-08-12T14:12:19.320188+00:00,-37.7977034,144.9687111,error
-106 Victoria Street Melbourne VIC,False,error:TimeoutException,25.044,2025-08-12T14:12:43.843024+00:00,-37.7992449,144.9788532,error
-74-76 Johnston Street Melbourne VIC,False,error:TimeoutException,25.045,2025-08-12T14:12:43.843727+00:00,-37.7983300,144.9771100,error
-420 St Kilda Road Melbourne VIC,False,error:TimeoutException,25.044,2025-08-12T14:12:43.843865+00:00,-37.8361120,144.9748720,error
-290-301 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.549,2025-08-12T14:12:44.869536+00:00,-37.7932452,144.9753768,error
-235 Flemington Road Melbourne VIC,False,error:TimeoutException,25.400,2025-08-12T14:13:09.244180+00:00,-37.7941345,144.9473446,error
-421 Rathdowne Street Melbourne VIC,False,error:TimeoutException,25.404,2025-08-12T14:13:09.247858+00:00,-37.7965118,144.9704476,error
-117 Moray Street Melbourne VIC,False,error:TimeoutException,25.405,2025-08-12T14:13:09.248351+00:00,-37.8299014,144.9621407,error
-118 Park Street Melbourne VIC,False,error:TimeoutException,25.416,2025-08-12T14:13:10.286336+00:00,-37.8335060,144.9669130,error
-146-154 Elgin Street Melbourne VIC,False,error:TimeoutException,25.415,2025-08-12T14:13:34.663432+00:00,-37.7971422,144.9696219,error
-62 Johnston Street Melbourne VIC,False,error:TimeoutException,25.415,2025-08-12T14:13:34.663629+00:00,-37.7982994,144.9768502,error
-418 Lygon Street Melbourne VIC,False,error:TimeoutException,25.419,2025-08-12T14:13:34.663884+00:00,-37.7969492,144.9678160,error
-129 Elgin Street Melbourne VIC,False,error:TimeoutException,25.404,2025-08-12T14:13:35.690935+00:00,-37.7976375,144.9702613,error
-225 Drummond Street Melbourne VIC,False,error:TimeoutException,25.421,2025-08-12T14:14:00.085882+00:00,-37.8004336,144.9681114,error
-295-297 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.443,2025-08-12T14:14:00.107347+00:00,-37.7984386,144.9782418,error
-276 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.443,2025-08-12T14:14:00.107689+00:00,-37.7989463,144.9785430,error
-205 Faraday Street Melbourne VIC,False,error:TimeoutException,25.447,2025-08-12T14:14:01.138304+00:00,-37.7990994,144.9676917,error
-329 Lygon Street Melbourne VIC,False,error:TimeoutException,25.295,2025-08-12T14:14:25.381235+00:00,-37.7976471,144.9672504,error
-211 Gertrude Street Melbourne VIC,False,error:TimeoutException,25.420,2025-08-12T14:14:25.528195+00:00,-37.8060713,144.9816516,error
-253 Flinders Lane Melbourne VIC,False,error:TimeoutException,25.420,2025-08-12T14:14:25.528351+00:00,-37.8169458,144.9659025,error
-127 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.272,2025-08-12T14:14:26.410398+00:00,-37.8037960,144.9773668,error
-411 George Street Melbourne VIC,False,error:TimeoutException,25.345,2025-08-12T14:14:50.726531+00:00,-37.7972297,144.9819606,error
-244 Smith Street Melbourne VIC,False,error:TimeoutException,25.352,2025-08-12T14:14:50.881297+00:00,-37.8017259,144.9839273,error
-206-210 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.353,2025-08-12T14:14:50.881461+00:00,-37.8012423,144.9781729,error
-345 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.350,2025-08-12T14:14:51.760751+00:00,-37.8353130,144.9619190,error
-343 Clarendon Street Melbourne VIC,False,error:TimeoutException,25.380,2025-08-12T14:15:16.106807+00:00,-37.8350109,144.9617178,error
-376 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.311,2025-08-12T14:15:16.192506+00:00,-37.7960561,144.9790327,error
-128 Moor Street Melbourne VIC,False,error:TimeoutException,25.315,2025-08-12T14:15:16.196697+00:00,-37.8018889,144.9796910,error
-414 Nicholson Street Melbourne VIC,False,error:TimeoutException,25.379,2025-08-12T14:15:17.139756+00:00,-37.7901129,144.9765303,error
-144 Fitzroy Street Melbourne VIC,False,error:TimeoutException,25.421,2025-08-12T14:15:41.528268+00:00,-37.8043751,144.9764600,error
-1-9 Federation Wharf Melbourne VIC,False,error:TimeoutException,25.335,2025-08-12T14:15:41.532273+00:00,-37.8187059,144.9686342,error
-380 Brunswick Street Melbourne VIC,False,error:TimeoutException,25.340,2025-08-12T14:15:41.532456+00:00,-37.7958574,144.9790602,error
-75 Flemington Road Melbourne VIC,False,error:TimeoutException,25.421,2025-08-12T14:15:42.560765+00:00,-37.7988560,144.9535250,error
-205 Collins Street Melbourne VIC,False,timeout_header,21.564,2025-08-12T14:16:44.299056+00:00,-37.8158150,144.9673780,dom
-267 Flinders Lane Melbourne VIC,False,timeout_header,21.662,2025-08-12T14:16:44.302592+00:00,-37.8170329,144.9655353,dom
-270 Flinders Street Melbourne VIC,False,timeout_header,22.036,2025-08-12T14:16:44.655793+00:00,-37.8177285,144.9653561,dom
-471 Little Bourke Street Melbourne VIC,False,timeout_header,22.354,2025-08-12T14:16:45.132218+00:00,-37.8145395,144.9590572,dom
-630 Little Collins Street Melbourne VIC,False,timeout_header,12.726,2025-08-12T14:16:57.029541+00:00,-37.8178023,144.9539372,dom
-287 King Street Melbourne VIC,False,timeout_header,12.723,2025-08-12T14:16:57.029767+00:00,-37.8137769,144.9542371,dom
-600 Little Bourke Street Melbourne VIC,False,timeout_header,12.727,2025-08-12T14:16:57.386248+00:00,-37.8154676,144.9546001,dom
-197-199 King Street Melbourne VIC,False,timeout_header,12.767,2025-08-12T14:16:57.903163+00:00,-37.8155762,144.9550620,dom
-195 Swanston Street Melbourne VIC,False,error:TimeoutException,9.350,2025-08-12T14:17:06.381588+00:00,-37.8130976,144.9649711,error
-270 Collins Street Melbourne VIC,False,error:TimeoutException,9.351,2025-08-12T14:17:06.381914+00:00,-37.8156850,144.9649280,error
-318 Little Bourke Street Melbourne VIC,False,error:TimeoutException,9.298,2025-08-12T14:17:06.685430+00:00,-37.8129338,144.9631368,error
-191 Collins Street Melbourne VIC,False,error:TimeoutException,9.293,2025-08-12T14:17:07.197807+00:00,-37.8154970,144.9675980,error
-222 Pelham Street Melbourne VIC,False,error:TimeoutException,9.353,2025-08-12T14:17:15.736597+00:00,-37.8017523,144.9583162,error
-250 Elizabeth Street Melbourne VIC,False,error:TimeoutException,9.354,2025-08-12T14:17:15.736929+00:00,-37.8124101,144.9625534,error
-101 Johnston Street Melbourne VIC,False,error:TimeoutException,9.319,2025-08-12T14:17:16.005511+00:00,-37.7994887,144.9882379,error
-202 Johnston Street Melbourne VIC,False,error:TimeoutException,9.331,2025-08-12T14:17:16.529627+00:00,-37.7988193,144.9816836,error
-45 Victoria Parade Melbourne VIC,False,error:TimeoutException,9.333,2025-08-12T14:17:25.071339+00:00,-37.8088450,144.9842990,error
-54 Elgin Street Melbourne VIC,False,error:TimeoutException,9.335,2025-08-12T14:17:25.073016+00:00,-37.7974730,144.9726910,error
-244 Nicholson Street Melbourne VIC,False,error:TimeoutException,9.274,2025-08-12T14:17:25.280198+00:00,-37.7977320,144.9753090,error
-344 Nicholson Street Melbourne VIC,False,error:TimeoutException,9.270,2025-08-12T14:17:25.800451+00:00,-37.7945160,144.9757090,error
-186 Lygon Street Melbourne VIC,False,error:TimeoutException,9.325,2025-08-12T14:17:34.398010+00:00,-37.8026580,144.9668330,error
-191 Grattan Street Melbourne VIC,False,error:TimeoutException,9.327,2025-08-12T14:17:34.398337+00:00,-37.8004316,144.9622254,error
-256-258 Moray Street Melbourne VIC,False,error:TimeoutException,9.286,2025-08-12T14:17:34.566440+00:00,-37.8347704,144.9639303,error
-272 Lygon Street Melbourne VIC,False,error:TimeoutException,9.279,2025-08-12T14:17:35.079979+00:00,-37.8004579,144.9672271,error
-197 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.316,2025-08-12T14:17:43.714241+00:00,-37.8014415,144.9776725,error
-380 Lygon Street Melbourne VIC,False,error:TimeoutException,9.316,2025-08-12T14:17:43.714836+00:00,-37.7978092,144.9680124,error
-186-188 Smith Street Melbourne VIC,False,error:TimeoutException,9.298,2025-08-12T14:17:43.865232+00:00,-37.8031574,144.9837077,error
-349 Drummond Street Melbourne VIC,False,error:TimeoutException,9.298,2025-08-12T14:17:44.378431+00:00,-37.7977034,144.9687111,error
-74-76 Johnston Street Melbourne VIC,False,error:TimeoutException,9.330,2025-08-12T14:17:53.046032+00:00,-37.7983300,144.9771100,error
-106 Victoria Street Melbourne VIC,False,error:TimeoutException,9.332,2025-08-12T14:17:53.047598+00:00,-37.7992449,144.9788532,error
-420 St Kilda Road Melbourne VIC,False,error:TimeoutException,9.325,2025-08-12T14:17:53.190417+00:00,-37.8361120,144.9748720,error
-290-301 Nicholson Street Melbourne VIC,False,error:TimeoutException,9.331,2025-08-12T14:17:53.709907+00:00,-37.7932452,144.9753768,error
-117 Moray Street Melbourne VIC,False,error:TimeoutException,9.328,2025-08-12T14:18:02.374509+00:00,-37.8299014,144.9621407,error
-421 Rathdowne Street Melbourne VIC,False,error:TimeoutException,9.327,2025-08-12T14:18:02.374685+00:00,-37.7965118,144.9704476,error
-235 Flemington Road Melbourne VIC,False,error:TimeoutException,9.301,2025-08-12T14:18:02.492167+00:00,-37.7941345,144.9473446,error
-118 Park Street Melbourne VIC,False,error:TimeoutException,9.298,2025-08-12T14:18:03.008423+00:00,-37.8335060,144.9669130,error
-62 Johnston Street Melbourne VIC,False,error:TimeoutException,9.328,2025-08-12T14:18:11.703466+00:00,-37.7982994,144.9768502,error
-418 Lygon Street Melbourne VIC,False,error:TimeoutException,9.330,2025-08-12T14:18:11.704382+00:00,-37.7969492,144.9678160,error
-146-154 Elgin Street Melbourne VIC,False,error:TimeoutException,9.278,2025-08-12T14:18:11.770709+00:00,-37.7971422,144.9696219,error
-129 Elgin Street Melbourne VIC,False,error:TimeoutException,9.271,2025-08-12T14:18:12.279603+00:00,-37.7976375,144.9702613,error
-276 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.307,2025-08-12T14:18:21.011689+00:00,-37.7989463,144.9785430,error
-295-297 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.308,2025-08-12T14:18:21.012013+00:00,-37.7984386,144.9782418,error
-225 Drummond Street Melbourne VIC,False,error:TimeoutException,9.274,2025-08-12T14:18:21.045126+00:00,-37.8004336,144.9681114,error
-205 Faraday Street Melbourne VIC,False,error:TimeoutException,9.277,2025-08-12T14:18:21.556661+00:00,-37.7990994,144.9676917,error
-211 Gertrude Street Melbourne VIC,False,error:TimeoutException,9.369,2025-08-12T14:18:30.414971+00:00,-37.8060713,144.9816516,error
-253 Flinders Lane Melbourne VIC,False,error:TimeoutException,9.403,2025-08-12T14:18:30.415540+00:00,-37.8169458,144.9659025,error
-329 Lygon Street Melbourne VIC,False,error:TimeoutException,9.404,2025-08-12T14:18:30.415816+00:00,-37.7976471,144.9672504,error
-127 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.374,2025-08-12T14:18:30.931059+00:00,-37.8037960,144.9773668,error
-206-210 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.373,2025-08-12T14:18:39.789432+00:00,-37.8012423,144.9781729,error
-244 Smith Street Melbourne VIC,False,error:TimeoutException,9.373,2025-08-12T14:18:39.789960+00:00,-37.8017259,144.9839273,error
-411 George Street Melbourne VIC,False,error:TimeoutException,9.375,2025-08-12T14:18:39.790938+00:00,-37.7972297,144.9819606,error
-345 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.376,2025-08-12T14:18:40.307617+00:00,-37.8353130,144.9619190,error
-128 Moor Street Melbourne VIC,False,error:TimeoutException,9.382,2025-08-12T14:18:49.173180+00:00,-37.8018889,144.9796910,error
-376 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.383,2025-08-12T14:18:49.173824+00:00,-37.7960561,144.9790327,error
-343 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.383,2025-08-12T14:18:49.173900+00:00,-37.8350109,144.9617178,error
-414 Nicholson Street Melbourne VIC,False,error:TimeoutException,9.374,2025-08-12T14:18:49.681862+00:00,-37.7901129,144.9765303,error
-144 Fitzroy Street Melbourne VIC,False,error:TimeoutException,9.365,2025-08-12T14:18:58.539962+00:00,-37.8043751,144.9764600,error
-380 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.366,2025-08-12T14:18:58.540459+00:00,-37.7958574,144.9790602,error
-1-9 Federation Wharf Melbourne VIC,False,error:TimeoutException,9.366,2025-08-12T14:18:58.540514+00:00,-37.8187059,144.9686342,error
-75 Flemington Road Melbourne VIC,False,error:TimeoutException,9.366,2025-08-12T14:18:59.048419+00:00,-37.7988560,144.9535250,error
-1 Smith Street Melbourne VIC,False,error:TimeoutException,9.369,2025-08-12T14:19:07.909671+00:00,-37.8085185,144.9824760,error
-220 Lygon Street Melbourne VIC,False,error:TimeoutException,9.369,2025-08-12T14:19:07.910074+00:00,-37.8019080,144.9669884,error
-59 Wellington Street Melbourne VIC,False,error:TimeoutException,9.369,2025-08-12T14:19:07.910415+00:00,-37.8072430,144.9857861,error
-54 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.382,2025-08-12T14:19:08.430447+00:00,-37.8059010,144.9773690,error
-88 Rathdowne Street Melbourne VIC,False,error:TimeoutException,9.372,2025-08-12T14:19:17.281792+00:00,-37.7979111,144.9706637,error
-102-104 Park Street Melbourne VIC,False,error:TimeoutException,9.371,2025-08-12T14:19:17.282773+00:00,-37.8333290,144.9673099,error
-375 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.372,2025-08-12T14:19:17.282884+00:00,-37.8361936,144.9622636,error
-135-137 Bank Street Melbourne VIC,False,error:TimeoutException,9.364,2025-08-12T14:19:17.794727+00:00,-37.8336617,144.9634651,error
-338-340 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.373,2025-08-12T14:19:26.656450+00:00,-37.8345872,144.9610816,error
-277 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.383,2025-08-12T14:19:26.666521+00:00,-37.8330662,144.9609809,error
-307 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.384,2025-08-12T14:19:26.666759+00:00,-37.8338816,144.9612036,error
-377 Gore Street Melbourne VIC,False,error:TimeoutException,9.375,2025-08-12T14:19:27.169572+00:00,-37.7977485,144.9829523,error
-115 Cecil Street Melbourne VIC,False,error:TimeoutException,9.388,2025-08-12T14:19:36.054939+00:00,-37.8316115,144.9573526,error
-407 St Kilda Road Melbourne VIC,False,error:TimeoutException,9.399,2025-08-12T14:19:36.055595+00:00,-37.8362350,144.9761450,error
-5 Riverside Quay Melbourne VIC,False,error:TimeoutException,9.389,2025-08-12T14:19:36.055897+00:00,-37.8214816,144.9644575,error
-114 Smith Street Melbourne VIC,False,error:TimeoutException,9.407,2025-08-12T14:19:36.576616+00:00,-37.8048510,144.9834420,error
-243-245 Gertrude Street Melbourne VIC,False,error:TimeoutException,9.351,2025-08-12T14:19:45.407234+00:00,-37.8062207,144.9825807,error
-15-17 Johnston Street Melbourne VIC,False,error:TimeoutException,9.352,2025-08-12T14:19:45.407647+00:00,-37.7979061,144.9756259,error
-281 Smith Street Melbourne VIC,False,error:TimeoutException,9.351,2025-08-12T14:19:45.408066+00:00,-37.8005067,144.9838413,error
-272 Smith Street Melbourne VIC,False,error:TimeoutException,9.338,2025-08-12T14:19:45.914719+00:00,-37.8011431,144.9840159,error
-328 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.328,2025-08-12T14:19:54.736809+00:00,-37.7973814,144.9787918,error
-298-300 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.329,2025-08-12T14:19:54.737036+00:00,-37.7982004,144.9786371,error
-215 Smith Street Melbourne VIC,False,error:TimeoutException,9.335,2025-08-12T14:19:54.742643+00:00,-37.8026801,144.9834581,error
-286 Smith Street Melbourne VIC,False,error:TimeoutException,9.323,2025-08-12T14:19:55.238002+00:00,-37.8005946,144.9841436,error
-33 Spencer Street Melbourne VIC,False,error:TimeoutException,9.320,2025-08-12T14:20:04.058439+00:00,-37.8200975,144.9542549,error
-222 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.321,2025-08-12T14:20:04.058803+00:00,-37.8009521,144.9782174,error
-198 Berkeley Street Melbourne VIC,False,error:TimeoutException,9.316,2025-08-12T14:20:04.059036+00:00,-37.8014283,144.9587685,error
-114 Berkeley Street Melbourne VIC,False,error:TimeoutException,9.306,2025-08-12T14:20:04.544731+00:00,-37.8028349,144.9590354,error
-185 Pelham Street Melbourne VIC,False,error:TimeoutException,9.341,2025-08-12T14:20:13.399979+00:00,-37.8022481,144.9601666,error
-127 Leicester Street Melbourne VIC,False,error:TimeoutException,9.341,2025-08-12T14:20:13.400491+00:00,-37.8029290,144.9602863,error
-167 Lygon Street Melbourne VIC,False,error:TimeoutException,9.341,2025-08-12T14:20:13.400913+00:00,-37.8017966,144.9665445,error
-144 Cecil Street Melbourne VIC,False,error:TimeoutException,9.306,2025-08-12T14:20:13.851080+00:00,-37.8328055,144.9574554,error
-315 Coventry Street Melbourne VIC,False,error:TimeoutException,9.372,2025-08-12T14:20:22.772364+00:00,-37.8329360,144.9570071,error
-192 Station Street Melbourne VIC,False,error:TimeoutException,9.372,2025-08-12T14:20:22.772877+00:00,-37.8328036,144.9456317,error
-68 Cecil Street Melbourne VIC,False,error:TimeoutException,9.372,2025-08-12T14:20:22.773268+00:00,-37.8301951,144.9562392,error
-1 Riverside Quay Melbourne VIC,False,error:TimeoutException,9.288,2025-08-12T14:20:23.139217+00:00,-37.8217545,144.9639586,error
-2 Lygon Street Melbourne VIC,False,error:TimeoutException,9.339,2025-08-12T14:20:32.111819+00:00,-37.8067341,144.9660401,error
-28 Blackwood Street Melbourne VIC,False,error:TimeoutException,9.340,2025-08-12T14:20:32.113593+00:00,-37.8012925,144.9552944,error
-7 Grattan Street Melbourne VIC,False,error:TimeoutException,9.340,2025-08-12T14:20:32.113751+00:00,-37.8010788,144.9692525,error
-22 Blackwood Street Melbourne VIC,False,error:TimeoutException,9.330,2025-08-12T14:20:32.469805+00:00,-37.8014438,144.9551034,error
-12 Blackwood Street Melbourne VIC,False,error:TimeoutException,9.370,2025-08-12T14:20:41.482150+00:00,-37.8016427,144.9548520,error
-120 Capel Street Melbourne VIC,False,error:TimeoutException,9.369,2025-08-12T14:20:41.483243+00:00,-37.8051944,144.9554928,error
-23 Blackwood Street Melbourne VIC,False,error:TimeoutException,9.369,2025-08-12T14:20:41.483650+00:00,-37.8009470,144.9553230,error
-10-20 Courtney Street Melbourne VIC,False,error:TimeoutException,9.312,2025-08-12T14:20:41.783069+00:00,-37.8025061,144.9550047,error
-51 Gipps Street Melbourne VIC,False,error:TimeoutException,9.350,2025-08-12T14:20:50.833881+00:00,-37.8047536,144.9886343,error
-121 Johnston Street Melbourne VIC,False,error:TimeoutException,9.350,2025-08-12T14:20:50.834174+00:00,-37.7982584,144.9789257,error
-1-11 Bedford Street Melbourne VIC,False,error:TimeoutException,9.351,2025-08-12T14:20:50.834360+00:00,-37.8024590,144.9553500,error
-7 Murphy Street Melbourne VIC,False,error:TimeoutException,9.343,2025-08-12T14:20:51.125941+00:00,-37.7976007,144.9514060,error
-5 Murphy Street Melbourne VIC,False,error:TimeoutException,9.374,2025-08-12T14:21:00.208844+00:00,-37.7976791,144.9512929,error
-1 Murphy Street Melbourne VIC,False,error:TimeoutException,9.374,2025-08-12T14:21:00.209160+00:00,-37.7977808,144.9511727,error
-2 Chapman Street Melbourne VIC,False,error:TimeoutException,9.375,2025-08-12T14:21:00.209358+00:00,-37.7979992,144.9509764,error
-2A Chapman Street Melbourne VIC,False,error:TimeoutException,9.298,2025-08-12T14:21:00.424011+00:00,-37.7979700,144.9509398,error
-117A Flemington Road Melbourne VIC,False,error:TimeoutException,9.383,2025-08-12T14:21:09.592280+00:00,-37.7971572,144.9515965,error
-8 Chapman Street Melbourne VIC,False,error:TimeoutException,9.383,2025-08-12T14:21:09.592770+00:00,-37.7978724,144.9507899,error
-117 Flemington Road Melbourne VIC,False,error:TimeoutException,9.383,2025-08-12T14:21:09.593159+00:00,-37.7972250,144.9516823,error
-118 Flemington Road Melbourne VIC,False,error:TimeoutException,9.309,2025-08-12T14:21:09.732930+00:00,-37.7970894,144.9515107,error
-"226,228 Errol Street Melbourne VIC",False,error:TimeoutException,9.377,2025-08-12T14:21:18.970212+00:00,-37.7977372,144.9508211,error
-123 Flemington Road Melbourne VIC,False,error:TimeoutException,9.377,2025-08-12T14:21:18.970709+00:00,-37.7968791,144.9512618,error
-"220,222,224 Errol Street Melbourne VIC",False,error:TimeoutException,9.379,2025-08-12T14:21:18.972662+00:00,-37.7978222,144.9508015,error
-"242,244 Errol Street Melbourne VIC",False,error:TimeoutException,9.281,2025-08-12T14:21:19.013833+00:00,-37.7973727,144.9509093,error
-8 Whiteman Street Melbourne VIC,False,error:TimeoutException,9.337,2025-08-12T14:21:28.351117+00:00,-37.8242677,144.9577541,error
-1 Chapman Street Melbourne VIC,False,error:TimeoutException,9.380,2025-08-12T14:21:28.351589+00:00,-37.7980035,144.9503136,error
-"250,252 Errol Street Melbourne VIC",False,error:TimeoutException,9.381,2025-08-12T14:21:28.351805+00:00,-37.7971829,144.9509496,error
-11 Chapman Street Melbourne VIC,False,error:TimeoutException,9.379,2025-08-12T14:21:28.351985+00:00,-37.7977690,144.9500242,error
-169 Domain Road Melbourne VIC,False,error:TimeoutException,9.462,2025-08-12T14:21:37.813668+00:00,-37.8341668,144.9816512,error
-123 Park Street Melbourne VIC,False,error:TimeoutException,9.462,2025-08-12T14:21:37.830503+00:00,-37.8342833,144.9823458,error
-159 Domain Road Melbourne VIC,False,error:TimeoutException,9.478,2025-08-12T14:21:37.830914+00:00,-37.8341478,144.9815358,error
-3 Toorak Road Melbourne VIC,False,error:TimeoutException,9.478,2025-08-12T14:21:37.831175+00:00,-37.8382088,144.9867145,error
-63 Nicholson Street Melbourne VIC,False,error:TimeoutException,9.456,2025-08-12T14:21:47.287025+00:00,-37.7995936,144.9744080,error
-9 Toorak Road Melbourne VIC,False,error:TimeoutException,9.473,2025-08-12T14:21:47.287556+00:00,-37.8382359,144.9868690,error
-69 Victoria Street Melbourne VIC,False,error:TimeoutException,9.456,2025-08-12T14:21:47.287779+00:00,-37.7988255,144.9771439,error
-260 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.456,2025-08-12T14:21:47.288324+00:00,-37.8324480,144.9601330,error
-209 Clarendon Street Melbourne VIC,False,error:TimeoutException,9.427,2025-08-12T14:21:56.715151+00:00,-37.8309126,144.9598544,error
-252 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.427,2025-08-12T14:21:56.715682+00:00,-37.7998890,144.9783730,error
-3 Hardwicke Street Melbourne VIC,False,error:TimeoutException,9.428,2025-08-12T14:21:56.715993+00:00,-37.7982096,144.9468714,error
-322 City Road Melbourne VIC,False,error:TimeoutException,9.427,2025-08-12T14:21:56.716295+00:00,-37.8276047,144.9578222,error
-120 Montague Street Melbourne VIC,False,error:TimeoutException,9.367,2025-08-12T14:22:06.082499+00:00,-37.8312032,144.9503971,error
-141 Johnston Street Melbourne VIC,False,error:TimeoutException,9.367,2025-08-12T14:22:06.082920+00:00,-37.7983052,144.9794393,error
-81 Flemington Road Melbourne VIC,False,error:TimeoutException,9.368,2025-08-12T14:22:06.084319+00:00,-37.7987231,144.9535288,error
-103 Flemington Road Melbourne VIC,False,error:TimeoutException,9.368,2025-08-12T14:22:06.085172+00:00,-37.7982145,144.9529108,error
-42 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.404,2025-08-12T14:22:15.490078+00:00,-37.7976382,144.9483950,error
-18 Mary Street Melbourne VIC,False,error:TimeoutException,9.407,2025-08-12T14:22:15.490795+00:00,-37.7992218,144.9521913,error
-34 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.407,2025-08-12T14:22:15.491093+00:00,-37.7977874,144.9485838,error
-40 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.407,2025-08-12T14:22:15.491955+00:00,-37.7977091,144.9484939,error
-58 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.393,2025-08-12T14:22:24.884751+00:00,-37.7972719,144.9479572,error
-54 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.460,2025-08-12T14:22:24.950929+00:00,-37.7973903,144.9481076,error
-62 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.459,2025-08-12T14:22:24.951646+00:00,-37.7971905,144.9478542,error
-52 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.465,2025-08-12T14:22:24.955189+00:00,-37.7974754,144.9482061,error
-84 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.315,2025-08-12T14:22:34.200358+00:00,-37.7968163,144.9473805,error
-86 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.336,2025-08-12T14:22:34.287511+00:00,-37.7967497,144.9473135,error
-96 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.338,2025-08-12T14:22:34.290415+00:00,-37.7965273,144.9470357,error
-"18,18A Molesworth Street Melbourne VIC",False,error:TimeoutException,9.334,2025-08-12T14:22:34.290616+00:00,-37.7981147,144.9490022,error
-20 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.327,2025-08-12T14:22:43.528215+00:00,-37.7980605,144.9489340,error
-117 Chapman Street Melbourne VIC,False,error:TimeoutException,9.362,2025-08-12T14:22:43.652734+00:00,-37.7953932,144.9470388,error
-13 Chapman Street Melbourne VIC,False,error:TimeoutException,9.364,2025-08-12T14:22:43.654974+00:00,-37.7975703,144.9497339,error
-32 Molesworth Street Melbourne VIC,False,error:TimeoutException,9.367,2025-08-12T14:22:43.655139+00:00,-37.7978651,144.9486913,error
-432 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.336,2025-08-12T14:22:52.864320+00:00,-37.7962725,144.9468718,error
-442 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.353,2025-08-12T14:22:53.008429+00:00,-37.7960407,144.9469094,error
-444-446 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.353,2025-08-12T14:22:53.008756+00:00,-37.7959621,144.9469207,error
-440 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.356,2025-08-12T14:22:53.009316+00:00,-37.7960986,144.9469012,error
-448 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.318,2025-08-12T14:23:02.183685+00:00,-37.7958979,144.9469376,error
-460 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.370,2025-08-12T14:23:02.379322+00:00,-37.7956344,144.9469844,error
-469 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.370,2025-08-12T14:23:02.379796+00:00,-37.7952356,144.9466296,error
-433 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.371,2025-08-12T14:23:02.380261+00:00,-37.7961662,144.9464739,error
-483 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.351,2025-08-12T14:23:11.536259+00:00,-37.7949133,144.9467104,error
-525 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.362,2025-08-12T14:23:11.741588+00:00,-37.7940542,144.9468498,error
-423 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.361,2025-08-12T14:23:11.742181+00:00,-37.7966412,144.9464638,error
-393 Abbotsford Street Melbourne VIC,False,error:TimeoutException,9.362,2025-08-12T14:23:11.742350+00:00,-37.7974211,144.9463007,error
-190 Park Street Melbourne VIC,False,error:TimeoutException,9.317,2025-08-12T14:23:20.854759+00:00,-37.8344510,144.9635970,error
-165 Johnston Street Melbourne VIC,False,error:TimeoutException,9.366,2025-08-12T14:23:21.108435+00:00,-37.7982430,144.9804990,error
-39 Melrose Street Melbourne VIC,False,error:TimeoutException,9.367,2025-08-12T14:23:21.108797+00:00,-37.7947432,144.9415880,error
-422 George Street Melbourne VIC,False,error:TimeoutException,9.366,2025-08-12T14:23:21.109141+00:00,-37.7969010,144.9823560,error
-247 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.378,2025-08-12T14:23:30.233321+00:00,-37.7998880,144.9780260,error
-120 Johnston Street Melbourne VIC,False,error:TimeoutException,9.348,2025-08-12T14:23:30.456722+00:00,-37.7984914,144.9789451,error
-231 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.348,2025-08-12T14:23:30.456977+00:00,-37.8004590,144.9779130,error
-144 Nicholson Street Melbourne VIC,False,error:TimeoutException,9.351,2025-08-12T14:23:30.460338+00:00,-37.8011460,144.9745920,error
-293 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.314,2025-08-12T14:23:39.547852+00:00,-37.7985491,144.9782874,error
-347 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.375,2025-08-12T14:23:39.832209+00:00,-37.7968516,144.9785347,error
-211 Flinders Street Melbourne VIC,False,error:TimeoutException,9.372,2025-08-12T14:23:39.832540+00:00,-37.8177412,144.9670520,error
-19 Park Street Melbourne VIC,False,error:TimeoutException,9.375,2025-08-12T14:23:39.832784+00:00,-37.8330238,144.9698810,error
-11-13 Toorak Road Melbourne VIC,False,error:TimeoutException,9.317,2025-08-12T14:23:48.866075+00:00,-37.8382457,144.9869545,error
-320 St Kilda Road Melbourne VIC,False,error:TimeoutException,9.376,2025-08-12T14:23:49.208613+00:00,-37.8294390,144.9708850,error
-23 Dorcas Street Melbourne VIC,False,error:TimeoutException,9.376,2025-08-12T14:23:49.208956+00:00,-37.8305470,144.9697950,error
-123a Park Street Melbourne VIC,False,error:TimeoutException,9.376,2025-08-12T14:23:49.209475+00:00,-37.8343744,144.9823405,error
-119 Park Street Melbourne VIC,False,error:TimeoutException,9.131,2025-08-12T14:23:57.997826+00:00,-37.8344339,144.9823261,error
-27 Dorcas Street Melbourne VIC,False,error:TimeoutException,9.300,2025-08-12T14:23:58.509186+00:00,-37.8305860,144.9696420,error
-196 Wells Street Melbourne VIC,False,error:TimeoutException,9.303,2025-08-12T14:23:58.512227+00:00,-37.8321480,144.9697520,error
-19 Dorcas Street Melbourne VIC,False,error:TimeoutException,9.303,2025-08-12T14:23:58.512399+00:00,-37.8305020,144.9699770,error
-192 Wells Street Melbourne VIC,False,error:TimeoutException,10.530,2025-08-12T14:24:09.040167+00:00,-37.8320000,144.9696990,error
-1 Bank Street Melbourne VIC,False,error:TimeoutException,10.530,2025-08-12T14:24:09.042642+00:00,-37.8318310,144.9696640,error
-194 Wells Street Melbourne VIC,False,error:TimeoutException,11.045,2025-08-12T14:24:09.044122+00:00,-37.8320720,144.9697310,error
-190 Wells Street Melbourne VIC,False,error:TimeoutException,10.532,2025-08-12T14:24:09.044450+00:00,-37.8319280,144.9696910,error
-341 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.510,2025-08-12T14:24:18.555499+00:00,-37.7970170,144.9785130,error
-345 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.515,2025-08-12T14:24:18.556381+00:00,-37.7969236,144.9785240,error
-339 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.511,2025-08-12T14:24:18.556672+00:00,-37.7970740,144.9785080,error
-343 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.513,2025-08-12T14:24:18.556995+00:00,-37.7969681,144.9785186,error
-8-16 Palmerston Crescent Melbourne VIC,False,error:TimeoutException,9.400,2025-08-12T14:24:27.957381+00:00,-37.8334559,144.9699547,error
-335 Brunswick Street Melbourne VIC,False,error:TimeoutException,9.401,2025-08-12T14:24:27.957865+00:00,-37.7972430,144.9784810,error
-12 Fogarty Street Melbourne VIC,False,error:TimeoutException,9.400,2025-08-12T14:24:27.958370+00:00,-37.7982223,144.9403078,error
-8 Fogarty Street Melbourne VIC,False,error:TimeoutException,9.401,2025-08-12T14:24:27.958484+00:00,-37.7980501,144.9405445,error
-267 Flinders Lane Melbourne VIC,False,timeout_header,28.995,2025-08-12T14:36:40.206504+00:00,-37.8170329,144.9655353,dom
-270 Flinders Street Melbourne VIC,False,timeout_header,30.226,2025-08-12T14:36:40.411299+00:00,-37.8177285,144.9653561,dom
-205 Collins Street Melbourne VIC,False,timeout_header,29.128,2025-08-12T14:36:40.411507+00:00,-37.8158150,144.9673780,dom
-471 Little Bourke Street Melbourne VIC,False,timeout_header,18.518,2025-08-12T14:36:58.726804+00:00,-37.8145395,144.9590572,dom
-630 Little Collins Street Melbourne VIC,False,timeout_header,18.494,2025-08-12T14:36:58.905609+00:00,-37.8178023,144.9539372,dom
-287 King Street Melbourne VIC,False,timeout_header,18.747,2025-08-12T14:36:59.158742+00:00,-37.8137769,144.9542371,dom
-197-199 King Street Melbourne VIC,False,error:TimeoutException,65.329,2025-08-12T14:38:04.235333+00:00,-37.8155762,144.9550620,error
-600 Little Bourke Street Melbourne VIC,False,error:TimeoutException,65.647,2025-08-12T14:38:04.375655+00:00,-37.8154676,144.9546001,error
-270 Collins Street Melbourne VIC,False,error:TimeoutException,65.584,2025-08-12T14:38:04.743485+00:00,-37.8156850,144.9649280,error
-191 Collins Street Melbourne VIC,False,error:TimeoutException,63.171,2025-08-12T14:39:07.915647+00:00,-37.8154970,144.9675980,error
-195 Swanston Street Melbourne VIC,False,error:TimeoutException,63.931,2025-08-12T14:39:08.168263+00:00,-37.8130976,144.9649711,error
-318 Little Bourke Street Melbourne VIC,False,error:TimeoutException,64.185,2025-08-12T14:39:08.561619+00:00,-37.8129338,144.9631368,error
-250 Elizabeth Street Melbourne VIC,False,error:ElementNotInteractableException,33.843,2025-08-12T14:39:41.761736+00:00,-37.8124101,144.9625534,error
-222 Pelham Street Melbourne VIC,False,error:ElementNotInteractableException,33.841,2025-08-12T14:39:42.010434+00:00,-37.8017523,144.9583162,error
-101 Johnston Street Melbourne VIC,False,error:ElementNotInteractableException,34.271,2025-08-12T14:39:42.833253+00:00,-37.7994887,144.9882379,error
-270 Flinders Street Melbourne VIC,False,timeout_header,21.156,2025-08-12T14:45:18.805310+00:00,-37.8177285,144.9653561,dom
-267 Flinders Lane Melbourne VIC,False,timeout_header,21.199,2025-08-12T14:45:18.868442+00:00,-37.8170329,144.9655353,dom
-471 Little Bourke Street Melbourne VIC,False,timeout_header,12.743,2025-08-12T14:45:31.607570+00:00,-37.8145395,144.9590572,dom
-205 Collins Street Melbourne VIC,False,timeout_header,12.805,2025-08-12T14:45:31.607775+00:00,-37.8158150,144.9673780,dom
-287 King Street Melbourne VIC,False,error:TimeoutException,9.299,2025-08-12T14:45:40.906486+00:00,-37.8137769,144.9542371,error
-630 Little Collins Street Melbourne VIC,False,error:TimeoutException,9.300,2025-08-12T14:45:40.906784+00:00,-37.8178023,144.9539372,error
-197-199 King Street Melbourne VIC,False,error:TimeoutException,9.363,2025-08-12T14:45:50.270018+00:00,-37.8155762,144.9550620,error
-600 Little Bourke Street Melbourne VIC,False,error:TimeoutException,9.363,2025-08-12T14:45:50.270192+00:00,-37.8154676,144.9546001,error
-270 Collins Street Melbourne VIC,False,error:TimeoutException,9.321,2025-08-12T14:45:59.591446+00:00,-37.8156850,144.9649280,error
-195 Swanston Street Melbourne VIC,False,error:TimeoutException,9.321,2025-08-12T14:45:59.591684+00:00,-37.8130976,144.9649711,error
-191 Collins Street Melbourne VIC,False,error:AttributeError,4.145,2025-08-12T14:46:03.737515+00:00,-37.8154970,144.9675980,error
-250 Elizabeth Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.738812+00:00,-37.8124101,144.9625534,error
-222 Pelham Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.739827+00:00,-37.8017523,144.9583162,error
-101 Johnston Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.740713+00:00,-37.7994887,144.9882379,error
-202 Johnston Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.742047+00:00,-37.7988193,144.9816836,error
-54 Elgin Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.742914+00:00,-37.7974730,144.9726910,error
-45 Victoria Parade Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.744291+00:00,-37.8088450,144.9842990,error
-244 Nicholson Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.745176+00:00,-37.7977320,144.9753090,error
-344 Nicholson Street Melbourne VIC,False,error:NoSuchWindowException,0.001,2025-08-12T14:46:03.746226+00:00,-37.7945160,144.9757090,error
-318 Little Bourke Street Melbourne VIC,False,error:AttributeError,7.243,2025-08-12T14:46:06.835294+00:00,-37.8129338,144.9631368,error
-267 Flinders Lane Melbourne VIC,False,timeout,22.168,2025-08-12T14:49:20.335751+00:00,-37.8170329,144.9655353,timeout
-205 Collins Street Melbourne VIC,False,timeout,22.110,2025-08-12T14:49:20.371428+00:00,-37.8158150,144.9673780,timeout
-270 Flinders Street Melbourne VIC,False,timeout,23.254,2025-08-12T14:49:20.394285+00:00,-37.8177285,144.9653561,timeout
-471 Little Bourke Street Melbourne VIC,False,timeout,22.850,2025-08-12T14:49:21.183935+00:00,-37.8145395,144.9590572,timeout
-287 King Street Melbourne VIC,False,timeout,20.484,2025-08-12T14:49:40.855355+00:00,-37.8137769,144.9542371,timeout
-630 Little Collins Street Melbourne VIC,False,timeout,20.591,2025-08-12T14:49:40.927977+00:00,-37.8178023,144.9539372,timeout
-600 Little Bourke Street Melbourne VIC,False,timeout,20.572,2025-08-12T14:49:40.966871+00:00,-37.8154676,144.9546001,timeout
-197-199 King Street Melbourne VIC,False,timeout,20.558,2025-08-12T14:49:41.742010+00:00,-37.8155762,144.9550620,timeout
-270 Collins Street Melbourne VIC,False,timeout,20.460,2025-08-12T14:50:01.315978+00:00,-37.8156850,144.9649280,timeout
-195 Swanston Street Melbourne VIC,False,timeout,20.497,2025-08-12T14:50:01.424863+00:00,-37.8130976,144.9649711,timeout
-318 Little Bourke Street Melbourne VIC,False,timeout,20.570,2025-08-12T14:50:01.537570+00:00,-37.8129338,144.9631368,timeout
-191 Collins Street Melbourne VIC,False,timeout,20.468,2025-08-12T14:50:02.210637+00:00,-37.8154970,144.9675980,timeout
-250 Elizabeth Street Melbourne VIC,False,timeout,20.524,2025-08-12T14:50:21.840778+00:00,-37.8124101,144.9625534,timeout
-222 Pelham Street Melbourne VIC,False,timeout,20.501,2025-08-12T14:50:21.926440+00:00,-37.8017523,144.9583162,timeout
-101 Johnston Street Melbourne VIC,False,timeout,20.550,2025-08-12T14:50:22.088012+00:00,-37.7994887,144.9882379,timeout
-202 Johnston Street Melbourne VIC,False,timeout,20.590,2025-08-12T14:50:22.801023+00:00,-37.7988193,144.9816836,timeout
-54 Elgin Street Melbourne VIC,False,timeout,20.419,2025-08-12T14:50:42.260487+00:00,-37.7974730,144.9726910,timeout
-45 Victoria Parade Melbourne VIC,False,timeout,20.451,2025-08-12T14:50:42.378277+00:00,-37.8088450,144.9842990,timeout
-244 Nicholson Street Melbourne VIC,False,timeout,20.497,2025-08-12T14:50:42.585551+00:00,-37.7977320,144.9753090,timeout
-344 Nicholson Street Melbourne VIC,False,timeout,20.470,2025-08-12T14:50:43.271708+00:00,-37.7945160,144.9757090,timeout
-191 Grattan Street Melbourne VIC,False,timeout,20.456,2025-08-12T14:51:02.719018+00:00,-37.8004316,144.9622254,timeout
-186 Lygon Street Melbourne VIC,False,timeout,20.497,2025-08-12T14:51:02.875424+00:00,-37.8026580,144.9668330,timeout
-256-258 Moray Street Melbourne VIC,False,timeout,20.495,2025-08-12T14:51:03.081157+00:00,-37.8347704,144.9639303,timeout
-272 Lygon Street Melbourne VIC,False,timeout,20.441,2025-08-12T14:51:03.712584+00:00,-37.8004579,144.9672271,timeout
-197 Brunswick Street Melbourne VIC,False,timeout,20.483,2025-08-12T14:51:23.203415+00:00,-37.8014415,144.9776725,timeout
-380 Lygon Street Melbourne VIC,False,timeout,20.431,2025-08-12T14:51:23.306285+00:00,-37.7978092,144.9680124,timeout
-186-188 Smith Street Melbourne VIC,False,timeout,20.489,2025-08-12T14:51:23.570511+00:00,-37.8031574,144.9837077,timeout
-349 Drummond Street Melbourne VIC,False,timeout,20.497,2025-08-12T14:51:24.209493+00:00,-37.7977034,144.9687111,timeout
-106 Victoria Street Melbourne VIC,False,timeout,20.504,2025-08-12T14:51:43.708307+00:00,-37.7992449,144.9788532,timeout
-74-76 Johnston Street Melbourne VIC,False,timeout,20.528,2025-08-12T14:51:43.834831+00:00,-37.7983300,144.9771100,timeout
-420 St Kilda Road Melbourne VIC,False,timeout,20.501,2025-08-12T14:51:44.071787+00:00,-37.8361120,144.9748720,timeout
-290-301 Nicholson Street Melbourne VIC,False,timeout,20.605,2025-08-12T14:51:44.814764+00:00,-37.7932452,144.9753768,timeout
-117 Moray Street Melbourne VIC,False,timeout,20.431,2025-08-12T14:52:04.140279+00:00,-37.8299014,144.9621407,timeout
-421 Rathdowne Street Melbourne VIC,False,timeout,20.456,2025-08-12T14:52:04.291479+00:00,-37.7965118,144.9704476,timeout
-235 Flemington Road Melbourne VIC,False,timeout,20.501,2025-08-12T14:52:04.573112+00:00,-37.7941345,144.9473446,timeout
-118 Park Street Melbourne VIC,False,timeout,20.413,2025-08-12T14:52:05.228508+00:00,-37.8335060,144.9669130,timeout
-418 Lygon Street Melbourne VIC,False,timeout,20.424,2025-08-12T14:52:24.565534+00:00,-37.7969492,144.9678160,timeout
-62 Johnston Street Melbourne VIC,False,timeout,20.452,2025-08-12T14:52:24.743504+00:00,-37.7982994,144.9768502,timeout
-146-154 Elgin Street Melbourne VIC,False,timeout,20.507,2025-08-12T14:52:25.080731+00:00,-37.7971422,144.9696219,timeout
-129 Elgin Street Melbourne VIC,False,timeout,20.452,2025-08-12T14:52:25.680867+00:00,-37.7976375,144.9702613,timeout
-295-297 Brunswick Street Melbourne VIC,False,timeout,20.642,2025-08-12T14:52:45.208496+00:00,-37.7984386,144.9782418,timeout
-276 Brunswick Street Melbourne VIC,False,timeout,20.601,2025-08-12T14:52:45.344445+00:00,-37.7989463,144.9785430,timeout
-225 Drummond Street Melbourne VIC,False,timeout,20.496,2025-08-12T14:52:45.577358+00:00,-37.8004336,144.9681114,timeout
-205 Faraday Street Melbourne VIC,False,timeout,20.449,2025-08-12T14:52:46.129825+00:00,-37.7990994,144.9676917,timeout
-329 Lygon Street Melbourne VIC,False,timeout,20.414,2025-08-12T14:53:05.623472+00:00,-37.7976471,144.9672504,timeout
-253 Flinders Lane Melbourne VIC,False,timeout,20.425,2025-08-12T14:53:05.770319+00:00,-37.8169458,144.9659025,timeout
-211 Gertrude Street Melbourne VIC,False,timeout,20.482,2025-08-12T14:53:06.059609+00:00,-37.8060713,144.9816516,timeout
-127 Brunswick Street Melbourne VIC,False,timeout,20.464,2025-08-12T14:53:06.594082+00:00,-37.8037960,144.9773668,timeout
-411 George Street Melbourne VIC,False,timeout,20.443,2025-08-12T14:53:26.067092+00:00,-37.7972297,144.9819606,timeout
-206-210 Brunswick Street Melbourne VIC,False,timeout,20.537,2025-08-12T14:53:26.307220+00:00,-37.8012423,144.9781729,timeout
-244 Smith Street Melbourne VIC,False,timeout,20.452,2025-08-12T14:53:26.511516+00:00,-37.8017259,144.9839273,timeout
-345 Clarendon Street Melbourne VIC,False,timeout,20.474,2025-08-12T14:53:27.068495+00:00,-37.8353130,144.9619190,timeout
-343 Clarendon Street Melbourne VIC,False,timeout,20.468,2025-08-12T14:53:46.536373+00:00,-37.8350109,144.9617178,timeout
-376 Brunswick Street Melbourne VIC,False,timeout,20.475,2025-08-12T14:53:46.782251+00:00,-37.7960561,144.9790327,timeout
-128 Moor Street Melbourne VIC,False,timeout,20.418,2025-08-12T14:53:46.929476+00:00,-37.8018889,144.9796910,timeout
-414 Nicholson Street Melbourne VIC,False,timeout,20.482,2025-08-12T14:53:47.550313+00:00,-37.7901129,144.9765303,timeout
-144 Fitzroy Street Melbourne VIC,False,timeout,20.447,2025-08-12T14:54:06.983720+00:00,-37.8043751,144.9764600,timeout
-380 Brunswick Street Melbourne VIC,False,timeout,20.456,2025-08-12T14:54:07.238103+00:00,-37.7958574,144.9790602,timeout
-1-9 Federation Wharf Melbourne VIC,False,timeout,20.491,2025-08-12T14:54:07.421197+00:00,-37.8187059,144.9686342,timeout
-75 Flemington Road Melbourne VIC,False,timeout,20.449,2025-08-12T14:54:07.999901+00:00,-37.7988560,144.9535250,timeout
-220 Lygon Street Melbourne VIC,False,timeout,20.466,2025-08-12T14:54:27.450619+00:00,-37.8019080,144.9669884,timeout
-59 Wellington Street Melbourne VIC,False,timeout,20.514,2025-08-12T14:54:27.752421+00:00,-37.8072430,144.9857861,timeout
-1 Smith Street Melbourne VIC,False,timeout,20.442,2025-08-12T14:54:27.863427+00:00,-37.8085185,144.9824760,timeout
-54 Brunswick Street Melbourne VIC,False,timeout,20.451,2025-08-12T14:54:28.451223+00:00,-37.8059010,144.9773690,timeout
-88 Rathdowne Street Melbourne VIC,False,timeout,20.549,2025-08-12T14:54:48.011170+00:00,-37.7979111,144.9706637,timeout
-375 Clarendon Street Melbourne VIC,False,timeout,20.529,2025-08-12T14:54:48.281986+00:00,-37.8361936,144.9622636,timeout
-102-104 Park Street Melbourne VIC,False,timeout,20.535,2025-08-12T14:54:48.399484+00:00,-37.8333290,144.9673099,timeout
-135-137 Bank Street Melbourne VIC,False,timeout,20.484,2025-08-12T14:54:48.935952+00:00,-37.8336617,144.9634651,timeout
-307 Clarendon Street Melbourne VIC,False,timeout,20.483,2025-08-12T14:55:08.494312+00:00,-37.8338816,144.9612036,timeout
-338-340 Clarendon Street Melbourne VIC,False,timeout,20.543,2025-08-12T14:55:08.825038+00:00,-37.8345872,144.9610816,timeout
-277 Clarendon Street Melbourne VIC,False,timeout,20.517,2025-08-12T14:55:08.917209+00:00,-37.8330662,144.9609809,timeout
-377 Gore Street Melbourne VIC,False,timeout,20.405,2025-08-12T14:55:09.341568+00:00,-37.7977485,144.9829523,timeout
-407 St Kilda Road Melbourne VIC,False,timeout,20.436,2025-08-12T14:55:28.930994+00:00,-37.8362350,144.9761450,timeout
-5 Riverside Quay Melbourne VIC,False,timeout,20.409,2025-08-12T14:55:29.233874+00:00,-37.8214816,144.9644575,timeout
-115 Cecil Street Melbourne VIC,False,timeout,20.437,2025-08-12T14:55:29.354510+00:00,-37.8316115,144.9573526,timeout
-114 Smith Street Melbourne VIC,False,timeout,20.457,2025-08-12T14:55:29.798986+00:00,-37.8048510,144.9834420,timeout
-15-17 Johnston Street Melbourne VIC,False,timeout,20.483,2025-08-12T14:55:49.415988+00:00,-37.7979061,144.9756259,timeout
-243-245 Gertrude Street Melbourne VIC,False,timeout,20.512,2025-08-12T14:55:49.746190+00:00,-37.8062207,144.9825807,timeout
-281 Smith Street Melbourne VIC,False,timeout,20.445,2025-08-12T14:55:49.799788+00:00,-37.8005067,144.9838413,timeout
-272 Smith Street Melbourne VIC,False,timeout,20.415,2025-08-12T14:55:50.214729+00:00,-37.8011431,144.9840159,timeout
-215 Smith Street Melbourne VIC,False,timeout,20.419,2025-08-12T14:56:09.835710+00:00,-37.8026801,144.9834581,timeout
-298-300 Brunswick Street Melbourne VIC,False,timeout,20.503,2025-08-12T14:56:10.249561+00:00,-37.7982004,144.9786371,timeout
-328 Brunswick Street Melbourne VIC,False,timeout,20.497,2025-08-12T14:56:10.297323+00:00,-37.7973814,144.9787918,timeout
-286 Smith Street Melbourne VIC,False,timeout,20.417,2025-08-12T14:56:10.632154+00:00,-37.8005946,144.9841436,timeout
-222 Brunswick Street Melbourne VIC,False,timeout,20.508,2025-08-12T14:56:30.344487+00:00,-37.8009521,144.9782174,timeout
-33 Spencer Street Melbourne VIC,False,timeout,20.433,2025-08-12T14:56:30.682798+00:00,-37.8200975,144.9542549,timeout
-198 Berkeley Street Melbourne VIC,False,timeout,20.482,2025-08-12T14:56:30.780073+00:00,-37.8014283,144.9587685,timeout
-114 Berkeley Street Melbourne VIC,False,timeout,20.457,2025-08-12T14:56:31.089625+00:00,-37.8028349,144.9590354,timeout
-127 Leicester Street Melbourne VIC,False,timeout,20.492,2025-08-12T14:56:50.836428+00:00,-37.8029290,144.9602863,timeout
-185 Pelham Street Melbourne VIC,False,timeout,20.431,2025-08-12T14:56:51.113709+00:00,-37.8022481,144.9601666,timeout
-167 Lygon Street Melbourne VIC,False,timeout,20.443,2025-08-12T14:56:51.223155+00:00,-37.8017966,144.9665445,timeout
-144 Cecil Street Melbourne VIC,False,timeout,20.422,2025-08-12T14:56:51.511911+00:00,-37.8328055,144.9574554,timeout
-315 Coventry Street Melbourne VIC,False,timeout,20.472,2025-08-12T14:57:11.309061+00:00,-37.8329360,144.9570071,timeout
-192 Station Street Melbourne VIC,False,timeout,20.466,2025-08-12T14:57:11.579491+00:00,-37.8328036,144.9456317,timeout
-68 Cecil Street Melbourne VIC,False,timeout,20.444,2025-08-12T14:57:11.672163+00:00,-37.8301951,144.9562392,timeout
-1 Riverside Quay Melbourne VIC,False,timeout,20.466,2025-08-12T14:57:11.978561+00:00,-37.8217545,144.9639586,timeout
-2 Lygon Street Melbourne VIC,False,timeout,20.385,2025-08-12T14:57:31.694074+00:00,-37.8067341,144.9660401,timeout
-7 Grattan Street Melbourne VIC,False,timeout,20.450,2025-08-12T14:57:32.029621+00:00,-37.8010788,144.9692525,timeout
-28 Blackwood Street Melbourne VIC,False,timeout,20.499,2025-08-12T14:57:32.171791+00:00,-37.8012925,144.9552944,timeout
-22 Blackwood Street Melbourne VIC,False,timeout,20.478,2025-08-12T14:57:32.456694+00:00,-37.8014438,144.9551034,timeout
-12 Blackwood Street Melbourne VIC,False,timeout,20.464,2025-08-12T14:57:52.158041+00:00,-37.8016427,144.9548520,timeout
-23 Blackwood Street Melbourne VIC,False,timeout,20.533,2025-08-12T14:57:52.563308+00:00,-37.8009470,144.9553230,timeout
-120 Capel Street Melbourne VIC,False,timeout,20.453,2025-08-12T14:57:52.625249+00:00,-37.8051944,144.9554928,timeout
-10-20 Courtney Street Melbourne VIC,False,timeout,20.501,2025-08-12T14:57:52.958061+00:00,-37.8025061,144.9550047,timeout
-1-11 Bedford Street Melbourne VIC,False,timeout,20.468,2025-08-12T14:58:12.627122+00:00,-37.8024590,144.9553500,timeout
-51 Gipps Street Melbourne VIC,False,timeout,20.432,2025-08-12T14:58:12.995392+00:00,-37.8047536,144.9886343,timeout
-121 Johnston Street Melbourne VIC,False,timeout,20.488,2025-08-12T14:58:13.113875+00:00,-37.7982584,144.9789257,timeout
-7 Murphy Street Melbourne VIC,False,timeout,20.413,2025-08-12T14:58:13.371102+00:00,-37.7976007,144.9514060,timeout
-5 Murphy Street Melbourne VIC,False,timeout,20.419,2025-08-12T14:58:33.046495+00:00,-37.7976791,144.9512929,timeout
-1 Murphy Street Melbourne VIC,False,timeout,20.432,2025-08-12T14:58:33.427769+00:00,-37.7977808,144.9511727,timeout
-2 Chapman Street Melbourne VIC,False,timeout,20.477,2025-08-12T14:58:33.590786+00:00,-37.7979992,144.9509764,timeout
-2A Chapman Street Melbourne VIC,False,timeout,20.452,2025-08-12T14:58:33.823135+00:00,-37.7979700,144.9509398,timeout
-8 Chapman Street Melbourne VIC,False,timeout,20.414,2025-08-12T14:58:53.460960+00:00,-37.7978724,144.9507899,timeout
-117 Flemington Road Melbourne VIC,False,timeout,20.471,2025-08-12T14:58:53.899042+00:00,-37.7972250,144.9516823,timeout
-117A Flemington Road Melbourne VIC,False,timeout,20.523,2025-08-12T14:58:54.113699+00:00,-37.7971572,144.9515965,timeout
-118 Flemington Road Melbourne VIC,False,timeout,20.440,2025-08-12T14:58:54.263104+00:00,-37.7970894,144.9515107,timeout
-123 Flemington Road Melbourne VIC,False,timeout,20.459,2025-08-12T14:59:13.920284+00:00,-37.7968791,144.9512618,timeout
-"220,222,224 Errol Street Melbourne VIC",False,timeout,20.514,2025-08-12T14:59:14.413945+00:00,-37.7978222,144.9508015,timeout
-"226,228 Errol Street Melbourne VIC",False,timeout,20.514,2025-08-12T14:59:14.627844+00:00,-37.7977372,144.9508211,timeout
-"242,244 Errol Street Melbourne VIC",False,timeout,20.495,2025-08-12T14:59:14.758464+00:00,-37.7973727,144.9509093,timeout
-"250,252 Errol Street Melbourne VIC",False,timeout,20.458,2025-08-12T14:59:34.378618+00:00,-37.7971829,144.9509496,timeout
-1 Chapman Street Melbourne VIC,False,timeout,20.413,2025-08-12T14:59:34.827707+00:00,-37.7980035,144.9503136,timeout
-11 Chapman Street Melbourne VIC,False,timeout,20.445,2025-08-12T14:59:35.072709+00:00,-37.7977690,144.9500242,timeout
-8 Whiteman Street Melbourne VIC,False,timeout,20.436,2025-08-12T14:59:35.195062+00:00,-37.8242677,144.9577541,timeout
-159 Domain Road Melbourne VIC,False,timeout,20.398,2025-08-12T14:59:54.776897+00:00,-37.8341478,144.9815358,timeout
-169 Domain Road Melbourne VIC,False,timeout,20.426,2025-08-12T14:59:55.254169+00:00,-37.8341668,144.9816512,timeout
-123 Park Street Melbourne VIC,False,timeout,20.441,2025-08-12T14:59:55.514410+00:00,-37.8342833,144.9823458,timeout
-3 Toorak Road Melbourne VIC,False,timeout,20.385,2025-08-12T14:59:55.580170+00:00,-37.8382088,144.9867145,timeout
-9 Toorak Road Melbourne VIC,False,timeout,20.391,2025-08-12T15:00:15.168094+00:00,-37.8382359,144.9868690,timeout
-69 Victoria Street Melbourne VIC,False,timeout,20.449,2025-08-12T15:00:15.703932+00:00,-37.7988255,144.9771439,timeout
-63 Nicholson Street Melbourne VIC,False,timeout,20.494,2025-08-12T15:00:16.008606+00:00,-37.7995936,144.9744080,timeout
-260 Clarendon Street Melbourne VIC,False,timeout,20.467,2025-08-12T15:00:16.047595+00:00,-37.8324480,144.9601330,timeout
-209 Clarendon Street Melbourne VIC,False,timeout,20.462,2025-08-12T15:00:35.630170+00:00,-37.8309126,144.9598544,timeout
-3 Hardwicke Street Melbourne VIC,False,timeout,20.448,2025-08-12T15:00:36.151757+00:00,-37.7982096,144.9468714,timeout
-322 City Road Melbourne VIC,False,timeout,20.455,2025-08-12T15:00:36.502624+00:00,-37.8276047,144.9578222,timeout
-252 Brunswick Street Melbourne VIC,False,timeout,20.568,2025-08-12T15:00:36.576820+00:00,-37.7998890,144.9783730,timeout
-120 Montague Street Melbourne VIC,False,timeout,20.443,2025-08-12T15:00:56.073728+00:00,-37.8312032,144.9503971,timeout
-141 Johnston Street Melbourne VIC,False,timeout,20.435,2025-08-12T15:00:56.587385+00:00,-37.7983052,144.9794393,timeout
-81 Flemington Road Melbourne VIC,False,timeout,20.454,2025-08-12T15:00:56.957017+00:00,-37.7987231,144.9535288,timeout
-103 Flemington Road Melbourne VIC,False,timeout,20.477,2025-08-12T15:00:57.054242+00:00,-37.7982145,144.9529108,timeout
-18 Mary Street Melbourne VIC,False,timeout,20.394,2025-08-12T15:01:16.468525+00:00,-37.7992218,144.9521913,timeout
-34 Molesworth Street Melbourne VIC,False,timeout,20.467,2025-08-12T15:01:17.054517+00:00,-37.7977874,144.9485838,timeout
-40 Molesworth Street Melbourne VIC,False,timeout,20.481,2025-08-12T15:01:17.438708+00:00,-37.7977091,144.9484939,timeout
-42 Molesworth Street Melbourne VIC,False,timeout,20.498,2025-08-12T15:01:17.552935+00:00,-37.7976382,144.9483950,timeout
-52 Molesworth Street Melbourne VIC,False,timeout,20.482,2025-08-12T15:01:36.950993+00:00,-37.7974754,144.9482061,timeout
-54 Molesworth Street Melbourne VIC,False,timeout,20.462,2025-08-12T15:01:37.516819+00:00,-37.7973903,144.9481076,timeout
-58 Molesworth Street Melbourne VIC,False,timeout,20.473,2025-08-12T15:01:37.912111+00:00,-37.7972719,144.9479572,timeout
-62 Molesworth Street Melbourne VIC,False,timeout,20.494,2025-08-12T15:01:38.047253+00:00,-37.7971905,144.9478542,timeout
-84 Molesworth Street Melbourne VIC,False,timeout,20.482,2025-08-12T15:01:57.433215+00:00,-37.7968163,144.9473805,timeout
-86 Molesworth Street Melbourne VIC,False,timeout,20.464,2025-08-12T15:01:57.981010+00:00,-37.7967497,144.9473135,timeout
-96 Molesworth Street Melbourne VIC,False,timeout,20.464,2025-08-12T15:01:58.376823+00:00,-37.7965273,144.9470357,timeout
-"18,18A Molesworth Street Melbourne VIC",False,timeout,20.523,2025-08-12T15:01:58.570847+00:00,-37.7981147,144.9490022,timeout
-20 Molesworth Street Melbourne VIC,False,timeout,20.483,2025-08-12T15:02:17.916225+00:00,-37.7980605,144.9489340,timeout
-32 Molesworth Street Melbourne VIC,False,timeout,20.474,2025-08-12T15:02:18.455131+00:00,-37.7978651,144.9486913,timeout
-13 Chapman Street Melbourne VIC,False,timeout,20.441,2025-08-12T15:02:18.817874+00:00,-37.7975703,144.9497339,timeout
-117 Chapman Street Melbourne VIC,False,timeout,20.496,2025-08-12T15:02:19.067035+00:00,-37.7953932,144.9470388,timeout
-432 Abbotsford Street Melbourne VIC,False,timeout,20.498,2025-08-12T15:02:38.415909+00:00,-37.7962725,144.9468718,timeout
-440 Abbotsford Street Melbourne VIC,False,timeout,20.472,2025-08-12T15:02:38.927759+00:00,-37.7960986,144.9469012,timeout
-442 Abbotsford Street Melbourne VIC,False,timeout,20.480,2025-08-12T15:02:39.298626+00:00,-37.7960407,144.9469094,timeout
-444-446 Abbotsford Street Melbourne VIC,False,timeout,20.581,2025-08-12T15:02:39.648425+00:00,-37.7959621,144.9469207,timeout
-448 Abbotsford Street Melbourne VIC,False,timeout,20.484,2025-08-12T15:02:58.901105+00:00,-37.7958979,144.9469376,timeout
-460 Abbotsford Street Melbourne VIC,False,timeout,20.488,2025-08-12T15:02:59.416275+00:00,-37.7956344,144.9469844,timeout
-433 Abbotsford Street Melbourne VIC,False,timeout,20.499,2025-08-12T15:02:59.797499+00:00,-37.7961662,144.9464739,timeout
-469 Abbotsford Street Melbourne VIC,False,timeout,20.599,2025-08-12T15:03:00.247354+00:00,-37.7952356,144.9466296,timeout
-483 Abbotsford Street Melbourne VIC,False,timeout,20.476,2025-08-12T15:03:19.378242+00:00,-37.7949133,144.9467104,timeout
-525 Abbotsford Street Melbourne VIC,False,timeout,20.480,2025-08-12T15:03:19.896659+00:00,-37.7940542,144.9468498,timeout
-393 Abbotsford Street Melbourne VIC,False,timeout,20.488,2025-08-12T15:03:20.285305+00:00,-37.7974211,144.9463007,timeout
-423 Abbotsford Street Melbourne VIC,False,timeout,20.501,2025-08-12T15:03:20.748606+00:00,-37.7966412,144.9464638,timeout
-190 Park Street Melbourne VIC,False,timeout,20.404,2025-08-12T15:03:39.784542+00:00,-37.8344510,144.9635970,timeout
-39 Melrose Street Melbourne VIC,False,timeout,20.422,2025-08-12T15:03:40.319232+00:00,-37.7947432,144.9415880,timeout
-422 George Street Melbourne VIC,False,timeout,20.429,2025-08-12T15:03:40.715056+00:00,-37.7969010,144.9823560,timeout
-165 Johnston Street Melbourne VIC,False,timeout,20.474,2025-08-12T15:03:41.222756+00:00,-37.7982430,144.9804990,timeout
-247 Brunswick Street Melbourne VIC,False,timeout,20.464,2025-08-12T15:04:00.248736+00:00,-37.7998880,144.9780260,timeout
-120 Johnston Street Melbourne VIC,False,timeout,20.461,2025-08-12T15:04:00.780237+00:00,-37.7984914,144.9789451,timeout
-231 Brunswick Street Melbourne VIC,False,timeout,20.481,2025-08-12T15:04:01.196360+00:00,-37.8004590,144.9779130,timeout
-144 Nicholson Street Melbourne VIC,False,timeout,20.490,2025-08-12T15:04:01.712554+00:00,-37.8011460,144.9745920,timeout
-293 Brunswick Street Melbourne VIC,False,timeout,20.465,2025-08-12T15:04:20.715774+00:00,-37.7985491,144.9782874,timeout
-347 Brunswick Street Melbourne VIC,False,timeout,20.479,2025-08-12T15:04:21.259682+00:00,-37.7968516,144.9785347,timeout
-19 Park Street Melbourne VIC,False,timeout,20.394,2025-08-12T15:04:21.590237+00:00,-37.8330238,144.9698810,timeout
-211 Flinders Street Melbourne VIC,False,timeout,20.481,2025-08-12T15:04:22.194260+00:00,-37.8177412,144.9670520,timeout
-11-13 Toorak Road Melbourne VIC,False,timeout,20.427,2025-08-12T15:04:41.144262+00:00,-37.8382457,144.9869545,timeout
-123a Park Street Melbourne VIC,False,timeout,20.421,2025-08-12T15:04:41.681302+00:00,-37.8343744,144.9823405,timeout
-320 St Kilda Road Melbourne VIC,False,timeout,20.422,2025-08-12T15:04:42.012573+00:00,-37.8294390,144.9708850,timeout
-23 Dorcas Street Melbourne VIC,False,timeout,20.464,2025-08-12T15:04:42.658470+00:00,-37.8305470,144.9697950,timeout
-119 Park Street Melbourne VIC,False,timeout,20.427,2025-08-12T15:05:01.572225+00:00,-37.8344339,144.9823261,timeout
-19 Dorcas Street Melbourne VIC,False,timeout,20.413,2025-08-12T15:05:02.095447+00:00,-37.8305020,144.9699770,timeout
-27 Dorcas Street Melbourne VIC,False,timeout,20.417,2025-08-12T15:05:02.429767+00:00,-37.8305860,144.9696420,timeout
-196 Wells Street Melbourne VIC,False,timeout,20.455,2025-08-12T15:05:03.114275+00:00,-37.8321480,144.9697520,timeout
-194 Wells Street Melbourne VIC,False,timeout,20.405,2025-08-12T15:05:21.978720+00:00,-37.8320720,144.9697310,timeout
-192 Wells Street Melbourne VIC,False,timeout,20.430,2025-08-12T15:05:22.525709+00:00,-37.8320000,144.9696990,timeout
-190 Wells Street Melbourne VIC,False,timeout,20.430,2025-08-12T15:05:22.859636+00:00,-37.8319280,144.9696910,timeout
-1 Bank Street Melbourne VIC,False,timeout,20.399,2025-08-12T15:05:23.513827+00:00,-37.8318310,144.9696640,timeout
-345 Brunswick Street Melbourne VIC,False,timeout,20.475,2025-08-12T15:05:42.454759+00:00,-37.7969236,144.9785240,timeout
-343 Brunswick Street Melbourne VIC,False,timeout,20.484,2025-08-12T15:05:43.010445+00:00,-37.7969681,144.9785186,timeout
-341 Brunswick Street Melbourne VIC,False,timeout,20.477,2025-08-12T15:05:43.337454+00:00,-37.7970170,144.9785130,timeout
-339 Brunswick Street Melbourne VIC,False,timeout,20.498,2025-08-12T15:05:44.012181+00:00,-37.7970740,144.9785080,timeout
-335 Brunswick Street Melbourne VIC,False,timeout,20.565,2025-08-12T15:06:03.020996+00:00,-37.7972430,144.9784810,timeout
-8 Fogarty Street Melbourne VIC,False,timeout,20.432,2025-08-12T15:06:03.443987+00:00,-37.7980501,144.9405445,timeout
-12 Fogarty Street Melbourne VIC,False,timeout,20.436,2025-08-12T15:06:03.773381+00:00,-37.7982223,144.9403078,timeout
-8-16 Palmerston Crescent Melbourne VIC,False,timeout,20.532,2025-08-12T15:06:04.544239+00:00,-37.8334559,144.9699547,timeout
-267 Flinders Lane Melbourne VIC,False,timeout_header,21.094,2025-08-12T15:09:33.037453+00:00,-37.8170329,144.9655353,dom
-270 Flinders Street Melbourne VIC,False,timeout_header,21.152,2025-08-12T15:09:33.038063+00:00,-37.8177285,144.9653561,dom
-205 Collins Street Melbourne VIC,False,timeout_header,21.037,2025-08-12T15:09:33.066610+00:00,-37.8158150,144.9673780,dom
-630 Little Collins Street Melbourne VIC,False,timeout_header,12.813,2025-08-12T15:09:45.853028+00:00,-37.8178023,144.9539372,dom
-471 Little Bourke Street Melbourne VIC,False,timeout_header,12.814,2025-08-12T15:09:45.853209+00:00,-37.8145395,144.9590572,dom
-287 King Street Melbourne VIC,False,timeout_header,12.900,2025-08-12T15:09:45.966791+00:00,-37.8137769,144.9542371,dom
-600 Little Bourke Street Melbourne VIC,False,error:TimeoutException,9.277,2025-08-12T15:09:55.131206+00:00,-37.8154676,144.9546001,error
-197-199 King Street Melbourne VIC,False,error:TimeoutException,9.282,2025-08-12T15:09:55.136330+00:00,-37.8155762,144.9550620,error
-270 Collins Street Melbourne VIC,False,error:TimeoutException,9.258,2025-08-12T15:09:55.225039+00:00,-37.8156850,144.9649280,error
-195 Swanston Street Melbourne VIC,False,error:TimeoutException,9.313,2025-08-12T15:10:04.445611+00:00,-37.8130976,144.9649711,error
 2 Lygon Street VIC 3053,False,,39.229,2025-08-13T05:33:37.001364+00:00,-37.8067341,144.9660401,bulk
 1 Riverside Quay VIC,False,,40.46,2025-08-13T05:33:38.231839+00:00,-37.8217545,144.9639586,bulk
 8 Whiteman Street Southbank VIC 3006,True,Great! Your address is eligible for 5G Home Internet.,12.448,2025-08-13T05:33:49.451281+00:00,-37.8242677,144.9577541,bulk
@@ -2848,3 +2047,33 @@ Shop 10 Campbell Arcade Melbourne VIC,False,error:ElementNotInteractableExceptio
 228 Flinders Lane VIC,False,,38.102,2025-08-13T05:39:34.747122+00:00,-37.8164799,144.9663777,bulk
 67 Bourke Street VIC,False,,37.654,2025-08-13T05:39:55.308224+00:00,-37.815983,144.966553,bulk
 67 Swanston Street Melbourne VIC 3000,False,,39.047,2025-08-13T05:40:13.794846+00:00,-37.816049,144.96658,bulk
+99 Swanston Street VIC,False,,39.572,2025-08-14T02:10:30.024217+00:00,-37.8153414,144.9662745,bulk
+101 Swanston Street Melbourne VIC 3000,False,,39.571,2025-08-14T02:10:30.024162+00:00,-37.8152969,144.9662503,bulk
+236 Bourke Street VIC 3000,False,,40.992,2025-08-14T02:23:09.349728+00:00,-37.812787,144.966429,bulk
+20 Spring Street East Melbourne VIC 3002,False,,41.002,2025-08-14T02:23:09.359868+00:00,-37.8131993,144.9743546,bulk
+235 Little Bourke Street Melbourne VIC 3000,False,,38.649,2025-08-14T02:23:48.001586+00:00,-37.812467,144.965706,bulk
+209 Little Bourke Street Melbourne VIC 3000,False,,38.646,2025-08-14T02:23:48.007200+00:00,-37.8123759,144.9661687,bulk
+200 Bourke Street Melbourne VIC 3000,False,,39.372,2025-08-14T02:24:27.380080+00:00,-37.8123424,144.9672583,bulk
+203 Little Bourke Street VIC 3000,False,,39.379,2025-08-14T02:24:27.382470+00:00,-37.812254,144.9666308,bulk
+188 Swanston Street Melbourne VIC 3000,True,Great! Your address is eligible for 5G Home Internet.,13.359,2025-08-14T02:24:40.744658+00:00,-37.812939,144.965668,bulk
+206 Bourke Street VIC,False,,38.57,2025-08-14T02:25:05.952091+00:00,-37.812932,144.966919,bulk
+140 Swanston Street Melbourne VIC 3000,False,,39.298,2025-08-14T02:25:20.043557+00:00,-37.8142862,144.9663757,bulk
+235 Bourke Street Melbourne VIC 3000,False,,39.043,2025-08-14T02:25:44.996679+00:00,-37.8134,144.966637,bulk
+235-251 Bourke Street Melbourne VIC 3000,False,,37.797,2025-08-14T02:25:57.842111+00:00,-37.813439,144.966508,bulk
+118 Bourke Street Melbourne VIC 3000,True,Great! Your address is eligible for 5G Home Internet.,13.332,2025-08-14T02:26:11.175454+00:00,-37.813583,144.965992,bulk
+247 Bourke Street Melbourne VIC 3000,False,,37.835,2025-08-14T02:26:22.833471+00:00,-37.8135554,144.9661874,bulk
+46 Whiteman Street Southbank VIC 3006,False,,38.582,2025-08-14T02:26:49.758865+00:00,-37.825805,144.957017,bulk
+28 Clarendon Street Southbank VIC 3006,False,,38.232,2025-08-14T02:27:01.066775+00:00,-37.824646,144.956405,bulk
+16 Spencer Street Melbourne VIC 3000,False,,38.729,2025-08-14T02:27:28.489152+00:00,-37.8205345,144.9551367,bulk
+620 Collins Street Melbourne VIC 3000,False,,38.163,2025-08-14T02:27:39.230632+00:00,-37.8187121,144.9542231,bulk
+44 Nicholson Street VIC,False,,13.527,2025-08-14T02:27:52.758177+00:00,-37.80604,144.973766,bulk
+39 Gisborne Street VIC,False,,38.356,2025-08-14T02:28:06.846136+00:00,-37.8085973,144.9754517,bulk
+235 Exhibition Street Melbourne VIC 3000,False,,38.017,2025-08-14T02:28:30.777022+00:00,-37.810424,144.969574,bulk
+250 Elizabeth Street VIC 3000,False,,38.24,2025-08-14T02:28:45.087335+00:00,-37.810374,144.9693613,bulk
+94-96 Bourke Street Melbourne VIC 3000,False,,38.977,2025-08-14T02:29:09.754991+00:00,-37.811917,144.970217,bulk
+226 Flinders Lane VIC,False,,38.784,2025-08-14T02:29:23.871841+00:00,-37.8164449,144.9665047,bulk
+17 Market Lane VIC,False,,12.955,2025-08-14T02:29:36.827838+00:00,-37.811867,144.969217,bulk
+172 William Street VIC,False,,39.055,2025-08-14T02:29:48.810878+00:00,-37.8149908,144.9582123,bulk
+18 Market Lane Melbourne VIC 3000,True,Great! Your address is eligible for 5G Home Internet.,12.89,2025-08-14T02:29:49.719733+00:00,-37.8117442,144.9694036,bulk
+182 Collins Street VIC,False,,35.872,2025-08-14T02:30:24.684274+00:00,-37.8146876,144.9674253,bulk
+215 Little Collins Street VIC 3000,False,,34.973,2025-08-14T02:30:24.694177+00:00,-37.8144174,144.9668304,bulk
