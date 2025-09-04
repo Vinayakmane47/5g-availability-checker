@@ -136,3 +136,112 @@
 2025-08-13 16:40:35,571 - INFO -   9. 270 Collins Street VIC
 2025-08-13 16:40:35,571 - INFO -   10. 195 Swanston Street Melbourne VIC 3000
 2025-08-13 16:40:35,571 - INFO -   ... and 90 more
+2025-08-14 12:09:46,582 - INFO - ====== WebDriver manager ======
+2025-08-14 12:09:46,856 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-14 12:09:47,124 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-14 12:09:47,284 - INFO - Driver [/Users/vinayak/.wdm/drivers/chromedriver/mac64/139.0.7258.68/chromedriver-mac-arm64/chromedriver] found in cache
+2025-08-14 12:09:47,293 - INFO - Loaded 2048 existing addresses from results.csv
+2025-08-14 12:09:47,293 - INFO - Loaded 0 failed addresses for retry
+2025-08-14 12:09:47,293 - INFO - Starting bulk 5G availability check for Melbourne CBD
+2025-08-14 12:09:47,294 - INFO - Using 2 workers, limit: 300 addresses, batch size: 30
+2025-08-14 12:09:47,294 - INFO - Fetching addresses from Melbourne CBD...
+2025-08-14 12:09:50,452 - INFO - Found 300 addresses in Melbourne CBD
+2025-08-14 12:09:50,452 - INFO - Checking 250 addresses (including 0 retries)
+2025-08-14 12:09:50,452 - INFO - Processing batch 1/9 (30 addresses)
+2025-08-14 12:09:50,452 - INFO - Checking: 99 Swanston Street VIC
+2025-08-14 12:09:50,452 - INFO - Checking: 101 Swanston Street Melbourne VIC 3000
+2025-08-14 12:10:30,025 - INFO - + 99 Swanston Street VIC: Not available (39.572s)
+2025-08-14 12:10:30,025 - INFO - + 101 Swanston Street Melbourne VIC 3000: Not available (39.571s)
+2025-08-14 12:10:30,025 - INFO - Checking: 20 Spring Street East Melbourne VIC 3002
+2025-08-14 12:10:30,026 - INFO - Checking: 236 Bourke Street VIC 3000
+2025-08-14 12:22:23,551 - INFO - ====== WebDriver manager ======
+2025-08-14 12:22:23,816 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-14 12:22:24,219 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-14 12:22:24,390 - INFO - Driver [/Users/vinayak/.wdm/drivers/chromedriver/mac64/139.0.7258.68/chromedriver-mac-arm64/chromedriver] found in cache
+2025-08-14 12:22:24,399 - INFO - Loaded 2050 existing addresses from results.csv
+2025-08-14 12:22:24,399 - INFO - Loaded 0 failed addresses for retry
+2025-08-14 12:22:24,399 - INFO - Starting bulk 5G availability check for Melbourne CBD
+2025-08-14 12:22:24,399 - INFO - Using 2 workers, limit: 300 addresses, batch size: 30
+2025-08-14 12:22:24,399 - INFO - Fetching addresses from Melbourne CBD...
+2025-08-14 12:22:28,357 - INFO - Found 300 addresses in Melbourne CBD
+2025-08-14 12:22:28,357 - INFO - Checking 248 addresses (including 0 retries)
+2025-08-14 12:22:28,357 - INFO - Processing batch 1/9 (30 addresses)
+2025-08-14 12:22:28,357 - INFO - Checking: 20 Spring Street East Melbourne VIC 3002
+2025-08-14 12:22:28,357 - INFO - Checking: 236 Bourke Street VIC 3000
+2025-08-14 12:23:09,351 - INFO - + 236 Bourke Street VIC 3000: Not available (40.992s)
+2025-08-14 12:23:09,352 - INFO - Checking: 235 Little Bourke Street Melbourne VIC 3000
+2025-08-14 12:23:09,360 - INFO - + 20 Spring Street East Melbourne VIC 3002: Not available (41.002s)
+2025-08-14 12:23:09,360 - INFO - Checking: 209 Little Bourke Street Melbourne VIC 3000
+2025-08-14 12:23:48,002 - INFO - + 235 Little Bourke Street Melbourne VIC 3000: Not available (38.649s)
+2025-08-14 12:23:48,002 - INFO - Checking: 203 Little Bourke Street VIC 3000
+2025-08-14 12:23:48,007 - INFO - + 209 Little Bourke Street Melbourne VIC 3000: Not available (38.646s)
+2025-08-14 12:23:48,007 - INFO - Checking: 200 Bourke Street Melbourne VIC 3000
+2025-08-14 12:24:27,381 - INFO - + 200 Bourke Street Melbourne VIC 3000: Not available (39.372s)
+2025-08-14 12:24:27,382 - INFO - Checking: 206 Bourke Street VIC
+2025-08-14 12:24:27,382 - INFO - + 203 Little Bourke Street VIC 3000: Not available (39.379s)
+2025-08-14 12:24:27,385 - INFO - Checking: 188 Swanston Street Melbourne VIC 3000
+2025-08-14 12:24:40,745 - INFO - + 188 Swanston Street Melbourne VIC 3000: Available (13.359s)
+2025-08-14 12:24:40,745 - INFO - Checking: 140 Swanston Street Melbourne VIC 3000
+2025-08-14 12:25:05,952 - INFO - + 206 Bourke Street VIC: Not available (38.57s)
+2025-08-14 12:25:05,953 - INFO - Checking: 235 Bourke Street Melbourne VIC 3000
+2025-08-14 12:25:20,044 - INFO - + 140 Swanston Street Melbourne VIC 3000: Not available (39.298s)
+2025-08-14 12:25:20,044 - INFO - Checking: 235-251 Bourke Street Melbourne VIC 3000
+2025-08-14 12:25:44,997 - INFO - + 235 Bourke Street Melbourne VIC 3000: Not available (39.043s)
+2025-08-14 12:25:44,997 - INFO - Checking: 247 Bourke Street Melbourne VIC 3000
+2025-08-14 12:25:57,842 - INFO - + 235-251 Bourke Street Melbourne VIC 3000: Not available (37.797s)
+2025-08-14 12:25:57,842 - INFO - Checking: 118 Bourke Street Melbourne VIC 3000
+2025-08-14 12:26:11,176 - INFO - + 118 Bourke Street Melbourne VIC 3000: Available (13.332s)
+2025-08-14 12:26:11,176 - INFO - Checking: 46 Whiteman Street Southbank VIC 3006
+2025-08-14 12:26:22,833 - INFO - + 247 Bourke Street Melbourne VIC 3000: Not available (37.835s)
+2025-08-14 12:26:22,834 - INFO - Checking: 28 Clarendon Street Southbank VIC 3006
+2025-08-14 12:26:49,759 - INFO - + 46 Whiteman Street Southbank VIC 3006: Not available (38.582s)
+2025-08-14 12:26:49,760 - INFO - Checking: 16 Spencer Street Melbourne VIC 3000
+2025-08-14 12:27:01,067 - INFO - + 28 Clarendon Street Southbank VIC 3006: Not available (38.232s)
+2025-08-14 12:27:01,067 - INFO - Checking: 620 Collins Street Melbourne VIC 3000
+2025-08-14 12:27:28,489 - INFO - + 16 Spencer Street Melbourne VIC 3000: Not available (38.729s)
+2025-08-14 12:27:28,490 - INFO - Checking: 39 Gisborne Street VIC
+2025-08-14 12:27:39,230 - INFO - + 620 Collins Street Melbourne VIC 3000: Not available (38.163s)
+2025-08-14 12:27:39,231 - INFO - Checking: 44 Nicholson Street VIC
+2025-08-14 12:27:52,759 - INFO - + 44 Nicholson Street VIC: Not available (13.527s)
+2025-08-14 12:27:52,759 - INFO - Checking: 235 Exhibition Street Melbourne VIC 3000
+2025-08-14 12:28:06,846 - INFO - + 39 Gisborne Street VIC: Not available (38.356s)
+2025-08-14 12:28:06,846 - INFO - Checking: 250 Elizabeth Street VIC 3000
+2025-08-14 12:28:30,777 - INFO - + 235 Exhibition Street Melbourne VIC 3000: Not available (38.017s)
+2025-08-14 12:28:30,777 - INFO - Checking: 94-96 Bourke Street Melbourne VIC 3000
+2025-08-14 12:28:45,087 - INFO - + 250 Elizabeth Street VIC 3000: Not available (38.24s)
+2025-08-14 12:28:45,088 - INFO - Checking: 226 Flinders Lane VIC
+2025-08-14 12:29:09,755 - INFO - + 94-96 Bourke Street Melbourne VIC 3000: Not available (38.977s)
+2025-08-14 12:29:09,756 - INFO - Checking: 172 William Street VIC
+2025-08-14 12:29:23,872 - INFO - + 226 Flinders Lane VIC: Not available (38.784s)
+2025-08-14 12:29:23,872 - INFO - Checking: 17 Market Lane VIC
+2025-08-14 12:29:36,828 - INFO - + 17 Market Lane VIC: Not available (12.955s)
+2025-08-14 12:29:36,829 - INFO - Checking: 18 Market Lane Melbourne VIC 3000
+2025-08-14 12:29:48,811 - INFO - + 172 William Street VIC: Not available (39.055s)
+2025-08-14 12:29:48,811 - INFO - Checking: 182 Collins Street VIC
+2025-08-14 12:29:49,720 - INFO - + 18 Market Lane Melbourne VIC 3000: Available (12.89s)
+2025-08-14 12:29:49,720 - INFO - Checking: 215 Little Collins Street VIC 3000
+2025-08-14 12:30:24,647 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103117790>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e/element
+2025-08-14 12:30:24,647 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103115bd0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7/element
+2025-08-14 12:30:24,652 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103125b50>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e/element
+2025-08-14 12:30:24,661 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103124d50>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7/element
+2025-08-14 12:30:24,668 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103124d90>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e/element
+2025-08-14 12:30:24,669 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10312ba10>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7/element
+2025-08-14 12:30:24,673 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103136690>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e/element
+2025-08-14 12:30:24,674 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103135710>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7/element
+2025-08-14 12:30:24,674 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1031354d0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e/element
+2025-08-14 12:30:24,675 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103135650>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7/element
+2025-08-14 12:30:24,675 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103140410>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e/element
+2025-08-14 12:30:24,676 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103140990>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7/element
+2025-08-14 12:30:24,680 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103114dd0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e
+2025-08-14 12:30:24,682 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103114910>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e
+2025-08-14 12:30:24,682 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103117690>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7
+2025-08-14 12:30:24,683 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103112290>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/979a81a5f72cfc7f601932c95860150e
+2025-08-14 12:30:24,684 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103113e90>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7
+2025-08-14 12:30:24,686 - INFO - + 182 Collins Street VIC: Not available (35.872s)
+2025-08-14 12:30:24,686 - INFO - Checking: 42-44 Russell Street Melbourne VIC 3000
+2025-08-14 12:30:24,692 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103112890>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/837439cd4a049fc19e20f84bcadaeac7
+2025-08-14 12:30:24,695 - INFO - + 215 Little Collins Street VIC 3000: Not available (34.973s)
+2025-08-14 12:30:24,695 - INFO - Checking: 162 Collins Street VIC 3000
+2025-08-14 12:30:24,794 - INFO - Bulk check interrupted by user
+2025-08-14 12:30:24,795 - ERROR - Unexpected error checking 42-44 Russell Street Melbourne VIC 3000: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-08-14 12:30:24,795 - ERROR - Unexpected error checking 162 Collins Street VIC 3000: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
