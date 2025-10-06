@@ -74,49 +74,47 @@ except ImportError as e:
             try:
                 import csv
                 import os
-                print(f"Attempting to load {filename}")
-                print(f"Current working directory: {os.getcwd()}")
-                print(f"File exists: {os.path.exists(filename)}")
-                if os.path.exists(filename):
-                    with open(filename, 'r', encoding='utf-8') as f:
+                
+                # Try multiple possible paths
+                possible_paths = [filename, f"./{filename}", f"/vercel/path0/{filename}"]
+                file_found = None
+                
+                for path in possible_paths:
+                    if os.path.exists(path):
+                        file_found = path
+                        break
+                
+                if file_found:
+                    with open(file_found, 'r', encoding='utf-8') as f:
                         reader = csv.DictReader(f)
                         for row in reader:
                             if row.get('address'):
                                 self.addr.append(row['address'])
                                 self.lat.append(float(row.get('lat', 0)))
                                 self.lon.append(float(row.get('lon', 0)))
-                                # Handle different column names in your CSV
+                                
+                                # Handle eligible column
                                 eligible_val = row.get('eligible', 'false')
                                 if isinstance(eligible_val, str):
                                     self.elig.append(eligible_val.lower() == 'true')
                                 else:
                                     self.elig.append(bool(eligible_val))
                                 
-                                # Use status_text if available, otherwise status
+                                # Handle status column
                                 status_val = row.get('status_text') or row.get('status', 'unknown')
                                 self.status.append(status_val)
                                 
-                                # Use checked_at column
+                                # Handle checked_at column
                                 self.checked_at.append(row.get('checked_at', ''))
+                    
                     self.ready = True
-                    print(f"Loaded {len(self.addr)} addresses from {filename}")
+                    print(f"✅ Loaded {len(self.addr)} addresses from {file_found}")
                 else:
-                    print(f"File {filename} not found - using sample dataset for demo")
-                    # Add some sample data for demonstration
-                    self.addr = [
-                        "123 Collins Street, Melbourne VIC 3000",
-                        "456 Bourke Street, Melbourne VIC 3000", 
-                        "789 Swanston Street, Melbourne VIC 3000"
-                    ]
-                    self.lat = [-37.8136, -37.8146, -37.8156]
-                    self.lon = [144.9631, 144.9641, 144.9651]
-                    self.elig = [True, False, True]
-                    self.status = ["eligible", "not_eligible", "eligible"]
-                    self.checked_at = ["2024-01-15", "2024-01-15", "2024-01-15"]
-                    self.ready = True
-                    print(f"Using {len(self.addr)} sample addresses for demo")
+                    print(f"❌ CSV file not found in any location")
+                    self.ready = False
+                    
             except Exception as e:
-                print(f"Error loading {filename}: {e}")
+                print(f"❌ Error loading CSV: {e}")
                 self.ready = False
         
         def save(self, filename):
@@ -352,119 +350,132 @@ async def app_status():
     }
 
 
-@app.get("/test-database")
-async def test_database():
-    """Test endpoint to verify database loading."""
-    import os
+@app.get("/api/database-status")
+async def database_status():
+    """Simple database status check."""
+    return {
+        "database_ready": results_index.ready,
+        "address_count": len(results_index.addr) if results_index.ready else 0,
+        "eligible_count": sum(results_index.elig) if results_index.ready else 0,
+        "sample_addresses": results_index.addr[:3] if results_index.ready and len(results_index.addr) > 0 else []
+    }
+
+
+@app.get("/api/check-live")
+async def check_live_api(address: str, n: int = 5):
+    """Simplified REST API for live checking (serverless compatible)."""
     try:
-        # Test different possible file paths
-        possible_paths = ["results.csv", "./results.csv", "/vercel/path0/results.csv"]
-        file_found = None
+        # In serverless mode, return mock data
+        if IS_CLOUD or not SELENIUM_AVAILABLE:
+            return {
+                "success": True,
+                "message": "Serverless mode - returning mock data",
+                "address": address,
+                "results": [
+                    {
+                        "address": f"{address} (mock)",
+                        "available": False,
+                        "status": "serverless_mode",
+                        "lat": -37.8136,
+                        "lon": 144.9631
+                    }
+                ]
+            }
         
-        for path in possible_paths:
-            if os.path.exists(path):
-                file_found = path
-                break
-        
-        # Try to reload the database with the found path
-        if file_found:
-            results_index.load(file_found)
+        # For local development, try to use real checking
+        checker = get_checker()
+        if checker:
+            addr, available, status = checker.check(address)
+            return {
+                "success": True,
+                "address": addr,
+                "available": available,
+                "status": status
+            }
         else:
-            results_index.load("results.csv")  # Try default path anyway
-        
+            return {
+                "success": False,
+                "error": "Checker not available"
+            }
+    except Exception as e:
         return {
-            "success": True,
-            "message": "Database loaded successfully",
-            "file_found": file_found,
-            "default_path": DEFAULT_RESULTS_CSV,
-            "file_exists": os.path.exists(DEFAULT_RESULTS_CSV),
-            "file_size": os.path.getsize(DEFAULT_RESULTS_CSV) if os.path.exists(DEFAULT_RESULTS_CSV) else 0,
-            "database_ready": results_index.ready,
-            "address_count": len(results_index.addr),
-            "eligible_count": sum(results_index.elig) if results_index.ready else 0,
-            "sample_addresses": results_index.addr[:5] if results_index.ready and len(results_index.addr) > 0 else [],
-            "working_directory": os.getcwd(),
-            "all_files": os.listdir('.') if os.path.exists('.') else []
+            "success": False,
+            "error": str(e)
         }
+
+@app.get("/api/check-from-database")
+async def check_from_database_api(address: str = None, n: int = 10):
+    """Simplified REST API for checking from database."""
+    try:
+        # Force reload database
+        results_index.load("results.csv")
+        
+        if not results_index.ready or len(results_index.addr) == 0:
+            return {
+                "success": False,
+                "error": "No data available in database",
+                "database_ready": results_index.ready,
+                "address_count": len(results_index.addr)
+            }
+        
+        # If specific address provided, find nearby
+        if address:
+            try:
+                lat, lon, _ = geocode_address(address)
+                nearby = results_index.nearest_eligible(lat, lon, n)
+                results = []
+                for addr in nearby:
+                    # Find the index of this address
+                    try:
+                        idx = results_index.addr.index(addr)
+                        results.append({
+                            "address": addr,
+                            "available": results_index.elig[idx],
+                            "status": results_index.status[idx],
+                            "lat": results_index.lat[idx],
+                            "lon": results_index.lon[idx],
+                            "checked_at": results_index.checked_at[idx]
+                        })
+                    except ValueError:
+                        continue
+                
+                return {
+                    "success": True,
+                    "query_address": address,
+                    "results": results
+                }
+            except Exception as e:
+                return {
+                    "success": False,
+                    "error": f"Geocoding failed: {e}"
+                }
+        else:
+            # Return sample of all data
+            results = []
+            for i in range(min(n, len(results_index.addr))):
+                results.append({
+                    "address": results_index.addr[i],
+                    "available": results_index.elig[i],
+                    "status": results_index.status[i],
+                    "lat": results_index.lat[i],
+                    "lon": results_index.lon[i],
+                    "checked_at": results_index.checked_at[i]
+                })
+            
+            return {
+                "success": True,
+                "total_addresses": len(results_index.addr),
+                "eligible_count": sum(results_index.elig),
+                "results": results
+            }
+            
     except Exception as e:
         return {
             "success": False,
             "error": str(e),
-            "error_type": type(e).__name__,
-            "default_path": DEFAULT_RESULTS_CSV,
-            "file_exists": os.path.exists(DEFAULT_RESULTS_CSV) if 'DEFAULT_RESULTS_CSV' in globals() else "DEFAULT_RESULTS_CSV not defined",
-            "working_directory": os.getcwd(),
-            "files_in_dir": os.listdir('.') if os.path.exists('.') else [],
-            "possible_paths": {
-                "results.csv": os.path.exists("results.csv"),
-                "./results.csv": os.path.exists("./results.csv"),
-                "/vercel/path0/results.csv": os.path.exists("/vercel/path0/results.csv")
-            }
+            "database_ready": results_index.ready,
+            "address_count": len(results_index.addr) if results_index.ready else 0
         }
-
-
-@app.get("/force-load-database")
-async def force_load_database():
-    """Force reload the database with detailed debugging."""
-    import os
-    import csv
-    
-    debug_info = {
-        "working_directory": os.getcwd(),
-        "files_in_directory": os.listdir('.') if os.path.exists('.') else [],
-        "csv_files": [f for f in os.listdir('.') if f.endswith('.csv')] if os.path.exists('.') else [],
-        "attempts": []
-    }
-    
-    # Try different approaches to load the CSV
-    approaches = [
-        ("results.csv", "Direct filename"),
-        ("./results.csv", "Relative path"),
-        ("/vercel/path0/results.csv", "Vercel absolute path"),
-    ]
-    
-    for filepath, description in approaches:
-        try:
-            debug_info["attempts"].append({
-                "path": filepath,
-                "description": description,
-                "exists": os.path.exists(filepath),
-                "size": os.path.getsize(filepath) if os.path.exists(filepath) else 0
-            })
-            
-            if os.path.exists(filepath):
-                # Try to read the file
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    reader = csv.DictReader(f)
-                    rows = list(reader)
-                    debug_info["attempts"][-1]["rows_found"] = len(rows)
-                    debug_info["attempts"][-1]["columns"] = list(rows[0].keys()) if rows else []
-                    
-                    # Try to load into results_index
-                    results_index.load(filepath)
-                    debug_info["attempts"][-1]["load_success"] = True
-                    debug_info["attempts"][-1]["database_ready"] = results_index.ready
-                    debug_info["attempts"][-1]["address_count"] = len(results_index.addr)
-                    
-                    if results_index.ready:
-                        return {
-                            "success": True,
-                            "message": f"Successfully loaded database from {filepath}",
-                            "file_path": filepath,
-                            "address_count": len(results_index.addr),
-                            "eligible_count": sum(results_index.elig),
-                            "debug_info": debug_info
-                        }
-                        
-        except Exception as e:
-            debug_info["attempts"][-1]["error"] = str(e)
-            debug_info["attempts"][-1]["load_success"] = False
-    
-    return {
-        "success": False,
-        "message": "Failed to load database from any path",
-        "debug_info": debug_info
-    }
 
 
 @app.post("/cleanup")
