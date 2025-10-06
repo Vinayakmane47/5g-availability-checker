@@ -82,8 +82,18 @@ except ImportError as e:
                                 self.addr.append(row['address'])
                                 self.lat.append(float(row.get('lat', 0)))
                                 self.lon.append(float(row.get('lon', 0)))
-                                self.elig.append(row.get('eligible', 'false').lower() == 'true')
-                                self.status.append(row.get('status', 'unknown'))
+                                # Handle different column names in your CSV
+                                eligible_val = row.get('eligible', 'false')
+                                if isinstance(eligible_val, str):
+                                    self.elig.append(eligible_val.lower() == 'true')
+                                else:
+                                    self.elig.append(bool(eligible_val))
+                                
+                                # Use status_text if available, otherwise status
+                                status_val = row.get('status_text') or row.get('status', 'unknown')
+                                self.status.append(status_val)
+                                
+                                # Use checked_at column
                                 self.checked_at.append(row.get('checked_at', ''))
                     self.ready = True
                     print(f"Loaded {len(self.addr)} addresses from {filename}")
