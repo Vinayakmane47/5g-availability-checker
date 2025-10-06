@@ -352,6 +352,34 @@ async def app_status():
     }
 
 
+@app.get("/test-database")
+async def test_database():
+    """Test endpoint to verify database loading."""
+    import os
+    try:
+        # Try to reload the database
+        results_index.load(DEFAULT_RESULTS_CSV)
+        
+        return {
+            "success": True,
+            "message": "Database loaded successfully",
+            "file_exists": os.path.exists(DEFAULT_RESULTS_CSV),
+            "file_size": os.path.getsize(DEFAULT_RESULTS_CSV) if os.path.exists(DEFAULT_RESULTS_CSV) else 0,
+            "database_ready": results_index.ready,
+            "address_count": len(results_index.addr),
+            "eligible_count": sum(results_index.elig) if results_index.ready else 0,
+            "sample_addresses": results_index.addr[:5] if results_index.ready and len(results_index.addr) > 0 else []
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e),
+            "file_exists": os.path.exists(DEFAULT_RESULTS_CSV),
+            "working_directory": os.getcwd(),
+            "files_in_dir": os.listdir('.') if os.path.exists('.') else []
+        }
+
+
 @app.post("/cleanup")
 async def manual_cleanup():
     """Manually trigger cleanup of resources."""
