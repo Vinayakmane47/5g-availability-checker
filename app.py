@@ -74,6 +74,9 @@ except ImportError as e:
             try:
                 import csv
                 import os
+                print(f"Attempting to load {filename}")
+                print(f"Current working directory: {os.getcwd()}")
+                print(f"File exists: {os.path.exists(filename)}")
                 if os.path.exists(filename):
                     with open(filename, 'r', encoding='utf-8') as f:
                         reader = csv.DictReader(f)
@@ -300,6 +303,7 @@ async def form_page(request: Request):
 @app.get("/health")
 async def health_check():
     """Simple health check endpoint for Railway."""
+    import os
     return {
         "status": "healthy", 
         "timestamp": time.time(),
@@ -310,6 +314,16 @@ async def health_check():
             "geo": GEO_AVAILABLE,
             "indexes": INDEXES_AVAILABLE,
             "telstra": TELSTRA_AVAILABLE
+        },
+        "files_available": {
+            "results_csv": os.path.exists("results.csv"),
+            "result10_csv": os.path.exists("result10.csv"),
+            "working_directory": os.getcwd(),
+            "files_in_dir": [f for f in os.listdir('.') if f.endswith('.csv')]
+        },
+        "database_status": {
+            "results_ready": results_index.ready,
+            "results_count": len(results_index.addr) if results_index.ready else 0
         }
     }
 
