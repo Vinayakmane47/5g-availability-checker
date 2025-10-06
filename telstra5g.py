@@ -1,12 +1,39 @@
 from __future__ import annotations
 import time
 from typing import Tuple, Dict
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+try:
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support import expected_conditions as EC
+    SELENIUM_AVAILABLE = True
+except ImportError:
+    SELENIUM_AVAILABLE = False
+    # Create dummy classes for type hints
+    class webdriver:
+        class Chrome:
+            pass
+    class Options:
+        pass
+    class Service:
+        def __init__(self, *args, **kwargs):
+            pass
+    class WebDriverWait:
+        def __init__(self, *args, **kwargs):
+            pass
+    class By:
+        ID = "id"
+        CSS_SELECTOR = "css selector"
+    class EC:
+        @staticmethod
+        def presence_of_element_located(*args):
+            pass
+        @staticmethod
+        def presence_of_all_elements_located(*args):
+            pass
+
 from config import CHROME_OPTIONS, IS_CLOUD
 
 
@@ -113,6 +140,10 @@ class Telstra5GChecker:
 
     # Public APIs
     def check(self, addr: str) -> tuple[str, bool, str]:
+        # Fallback for serverless environments
+        if not SELENIUM_AVAILABLE:
+            return self._check_fallback(addr)
+            
         hit = self._cache_get(addr)
         if hit is not None:
             available, status = hit
@@ -128,8 +159,20 @@ class Telstra5GChecker:
             return addr, False, f"error:{type(e).__name__}"
         finally:
             driver.quit()
+    
+    def _check_fallback(self, addr: str) -> tuple[str, bool, str]:
+        """Fallback method for serverless environments without Selenium."""
+        # Return mock data - in a real implementation, you might want to:
+        # 1. Use a different API if available
+        # 2. Return cached data from a database
+        # 3. Return a "service unavailable" status
+        return addr, False, "serverless_mode"
 
     def check_with_existing_session(self, driver: webdriver.Chrome, wait: WebDriverWait, addr: str) -> tuple[str, bool, str]:
+        # Fallback for serverless environments
+        if not SELENIUM_AVAILABLE:
+            return self._check_fallback(addr)
+            
         try:
             if "telstra.com.au" not in (driver.current_url or ""):
                 driver.get(self.TELSTRA_URL)

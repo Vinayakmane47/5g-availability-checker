@@ -12,7 +12,12 @@ from fastapi import FastAPI, Request, WebSocket
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from webdriver_manager.chrome import ChromeDriverManager
+try:
+    from webdriver_manager.chrome import ChromeDriverManager
+    SELENIUM_AVAILABLE = True
+except ImportError:
+    SELENIUM_AVAILABLE = False
+    print("Warning: Selenium not available - running in serverless mode")
 
 from config import CBD_BBOX, DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS, IS_CLOUD
 from geo import geocode_address, fetch_nearby_addresses, fetch_addresses_in_bbox
@@ -75,9 +80,9 @@ def get_checker():
     """Lazy load the checker to avoid startup issues."""
     global checker, _driver_path
     
-    # Completely disable Selenium in Railway environment
-    if IS_CLOUD:
-        print("Selenium disabled in Railway environment")
+    # Disable Selenium in cloud/serverless environments
+    if IS_CLOUD or not SELENIUM_AVAILABLE:
+        print("Selenium disabled in cloud/serverless environment")
         return None
     
     if checker is None:

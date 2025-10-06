@@ -13,7 +13,7 @@ LAT0 = -37.8136
 LON0 = 144.9631
 
 # Cloud deployment settings
-IS_CLOUD = os.getenv('RAILWAY_ENVIRONMENT', False) or os.getenv('PORT', False)
+IS_CLOUD = os.getenv('RAILWAY_ENVIRONMENT', False) or os.getenv('PORT', False) or os.getenv('VERCEL', False)
 CHROME_OPTIONS = [
     '--headless',
     '--no-sandbox',
