@@ -19,10 +19,70 @@ except ImportError:
     SELENIUM_AVAILABLE = False
     print("Warning: Selenium not available - running in serverless mode")
 
-from config import CBD_BBOX, DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS, IS_CLOUD
-from geo import geocode_address, fetch_nearby_addresses, fetch_addresses_in_bbox
-from indexes import ResultsIndex, InputIndex
-from telstra5g import Telstra5GChecker
+# Import with fallbacks for serverless environment
+try:
+    from config import CBD_BBOX, DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS, IS_CLOUD
+    CONFIG_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: Config not available: {e}")
+    CONFIG_AVAILABLE = False
+    # Default values
+    CBD_BBOX = (-37.8265, 144.9475, -37.8060, 144.9835)
+    DEFAULT_INPUT_CSV = "input.csv"
+    DEFAULT_RESULTS_CSV = "results.csv"
+    RESULT_CACHE_TTL = 7 * 24 * 3600
+    TELSTRA_WAIT_SECONDS = 25
+    HEADLESS = True
+    IS_CLOUD = True
+
+try:
+    from geo import geocode_address, fetch_nearby_addresses, fetch_addresses_in_bbox
+    GEO_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: Geo module not available: {e}")
+    GEO_AVAILABLE = False
+    # Fallback functions
+    def geocode_address(addr: str):
+        return None, None, "serverless_mode"
+    def fetch_nearby_addresses(lat, lon, radius=100):
+        return []
+    def fetch_addresses_in_bbox(bbox):
+        return []
+
+try:
+    from indexes import ResultsIndex, InputIndex
+    INDEXES_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: Indexes module not available: {e}")
+    INDEXES_AVAILABLE = False
+    # Fallback classes
+    class ResultsIndex:
+        def __init__(self):
+            self.data = []
+        def load(self, filename):
+            pass
+        def save(self, filename):
+            pass
+    class InputIndex:
+        def __init__(self):
+            self.data = []
+        def load(self, filename):
+            pass
+        def save(self, filename):
+            pass
+
+try:
+    from telstra5g import Telstra5GChecker
+    TELSTRA_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: Telstra5G module not available: {e}")
+    TELSTRA_AVAILABLE = False
+    # Fallback class
+    class Telstra5GChecker:
+        def __init__(self, *args, **kwargs):
+            pass
+        def check(self, addr: str):
+            return addr, False, "serverless_mode"
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -81,8 +141,8 @@ def get_checker():
     global checker, _driver_path
     
     # Disable Selenium in cloud/serverless environments
-    if IS_CLOUD or not SELENIUM_AVAILABLE:
-        print("Selenium disabled in cloud/serverless environment")
+    if IS_CLOUD or not SELENIUM_AVAILABLE or not TELSTRA_AVAILABLE:
+        print("Selenium/Telstra checker disabled in serverless environment")
         return None
     
     if checker is None:
@@ -115,7 +175,18 @@ async def form_page(request: Request):
 @app.get("/health")
 async def health_check():
     """Simple health check endpoint for Railway."""
-    return {"status": "healthy", "timestamp": time.time()}
+    return {
+        "status": "healthy", 
+        "timestamp": time.time(),
+        "environment": "serverless" if IS_CLOUD else "local",
+        "selenium_available": SELENIUM_AVAILABLE,
+        "modules_available": {
+            "config": CONFIG_AVAILABLE,
+            "geo": GEO_AVAILABLE,
+            "indexes": INDEXES_AVAILABLE,
+            "telstra": TELSTRA_AVAILABLE
+        }
+    }
 
 
 @app.get("/status")
