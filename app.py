@@ -357,27 +357,114 @@ async def test_database():
     """Test endpoint to verify database loading."""
     import os
     try:
-        # Try to reload the database
-        results_index.load(DEFAULT_RESULTS_CSV)
+        # Test different possible file paths
+        possible_paths = ["results.csv", "./results.csv", "/vercel/path0/results.csv"]
+        file_found = None
+        
+        for path in possible_paths:
+            if os.path.exists(path):
+                file_found = path
+                break
+        
+        # Try to reload the database with the found path
+        if file_found:
+            results_index.load(file_found)
+        else:
+            results_index.load("results.csv")  # Try default path anyway
         
         return {
             "success": True,
             "message": "Database loaded successfully",
+            "file_found": file_found,
+            "default_path": DEFAULT_RESULTS_CSV,
             "file_exists": os.path.exists(DEFAULT_RESULTS_CSV),
             "file_size": os.path.getsize(DEFAULT_RESULTS_CSV) if os.path.exists(DEFAULT_RESULTS_CSV) else 0,
             "database_ready": results_index.ready,
             "address_count": len(results_index.addr),
             "eligible_count": sum(results_index.elig) if results_index.ready else 0,
-            "sample_addresses": results_index.addr[:5] if results_index.ready and len(results_index.addr) > 0 else []
+            "sample_addresses": results_index.addr[:5] if results_index.ready and len(results_index.addr) > 0 else [],
+            "working_directory": os.getcwd(),
+            "all_files": os.listdir('.') if os.path.exists('.') else []
         }
     except Exception as e:
         return {
             "success": False,
             "error": str(e),
-            "file_exists": os.path.exists(DEFAULT_RESULTS_CSV),
+            "error_type": type(e).__name__,
+            "default_path": DEFAULT_RESULTS_CSV,
+            "file_exists": os.path.exists(DEFAULT_RESULTS_CSV) if 'DEFAULT_RESULTS_CSV' in globals() else "DEFAULT_RESULTS_CSV not defined",
             "working_directory": os.getcwd(),
-            "files_in_dir": os.listdir('.') if os.path.exists('.') else []
+            "files_in_dir": os.listdir('.') if os.path.exists('.') else [],
+            "possible_paths": {
+                "results.csv": os.path.exists("results.csv"),
+                "./results.csv": os.path.exists("./results.csv"),
+                "/vercel/path0/results.csv": os.path.exists("/vercel/path0/results.csv")
+            }
         }
+
+
+@app.get("/force-load-database")
+async def force_load_database():
+    """Force reload the database with detailed debugging."""
+    import os
+    import csv
+    
+    debug_info = {
+        "working_directory": os.getcwd(),
+        "files_in_directory": os.listdir('.') if os.path.exists('.') else [],
+        "csv_files": [f for f in os.listdir('.') if f.endswith('.csv')] if os.path.exists('.') else [],
+        "attempts": []
+    }
+    
+    # Try different approaches to load the CSV
+    approaches = [
+        ("results.csv", "Direct filename"),
+        ("./results.csv", "Relative path"),
+        ("/vercel/path0/results.csv", "Vercel absolute path"),
+    ]
+    
+    for filepath, description in approaches:
+        try:
+            debug_info["attempts"].append({
+                "path": filepath,
+                "description": description,
+                "exists": os.path.exists(filepath),
+                "size": os.path.getsize(filepath) if os.path.exists(filepath) else 0
+            })
+            
+            if os.path.exists(filepath):
+                # Try to read the file
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f)
+                    rows = list(reader)
+                    debug_info["attempts"][-1]["rows_found"] = len(rows)
+                    debug_info["attempts"][-1]["columns"] = list(rows[0].keys()) if rows else []
+                    
+                    # Try to load into results_index
+                    results_index.load(filepath)
+                    debug_info["attempts"][-1]["load_success"] = True
+                    debug_info["attempts"][-1]["database_ready"] = results_index.ready
+                    debug_info["attempts"][-1]["address_count"] = len(results_index.addr)
+                    
+                    if results_index.ready:
+                        return {
+                            "success": True,
+                            "message": f"Successfully loaded database from {filepath}",
+                            "file_path": filepath,
+                            "address_count": len(results_index.addr),
+                            "eligible_count": sum(results_index.elig),
+                            "debug_info": debug_info
+                        }
+                        
+        except Exception as e:
+            debug_info["attempts"][-1]["error"] = str(e)
+            debug_info["attempts"][-1]["load_success"] = False
+    
+    return {
+        "success": False,
+        "message": "Failed to load database from any path",
+        "debug_info": debug_info
+    }
 
 
 @app.post("/cleanup")
