@@ -55,21 +55,136 @@ try:
 except ImportError as e:
     print(f"Warning: Indexes module not available: {e}")
     INDEXES_AVAILABLE = False
-    # Fallback classes
+    # Fallback classes with proper structure
     class ResultsIndex:
         def __init__(self):
-            self.data = []
+            self.ready = False
+            self.addr = []
+            self.lat = []
+            self.lon = []
+            self.x = []
+            self.y = []
+            self.elig = []
+            self.status = []
+            self.latency = []
+            self.checked_at = []
+        
         def load(self, filename):
-            pass
+            """Load data from CSV file if it exists."""
+            try:
+                import csv
+                import os
+                if os.path.exists(filename):
+                    with open(filename, 'r', encoding='utf-8') as f:
+                        reader = csv.DictReader(f)
+                        for row in reader:
+                            if row.get('address'):
+                                self.addr.append(row['address'])
+                                self.lat.append(float(row.get('lat', 0)))
+                                self.lon.append(float(row.get('lon', 0)))
+                                self.elig.append(row.get('eligible', 'false').lower() == 'true')
+                                self.status.append(row.get('status', 'unknown'))
+                                self.checked_at.append(row.get('checked_at', ''))
+                    self.ready = True
+                    print(f"Loaded {len(self.addr)} addresses from {filename}")
+                else:
+                    print(f"File {filename} not found - using sample dataset for demo")
+                    # Add some sample data for demonstration
+                    self.addr = [
+                        "123 Collins Street, Melbourne VIC 3000",
+                        "456 Bourke Street, Melbourne VIC 3000", 
+                        "789 Swanston Street, Melbourne VIC 3000"
+                    ]
+                    self.lat = [-37.8136, -37.8146, -37.8156]
+                    self.lon = [144.9631, 144.9641, 144.9651]
+                    self.elig = [True, False, True]
+                    self.status = ["eligible", "not_eligible", "eligible"]
+                    self.checked_at = ["2024-01-15", "2024-01-15", "2024-01-15"]
+                    self.ready = True
+                    print(f"Using {len(self.addr)} sample addresses for demo")
+            except Exception as e:
+                print(f"Error loading {filename}: {e}")
+                self.ready = False
+        
         def save(self, filename):
-            pass
+            """Save data to CSV file."""
+            try:
+                import csv
+                with open(filename, 'w', newline='', encoding='utf-8') as f:
+                    writer = csv.writer(f)
+                    writer.writerow(['address', 'lat', 'lon', 'eligible', 'status', 'checked_at'])
+                    for i in range(len(self.addr)):
+                        writer.writerow([
+                            self.addr[i],
+                            self.lat[i],
+                            self.lon[i],
+                            self.elig[i],
+                            self.status[i],
+                            self.checked_at[i]
+                        ])
+                print(f"Saved {len(self.addr)} addresses to {filename}")
+            except Exception as e:
+                print(f"Error saving {filename}: {e}")
+        
+        def nearest_eligible(self, lat, lon, n=10):
+            """Find nearest eligible addresses."""
+            if not self.ready or len(self.addr) == 0:
+                return []
+            
+            # Simple distance calculation (not optimized)
+            distances = []
+            for i in range(len(self.addr)):
+                if self.elig[i]:  # Only eligible addresses
+                    # Simple distance calculation
+                    lat_diff = lat - self.lat[i]
+                    lon_diff = lon - self.lon[i]
+                    distance = (lat_diff**2 + lon_diff**2)**0.5
+                    distances.append((distance, i))
+            
+            # Sort by distance and return top n
+            distances.sort()
+            return [self.addr[i] for _, i in distances[:n]]
+    
     class InputIndex:
         def __init__(self):
-            self.data = []
+            self.ready = False
+            self.addr = []
+            self.lat = []
+            self.lon = []
+        
         def load(self, filename):
-            pass
+            """Load input addresses from CSV file if it exists."""
+            try:
+                import csv
+                import os
+                if os.path.exists(filename):
+                    with open(filename, 'r', encoding='utf-8') as f:
+                        reader = csv.DictReader(f)
+                        for row in reader:
+                            if row.get('address'):
+                                self.addr.append(row['address'])
+                                self.lat.append(float(row.get('lat', 0)))
+                                self.lon.append(float(row.get('lon', 0)))
+                    self.ready = True
+                    print(f"Loaded {len(self.addr)} input addresses from {filename}")
+                else:
+                    print(f"File {filename} not found - using empty dataset")
+            except Exception as e:
+                print(f"Error loading {filename}: {e}")
+                self.ready = False
+        
         def save(self, filename):
-            pass
+            """Save input addresses to CSV file."""
+            try:
+                import csv
+                with open(filename, 'w', newline='', encoding='utf-8') as f:
+                    writer = csv.writer(f)
+                    writer.writerow(['address', 'lat', 'lon'])
+                    for i in range(len(self.addr)):
+                        writer.writerow([self.addr[i], self.lat[i], self.lon[i]])
+                print(f"Saved {len(self.addr)} input addresses to {filename}")
+            except Exception as e:
+                print(f"Error saving {filename}: {e}")
 
 try:
     from telstra5g import Telstra5GChecker
