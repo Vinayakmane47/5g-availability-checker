@@ -6,7 +6,25 @@ import time
 import signal
 import sys
 import atexit
+import logging
+import os
 from typing import List, Dict
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# Log startup information
+logger.info("=" * 50)
+logger.info("STARTING 5G AVAILABILITY CHECKER APP")
+logger.info("=" * 50)
+logger.info(f"Python version: {sys.version}")
+logger.info(f"Working directory: {os.getcwd()}")
+logger.info(f"Environment variables: VERCEL={os.getenv('VERCEL')}, PORT={os.getenv('PORT')}")
+logger.info(f"Files in directory: {os.listdir('.')}")
 
 from fastapi import FastAPI, Request, WebSocket
 from fastapi.responses import HTMLResponse
@@ -15,16 +33,19 @@ from fastapi.templating import Jinja2Templates
 try:
     from webdriver_manager.chrome import ChromeDriverManager
     SELENIUM_AVAILABLE = True
-except ImportError:
+    logger.info("✅ Selenium and webdriver-manager imported successfully")
+except ImportError as e:
     SELENIUM_AVAILABLE = False
-    print("Warning: Selenium not available - running in serverless mode")
+    logger.warning(f"⚠️ Selenium not available - running in serverless mode: {e}")
 
 # Import with fallbacks for serverless environment
 try:
     from config import CBD_BBOX, DEFAULT_INPUT_CSV, DEFAULT_RESULTS_CSV, RESULT_CACHE_TTL, TELSTRA_WAIT_SECONDS, HEADLESS, IS_CLOUD
     CONFIG_AVAILABLE = True
+    logger.info("✅ Config module imported successfully")
+    logger.info(f"IS_CLOUD: {IS_CLOUD}, HEADLESS: {HEADLESS}")
 except ImportError as e:
-    print(f"Warning: Config not available: {e}")
+    logger.warning(f"⚠️ Config not available: {e}")
     CONFIG_AVAILABLE = False
     # Default values
     CBD_BBOX = (-37.8265, 144.9475, -37.8060, 144.9835)
@@ -34,26 +55,32 @@ except ImportError as e:
     TELSTRA_WAIT_SECONDS = 25
     HEADLESS = True
     IS_CLOUD = True
+    logger.info("Using default config values")
 
 try:
     from geo import geocode_address, fetch_nearby_addresses, fetch_addresses_in_bbox
     GEO_AVAILABLE = True
+    logger.info("✅ Geo module imported successfully")
 except ImportError as e:
-    print(f"Warning: Geo module not available: {e}")
+    logger.warning(f"⚠️ Geo module not available: {e}")
     GEO_AVAILABLE = False
     # Fallback functions
     def geocode_address(addr: str):
+        logger.info(f"Using fallback geocode for: {addr}")
         return None, None, "serverless_mode"
     def fetch_nearby_addresses(lat, lon, radius=100):
+        logger.info(f"Using fallback fetch_nearby_addresses for lat={lat}, lon={lon}")
         return []
     def fetch_addresses_in_bbox(bbox):
+        logger.info(f"Using fallback fetch_addresses_in_bbox for bbox={bbox}")
         return []
 
 try:
     from indexes import ResultsIndex, InputIndex
     INDEXES_AVAILABLE = True
+    logger.info("✅ Indexes module imported successfully")
 except ImportError as e:
-    print(f"Warning: Indexes module not available: {e}")
+    logger.warning(f"⚠️ Indexes module not available: {e}")
     INDEXES_AVAILABLE = False
     # Fallback classes with proper structure
     class ResultsIndex:
@@ -74,10 +101,13 @@ except ImportError as e:
             try:
                 import csv
                 import os
+                logger.info(f"Attempting to load {filename}")
+                logger.info(f"Current working directory: {os.getcwd()}")
                 
                 # Try multiple possible paths
                 possible_paths = [filename, f"./{filename}", f"/vercel/path0/{filename}"]
                 file_found = None
+                logger.info(f"Trying paths: {possible_paths}")
                 
                 for path in possible_paths:
                     if os.path.exists(path):
@@ -85,6 +115,7 @@ except ImportError as e:
                         break
                 
                 if file_found:
+                    logger.info(f"Found file at: {file_found}")
                     with open(file_found, 'r', encoding='utf-8') as f:
                         reader = csv.DictReader(f)
                         for row in reader:
@@ -108,7 +139,7 @@ except ImportError as e:
                                 self.checked_at.append(row.get('checked_at', ''))
                     
                     self.ready = True
-                    print(f"✅ Loaded {len(self.addr)} addresses from {file_found}")
+                    logger.info(f"✅ Loaded {len(self.addr)} addresses from {file_found}")
                 else:
                     print(f"❌ CSV file not found in any location")
                     self.ready = False
@@ -221,9 +252,20 @@ except ImportError as e:
         def check(self, addr: str):
             return addr, False, "serverless_mode"
 
+logger.info("Creating FastAPI app...")
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+
+try:
+    app.mount("/static", StaticFiles(directory="static"), name="static")
+    logger.info("✅ Static files mounted successfully")
+except Exception as e:
+    logger.error(f"❌ Failed to mount static files: {e}")
+
+try:
+    templates = Jinja2Templates(directory="templates")
+    logger.info("✅ Templates loaded successfully")
+except Exception as e:
+    logger.error(f"❌ Failed to load templates: {e}")
 
 # Global cleanup variables
 _active_websockets = set()
@@ -297,68 +339,133 @@ def get_checker():
     return checker
 
 # Indexes
+logger.info("Initializing indexes...")
 results_index = ResultsIndex()
 results_index.load(DEFAULT_RESULTS_CSV)
+logger.info(f"Results index ready: {results_index.ready}, count: {len(results_index.addr)}")
 
 input_index = InputIndex()
 input_index.load(DEFAULT_INPUT_CSV)
+logger.info(f"Input index ready: {input_index.ready}, count: {len(input_index.addr)}")
+
+logger.info("=" * 50)
+logger.info("APP INITIALIZATION COMPLETE")
+logger.info("=" * 50)
 
 
 @app.get("/", response_class=HTMLResponse)
 async def form_page(request: Request):
-    return templates.TemplateResponse("form.html", {"request": request})
+    logger.info("GET / - Serving form page")
+    try:
+        return templates.TemplateResponse("form.html", {"request": request})
+    except Exception as e:
+        logger.error(f"Error serving form page: {e}")
+        raise
 
 
 @app.get("/health")
 async def health_check():
     """Simple health check endpoint for Railway."""
+    logger.info("GET /health - Health check requested")
     import os
-    return {
-        "status": "healthy", 
-        "timestamp": time.time(),
-        "environment": "serverless" if IS_CLOUD else "local",
-        "selenium_available": SELENIUM_AVAILABLE,
-        "modules_available": {
-            "config": CONFIG_AVAILABLE,
-            "geo": GEO_AVAILABLE,
-            "indexes": INDEXES_AVAILABLE,
-            "telstra": TELSTRA_AVAILABLE
-        },
-        "files_available": {
-            "results_csv": os.path.exists("results.csv"),
-            "result10_csv": os.path.exists("result10.csv"),
-            "working_directory": os.getcwd(),
-            "files_in_dir": [f for f in os.listdir('.') if f.endswith('.csv')]
-        },
-        "database_status": {
-            "results_ready": results_index.ready,
-            "results_count": len(results_index.addr) if results_index.ready else 0
+    try:
+        health_data = {
+            "status": "healthy", 
+            "timestamp": time.time(),
+            "environment": "serverless" if IS_CLOUD else "local",
+            "selenium_available": SELENIUM_AVAILABLE,
+            "modules_available": {
+                "config": CONFIG_AVAILABLE,
+                "geo": GEO_AVAILABLE,
+                "indexes": INDEXES_AVAILABLE,
+                "telstra": TELSTRA_AVAILABLE
+            },
+            "files_available": {
+                "results_csv": os.path.exists("results.csv"),
+                "result10_csv": os.path.exists("result10.csv"),
+                "working_directory": os.getcwd(),
+                "files_in_dir": [f for f in os.listdir('.') if f.endswith('.csv')]
+            },
+            "database_status": {
+                "results_ready": results_index.ready,
+                "results_count": len(results_index.addr) if results_index.ready else 0
+            }
         }
-    }
+        logger.info(f"Health check response: {health_data}")
+        return health_data
+    except Exception as e:
+        logger.error(f"Error in health check: {e}")
+        return {"status": "error", "error": str(e)}
 
 
 @app.get("/status")
 async def app_status():
     """Show app status and available features."""
-    return {
-        "status": "running",
-        "environment": "railway" if IS_CLOUD else "local",
-        "features": {
-            "web_interface": True,
-            "database_access": True,
-            "map_visualization": True,
-            "real_time_checking": not IS_CLOUD,  # Disabled in Railway
-            "bulk_checking": not IS_CLOUD,  # Disabled in Railway
-        },
-        "data": {
-            "total_addresses": len(results_index.addr) if results_index.ready else 0,
-            "available_addresses": sum(results_index.elig) if results_index.ready else 0,
-        },
-        "active_connections": {
-            "websockets": len(_active_websockets),
-            "executors": len(_active_executors)
+    logger.info("GET /status - Status check requested")
+    try:
+        status_data = {
+            "status": "running",
+            "environment": "railway" if IS_CLOUD else "local",
+            "features": {
+                "web_interface": True,
+                "database_access": True,
+                "map_visualization": True,
+                "real_time_checking": not IS_CLOUD,  # Disabled in Railway
+                "bulk_checking": not IS_CLOUD,  # Disabled in Railway
+            },
+            "data": {
+                "total_addresses": len(results_index.addr) if results_index.ready else 0,
+                "available_addresses": sum(results_index.elig) if results_index.ready else 0,
+            },
+            "active_connections": {
+                "websockets": len(_active_websockets),
+                "executors": len(_active_executors)
+            }
         }
-    }
+        logger.info(f"Status response: {status_data}")
+        return status_data
+    except Exception as e:
+        logger.error(f"Error in status check: {e}")
+        return {"status": "error", "error": str(e)}
+
+
+@app.get("/debug")
+async def debug_info():
+    """Debug endpoint to help troubleshoot issues."""
+    logger.info("GET /debug - Debug info requested")
+    try:
+        import os
+        debug_data = {
+            "python_version": sys.version,
+            "working_directory": os.getcwd(),
+            "environment_variables": {
+                "VERCEL": os.getenv("VERCEL"),
+                "PORT": os.getenv("PORT"),
+                "RAILWAY_ENVIRONMENT": os.getenv("RAILWAY_ENVIRONMENT"),
+                "PYTHON_VERSION": os.getenv("PYTHON_VERSION")
+            },
+            "files_in_directory": os.listdir('.'),
+            "csv_files": [f for f in os.listdir('.') if f.endswith('.csv')],
+            "module_availability": {
+                "selenium": SELENIUM_AVAILABLE,
+                "config": CONFIG_AVAILABLE,
+                "geo": GEO_AVAILABLE,
+                "indexes": INDEXES_AVAILABLE,
+                "telstra": TELSTRA_AVAILABLE
+            },
+            "app_state": {
+                "is_cloud": IS_CLOUD,
+                "results_ready": results_index.ready,
+                "results_count": len(results_index.addr),
+                "input_ready": input_index.ready,
+                "input_count": len(input_index.addr)
+            }
+        }
+        logger.info(f"Debug response: {debug_data}")
+        return debug_data
+    except Exception as e:
+        logger.error(f"Error in debug endpoint: {e}")
+        return {"status": "error", "error": str(e)}
 
 
 @app.get("/api/database-status")
