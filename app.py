@@ -152,9 +152,20 @@ except ImportError as e:
                     distance = (lat_diff**2 + lon_diff**2)**0.5
                     distances.append((distance, i))
             
-            # Sort by distance and return top n
+            # Sort by distance and return top n with proper structure
             distances.sort()
-            return [self.addr[i] for _, i in distances[:n]]
+            results = []
+            for _, i in distances[:n]:
+                results.append({
+                    "addr": self.addr[i],
+                    "lat": self.lat[i],
+                    "lon": self.lon[i],
+                    "status_text": self.status[i],
+                    "checked_at": self.checked_at[i],
+                    "latency_sec": 0,  # Default value
+                    "distance_km": distances[distances.index((_, i))][0] * 111  # Rough conversion to km
+                })
+            return results
     
     class InputIndex:
         def __init__(self):
@@ -424,20 +435,16 @@ async def check_from_database_api(address: str = None, n: int = 10):
                 lat, lon, _ = geocode_address(address)
                 nearby = results_index.nearest_eligible(lat, lon, n)
                 results = []
-                for addr in nearby:
-                    # Find the index of this address
-                    try:
-                        idx = results_index.addr.index(addr)
-                        results.append({
-                            "address": addr,
-                            "available": results_index.elig[idx],
-                            "status": results_index.status[idx],
-                            "lat": results_index.lat[idx],
-                            "lon": results_index.lon[idx],
-                            "checked_at": results_index.checked_at[idx]
-                        })
-                    except ValueError:
-                        continue
+                for item in nearby:
+                    # item is now a dict with the proper structure
+                    results.append({
+                        "address": item["addr"],
+                        "available": True,  # Only eligible addresses are returned
+                        "status": item["status_text"],
+                        "lat": item["lat"],
+                        "lon": item["lon"],
+                        "checked_at": item["checked_at"]
+                    })
                 
                 return {
                     "success": True,
