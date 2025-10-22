@@ -9,12 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css' rel='stylesheet' />
   <style>
     .map-controls {
       background: var(--bg-secondary);
@@ -115,29 +110,41 @@
       width: 100%;
     }
 
-    .custom-marker {
-      background: transparent !important;
-      border: none !important;
-    }
-
-    .custom-marker div {
-      transition: all 0.3s ease;
-    }
-
-    .custom-marker:hover div {
-      transform: scale(1.3);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4) !important;
-    }
-
-    .leaflet-popup-content {
+    .mapboxgl-popup-content {
       font-family: 'Inter', sans-serif;
       font-size: 0.875rem;
       line-height: 1.4;
-    }
-
-    .leaflet-popup-content-wrapper {
       border-radius: var(--radius-md);
+      padding: 1rem;
       box-shadow: var(--shadow-lg);
+    }
+    
+    .mapboxgl-popup-close-button {
+      font-size: 1.2rem;
+      padding: 0.5rem;
+    }
+    
+    .marker-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .marker-dot:hover {
+      transform: scale(1.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    
+    .marker-dot.available {
+      background: #10B981;
+    }
+    
+    .marker-dot.unavailable {
+      background: #EF4444;
     }
   </style>
 </head>
@@ -273,11 +280,7 @@
     </div>
   </div>
 
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js'></script>
   <script>
     // Theme Management
     function toggleTheme() {
@@ -310,8 +313,13 @@
       }
     }
 
+    // Mapbox Access Token - REPLACE WITH YOUR TOKEN
+    // Get your free token at: https://account.mapbox.com/access-tokens/
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZSIsImEiOiJjbGV4YW1wbGUifQ.example'; // REPLACE THIS!
+    
     // Map Management
-    let map, layer, currentTileLayer;
+    let map;
+    let markers = [];
     let mapData = [];
     let totalPoints = 0;
     let availablePoints = 0;
@@ -331,48 +339,46 @@
       
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       
-      // Remove current tile layer
-      if (currentTileLayer) {
-        map.removeLayer(currentTileLayer);
-      }
-      
-      // Add new tile layer based on theme
+      // Set Mapbox style based on theme
       if (isDark) {
-        // Dark theme - use CartoDB dark tiles
-        currentTileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-          maxZoom: 19,
-          attribution: '© CartoDB'
-        });
+        map.setStyle('mapbox://styles/mapbox/dark-v11');
       } else {
-        // Light theme - use modern Google Maps-like tiles
-        currentTileLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '© OpenStreetMap contributors, © Humanitarian OpenStreetMap Team'
-        });
+        map.setStyle('mapbox://styles/mapbox/streets-v12');
       }
-      
-      currentTileLayer.addTo(map);
     }
 
     function initMap() {
-      map = L.map('map').setView([-37.8136, 144.9631], 14);
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       
-      // Initialize tile layer
-      updateMapTiles();
+      map = new mapboxgl.Map({
+        container: 'map',
+        style: isDark ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/streets-v12',
+        center: [144.9631, -37.8136], // [lng, lat] - Melbourne CBD
+        zoom: 13,
+        pitch: 0,
+        bearing: 0
+      });
       
-      // Add layer group for markers
-      layer = L.layerGroup().addTo(map);
+      // Add navigation controls
+      map.addControl(new mapboxgl.NavigationControl(), 'top-right');
       
-      // Add zoom control
-      L.control.zoom({
-        position: 'topright'
-      }).addTo(map);
+      // Add fullscreen control
+      map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+      
+      // Add scale control
+      map.addControl(new mapboxgl.ScaleControl({
+        maxWidth: 100,
+        unit: 'metric'
+      }), 'bottom-left');
+      
+      console.log('Mapbox map initialized');
     }
 
-    function clearMarkers() { 
-      if (layer) {
-        layer.clearLayers(); 
-      }
+    function clearMarkers() {
+      // Remove all markers
+      markers.forEach(marker => marker.remove());
+      markers = [];
+      
       mapData = [];
       totalPoints = 0;
       availablePoints = 0;
@@ -381,23 +387,24 @@
     }
 
     function addMarker(lat, lon, text, available) {
-      const icon = L.divIcon({
-        className: 'custom-marker',
-        html: `<div style="
-          width: 14px; 
-          height: 14px; 
-          background: ${available ? '#10B981' : '#EF4444'}; 
-          border: 3px solid white; 
-          border-radius: 50%; 
-          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-          cursor: pointer;
-        "></div>`,
-        iconSize: [14, 14],
-        iconAnchor: [7, 7]
-      });
+      // Create marker element
+      const el = document.createElement('div');
+      el.className = `marker-dot ${available ? 'available' : 'unavailable'}`;
       
-      const m = L.marker([lat, lon], { icon }).bindPopup(text);
-      layer.addLayer(m);
+      // Create popup
+      const popup = new mapboxgl.Popup({
+        offset: 25,
+        closeButton: true,
+        closeOnClick: false
+      }).setHTML(text);
+      
+      // Create and add marker
+      const marker = new mapboxgl.Marker(el)
+        .setLngLat([lon, lat])
+        .setPopup(popup)
+        .addTo(map);
+      
+      markers.push(marker);
       
       // Update stats
       totalPoints++;
