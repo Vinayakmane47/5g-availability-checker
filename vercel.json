@@ -5,8 +5,7 @@
       "src": "app.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "50mb",
-        "maxDuration": 30
+        "maxLambdaSize": "50mb"
       }
     }
   ],
@@ -23,14 +22,5 @@
   "env": {
     "PYTHON_VERSION": "3.11",
     "VERCEL": "1"
-  },
-  "functions": {
-    "api/**/*.py": {
-      "maxDuration": 30
-    },
-    "*.py": {
-      "maxDuration": 30,
-      "includeFiles": "*.csv"
-    }
   }
 }
