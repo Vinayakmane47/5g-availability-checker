@@ -273,17 +273,12 @@
       document.getElementById("loading").style.display = "none";
     }
 
-    function startWebSocketLive() {
+    async function startWebSocketLive() {
       resetUI();
       const address = document.getElementById("address").value;
       const n = parseInt(document.getElementById("n").value);
-      const workers = parseInt(document.getElementById("workers").value);
-      const radius = parseInt(document.getElementById("radius").value);
 
-      const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws");
-      
-      ws.onopen = () => {
-        ws.send(JSON.stringify({ address, n, workers, radius }));
+      try {
         // Start progress animation
         let progress = 0;
         const progressInterval = setInterval(() => {
@@ -291,55 +286,79 @@
           if (progress > 90) progress = 90;
           document.getElementById("progress-bar").style.width = progress + "%";
         }, 500);
-        
-        ws.progressInterval = progressInterval;
-      };
 
-      ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        if (data.error) {
-          showError(data.error);
-          ws.close();
+        const response = await fetch(`/api/check-live?address=${encodeURIComponent(address)}&n=${n}`);
+        clearInterval(progressInterval);
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+          showError(data.error || data.message || "Failed to check live availability");
           return;
         }
-        addResultLine(data);
-        // Update progress
-        document.getElementById("progress-bar").style.width = "95%";
-      };
-      
-      ws.onclose = () => {
-        if (ws.progressInterval) clearInterval(ws.progressInterval);
+
+        // Handle results
+        if (data.results) {
+          data.results.forEach(result => addResultLine(result));
+        } else if (data.address) {
+          // Single result format
+          addResultLine({
+            addr: data.address,
+            available: data.available,
+            status: data.status,
+            lat: data.lat,
+            lon: data.lon
+          });
+        }
+
         document.getElementById("progress-bar").style.width = "100%";
         setTimeout(finishUI, 500);
-      };
+        
+      } catch (error) {
+        showError("Error checking live availability: " + error.message);
+      }
     }
 
-    function startWebSocketFromData() {
+    async function startWebSocketFromData() {
       resetUI();
       const address = document.getElementById("address").value;
       const n = 10; // per your spec
 
-      const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws_fromdata");
-      
-      ws.onopen = () => {
-        ws.send(JSON.stringify({ address, n }));
+      try {
         document.getElementById("progress-bar").style.width = "50%";
-      };
 
-      ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        if (data.error) {
-          showError(data.error);
-          ws.close();
+        const response = await fetch(`/api/check-from-database?address=${encodeURIComponent(address)}&n=${n}`);
+        const data = await response.json();
+        
+        if (!data.success) {
+          showError(data.error || "No data available in database");
           return;
         }
-        addResultLine(data);
+
+        // Handle results
+        if (data.results && data.results.length > 0) {
+          data.results.forEach(result => {
+            addResultLine({
+              addr: result.address,
+              available: result.available,
+              status: result.status,
+              lat: result.lat,
+              lon: result.lon,
+              checked_at: result.checked_at,
+              source: "results.csv"
+            });
+          });
+        } else {
+          showError("No eligible addresses found nearby in database");
+          return;
+        }
+
         document.getElementById("progress-bar").style.width = "100%";
-      };
-      
-      ws.onclose = () => {
         setTimeout(finishUI, 300);
-      };
+        
+      } catch (error) {
+        showError("Error checking from database: " + error.message);
+      }
     }
 
     function exportResults() {

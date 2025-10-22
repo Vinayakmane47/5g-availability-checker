@@ -1,0 +1,15 @@
+# Don't ignore CSV files
+!*.csv
+!results.csv
+!result10.csv
+
+# Ignore test files
+test_*.py
+*.pyc
+__pycache__/
+.pytest_cache/
+
+# Ignore development files
+.env
+.DS_Store
+

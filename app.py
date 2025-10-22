@@ -104,14 +104,22 @@ except ImportError as e:
                 logger.info(f"Attempting to load {filename}")
                 logger.info(f"Current working directory: {os.getcwd()}")
                 
-                # Try multiple possible paths
-                possible_paths = [filename, f"./{filename}", f"/vercel/path0/{filename}"]
+                # Try multiple possible paths for Vercel and local
+                possible_paths = [
+                    filename, 
+                    f"./{filename}", 
+                    f"/var/task/{filename}",  # Vercel's task directory
+                    f"/vercel/path0/{filename}",
+                    os.path.join(os.path.dirname(__file__), filename)  # Relative to app.py
+                ]
                 file_found = None
                 logger.info(f"Trying paths: {possible_paths}")
                 
                 for path in possible_paths:
+                    logger.info(f"Checking path: {path}")
                     if os.path.exists(path):
                         file_found = path
+                        logger.info(f"✓ Found file at: {file_found}")
                         break
                 
                 if file_found:
@@ -125,7 +133,7 @@ except ImportError as e:
                                 self.lon.append(float(row.get('lon', 0)))
                                 
                                 # Handle eligible column
-                                eligible_val = row.get('eligible', 'false')
+                                eligible_val = row.get('eligible', 'False')
                                 if isinstance(eligible_val, str):
                                     self.elig.append(eligible_val.lower() == 'true')
                                 else:
@@ -141,11 +149,14 @@ except ImportError as e:
                     self.ready = True
                     logger.info(f"✅ Loaded {len(self.addr)} addresses from {file_found}")
                 else:
-                    print(f"❌ CSV file not found in any location")
+                    logger.error(f"❌ CSV file not found in any location")
+                    logger.error(f"Files in current directory: {os.listdir('.')}")
                     self.ready = False
                     
             except Exception as e:
-                print(f"❌ Error loading CSV: {e}")
+                logger.error(f"❌ Error loading CSV: {e}")
+                import traceback
+                logger.error(traceback.format_exc())
                 self.ready = False
         
         def save(self, filename):
@@ -525,21 +536,51 @@ async def check_live_api(address: str, n: int = 5):
 async def check_from_database_api(address: str = None, n: int = 10):
     """Simplified REST API for checking from database."""
     try:
-        # Force reload database
-        results_index.load("results.csv")
+        # Force reload database if not ready
+        if not results_index.ready:
+            logger.info("Results index not ready, attempting to reload...")
+            results_index.load("results.csv")
         
         if not results_index.ready or len(results_index.addr) == 0:
+            logger.error(f"Database check failed: ready={results_index.ready}, count={len(results_index.addr)}")
             return {
                 "success": False,
-                "error": "No data available in database",
+                "error": "No data available in database. The CSV file may not have been deployed correctly.",
                 "database_ready": results_index.ready,
                 "address_count": len(results_index.addr)
             }
         
+        logger.info(f"Database check: address={address}, n={n}, total_addresses={len(results_index.addr)}")
+        
         # If specific address provided, find nearby
-        if address:
+        if address and address.strip():
             try:
-                lat, lon, _ = geocode_address(address)
+                if not GEO_AVAILABLE:
+                    logger.warning("Geocoding not available, returning sample data instead")
+                    # Return sample of eligible addresses instead
+                    results = []
+                    count = 0
+                    for i in range(len(results_index.addr)):
+                        if results_index.elig[i] and count < n:
+                            results.append({
+                                "address": results_index.addr[i],
+                                "available": True,
+                                "status": results_index.status[i],
+                                "lat": results_index.lat[i],
+                                "lon": results_index.lon[i],
+                                "checked_at": results_index.checked_at[i]
+                            })
+                            count += 1
+                    
+                    return {
+                        "success": True,
+                        "query_address": address,
+                        "note": "Geocoding not available - showing sample eligible addresses",
+                        "results": results
+                    }
+                
+                lat, lon = geocode_address(address)
+                logger.info(f"Geocoded {address} to ({lat}, {lon})")
                 nearby = results_index.nearest_eligible(lat, lon, n)
                 results = []
                 for item in nearby:
@@ -553,29 +594,52 @@ async def check_from_database_api(address: str = None, n: int = 10):
                         "checked_at": item["checked_at"]
                     })
                 
+                logger.info(f"Found {len(results)} nearby eligible addresses")
                 return {
                     "success": True,
                     "query_address": address,
                     "results": results
                 }
             except Exception as e:
+                logger.error(f"Geocoding/search error: {e}")
+                # Fallback: return sample data
+                results = []
+                count = 0
+                for i in range(len(results_index.addr)):
+                    if results_index.elig[i] and count < n:
+                        results.append({
+                            "address": results_index.addr[i],
+                            "available": True,
+                            "status": results_index.status[i],
+                            "lat": results_index.lat[i],
+                            "lon": results_index.lon[i],
+                            "checked_at": results_index.checked_at[i]
+                        })
+                        count += 1
+                
                 return {
-                    "success": False,
-                    "error": f"Geocoding failed: {e}"
+                    "success": True,
+                    "query_address": address,
+                    "note": f"Geocoding failed ({str(e)}) - showing sample eligible addresses instead",
+                    "results": results
                 }
         else:
-            # Return sample of all data
+            # Return sample of eligible data when no address provided
             results = []
-            for i in range(min(n, len(results_index.addr))):
-                results.append({
-                    "address": results_index.addr[i],
-                    "available": results_index.elig[i],
-                    "status": results_index.status[i],
-                    "lat": results_index.lat[i],
-                    "lon": results_index.lon[i],
-                    "checked_at": results_index.checked_at[i]
-                })
+            count = 0
+            for i in range(len(results_index.addr)):
+                if results_index.elig[i] and count < n:
+                    results.append({
+                        "address": results_index.addr[i],
+                        "available": True,
+                        "status": results_index.status[i],
+                        "lat": results_index.lat[i],
+                        "lon": results_index.lon[i],
+                        "checked_at": results_index.checked_at[i]
+                    })
+                    count += 1
             
+            logger.info(f"Returning {len(results)} sample eligible addresses")
             return {
                 "success": True,
                 "total_addresses": len(results_index.addr),
@@ -584,6 +648,9 @@ async def check_from_database_api(address: str = None, n: int = 10):
             }
             
     except Exception as e:
+        logger.error(f"Database API error: {e}")
+        import traceback
+        logger.error(traceback.format_exc())
         return {
             "success": False,
             "error": str(e),
