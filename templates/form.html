@@ -290,6 +290,13 @@
         const response = await fetch(`/api/check-live?address=${encodeURIComponent(address)}&n=${n}`);
         clearInterval(progressInterval);
         
+        // Check if response is JSON or HTML (auth page)
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          showError("⚠️ Deployment protection is enabled. Please disable it in Vercel Dashboard → Settings → Deployment Protection");
+          return;
+        }
+        
         const data = await response.json();
         
         if (!data.success) {
@@ -315,7 +322,8 @@
         setTimeout(finishUI, 500);
         
       } catch (error) {
-        showError("Error checking live availability: " + error.message);
+        console.error("Error:", error);
+        showError("Error checking live availability: " + error.message + ". Check browser console for details.");
       }
     }
 
@@ -328,6 +336,14 @@
         document.getElementById("progress-bar").style.width = "50%";
 
         const response = await fetch(`/api/check-from-database?address=${encodeURIComponent(address)}&n=${n}`);
+        
+        // Check if response is JSON or HTML (auth page)
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          showError("⚠️ Deployment protection is enabled. Please disable it in Vercel Dashboard → Settings → Deployment Protection");
+          return;
+        }
+        
         const data = await response.json();
         
         if (!data.success) {
@@ -357,7 +373,8 @@
         setTimeout(finishUI, 300);
         
       } catch (error) {
-        showError("Error checking from database: " + error.message);
+        console.error("Error:", error);
+        showError("Error checking from database: " + error.message + ". Check browser console for details.");
       }
     }
 
