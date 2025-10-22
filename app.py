@@ -591,7 +591,8 @@ async def check_from_database_api(address: str = None, n: int = 10):
                         "status": item["status_text"],
                         "lat": item["lat"],
                         "lon": item["lon"],
-                        "checked_at": item["checked_at"]
+                        "checked_at": item["checked_at"],
+                        "distance_km": item.get("distance_km", 0)
                     })
                 
                 logger.info(f"Found {len(results)} nearby eligible addresses")

@@ -184,18 +184,24 @@
       const statusIcon = data.available ? 'fas fa-check' : 'fas fa-times';
       const statusText = data.available ? 'Available' : 'Not Available';
       
-      const coordinates = (data.lat != null && data.lon != null)
-        ? `<span class="text-muted">(${Number(data.lat).toFixed(6)}, ${Number(data.lon).toFixed(6)})</span>`
+      // Format distance prominently
+      const distanceText = (typeof data.distance_km === "number" && data.distance_km > 0)
+        ? `<span style="color: #3b82f6; font-weight: 600; margin-left: 8px;">
+            <i class="fas fa-map-marker-alt"></i> ${data.distance_km.toFixed(2)} km away
+           </span>`
         : "";
 
-      const distance = (typeof data.distance_km === "number")
-        ? `<span class="text-muted">- ${data.distance_km.toFixed(2)} km away</span>`
+      const coordinates = (data.lat != null && data.lon != null)
+        ? `<span class="text-muted">(${Number(data.lat).toFixed(6)}, ${Number(data.lon).toFixed(6)})</span>`
         : "";
 
       const statusInfo = data.status ? ` <span class="text-muted">[${data.status}${data.time ? ` ~${data.time}s` : ""}]</span>` : "";
 
       li.innerHTML = `
-        <div class="result-address">${data.addr}</div>
+        <div class="result-address">
+          ${data.addr}
+          ${distanceText}
+        </div>
         <div class="result-details">
           <div class="result-status ${statusClass}">
             <span class="status-icon ${data.available ? 'available' : 'unavailable'}">
@@ -205,7 +211,6 @@
           </div>
           <div class="result-meta">
             ${coordinates}
-            ${distance}
             ${statusInfo}
             ${data.checked_at ? `<span><i class="fas fa-clock"></i> ${data.checked_at}</span>` : ''}
             ${data.source ? `<span><i class="fas fa-database"></i> ${data.source}</span>` : ''}
@@ -355,6 +360,7 @@
               lat: result.lat,
               lon: result.lon,
               checked_at: result.checked_at,
+              distance_km: result.distance_km,
               source: "results.csv"
             });
           });
